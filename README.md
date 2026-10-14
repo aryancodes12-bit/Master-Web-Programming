@@ -68,7 +68,13 @@ A comprehensive, exam-ready study guide, syllabus, and interactive architecture 
 
 ---
 
-### 5. **Visual Diagrams & Interactive Gallery**
+### 5. **Question Bank Solutions (QB Sol: Q1–Q50)**
+- **Module 1 (Node.js & Express.js - Q1–Q25):** Event loop concurrent request handling, Core vs Third-party modules, Bearer token authorization middleware, `req.params` vs `req.query`, Express vs native HTTP, Database connection pools, Centralized error handling, and Module 1 Master Map.
+- **Module 2 (PHP & MySQL - Q26–Q50):** Multidimensional arrays + foreach, `$_GET` vs `$_POST`, Cookie lifecycle & security flags, Type declarations & default parameters, `include` vs `require`, Structured exceptions, Secure login pipeline with `password_verify()` and prepared statements, 5-stage file upload security validator, SQLi/XSS/CSRF/Session hijacking defenses, and MySQLi vs PDO comparison matrix.
+
+---
+
+### 6. **Visual Diagrams & Interactive Gallery**
 - **2 Vector Blueprints (SVG):**
   - `fullstack-architecture.svg`
   - `fullstack-workflow-detailed.svg`

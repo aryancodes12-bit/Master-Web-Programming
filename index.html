@@ -1407,6 +1407,10 @@
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
           Structured Notes &amp; Syllabus
         </button>
+        <button class="tab-btn" id="tab-qb-btn" onclick="switchView('qb')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          QB Sol (Q1–Q50)
+        </button>
         <button class="tab-btn" id="tab-gallery-btn" onclick="switchView('gallery')">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
           Visual Diagrams (24 Slides &amp; SVGs)
@@ -1417,6 +1421,18 @@
       <div>
         <select class="quick-jump-select" onchange="handleQuickJump(this.value)">
           <option value="">Jump to Topic...</option>
+          <optgroup label="🎯 QB Solutions (Q1-Q50)">
+            <option value="qb-q1">Q1. Event-Driven &amp; Non-Blocking I/O</option>
+            <option value="qb-q4">Q4 &amp; Q12. Bearer Auth Middleware</option>
+            <option value="qb-q6">Q6. req.params vs req.query</option>
+            <option value="qb-q14">Q14. Database Connection Pools</option>
+            <option value="qb-q26">Q26. PHP Multidimensional Arrays</option>
+            <option value="qb-q27">Q27. $_GET vs $_POST Deep Dive</option>
+            <option value="qb-q35">Q35 &amp; Q42. Secure Login &amp; Passwords</option>
+            <option value="qb-q36">Q36. Secure File Upload Pipeline</option>
+            <option value="qb-q43">Q43. SQLi, XSS, CSRF, Session Hijack</option>
+            <option value="qb-q50">Q50. MySQLi vs PDO Comparison</option>
+          </optgroup>
           <optgroup label="⭐ Core Exam Must-Know">
             <option value="universal-architecture">⭐ Universal Architecture (Universal Model)</option>
             <option value="exam-diagram">🔥 The Ultimate Exam Diagram</option>
@@ -2746,6 +2762,903 @@ const dbPass = process.env.DB_PASSWORD;</code></pre>
     </div>
 
 
+
+    <!-- ============================================================ -->
+    <!-- VIEW 3: QUESTION BANK SOLUTIONS (QB SOL) -->
+    <!-- ============================================================ -->
+    <div id="view-qb" class="view-section">
+      
+      <!-- QB Hero Banner -->
+      <section class="syllabus-hero" style="border-color: rgba(168, 85, 247, 0.4); background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(56, 189, 248, 0.1));">
+        <div class="hero-tag" style="background: rgba(168, 85, 247, 0.2); color: var(--accent-purple); border-color: rgba(168, 85, 247, 0.4);">
+          ⭐ Verified University Question Bank Solutions
+        </div>
+        <h2>Question Bank Solutions (Module 1 &amp; Module 2)</h2>
+        <p>Curated, exam-targeted model solutions, code demonstrations, architectural workflows, and comparison matrices for university exam questions across Node.js, Express.js, PHP, MySQL, and Web Security.</p>
+        
+        <div class="block-chips">
+          <div class="block-chip"><span class="num">M1</span> Node.js &amp; Express.js Solutions (Q1–Q25)</div>
+          <div class="block-chip"><span class="num">M2</span> PHP &amp; MySQL Solutions (Q26–Q50)</div>
+          <div class="block-chip"><span class="num">🔥</span> Exam Cheat Tricks &amp; Model Code</div>
+        </div>
+      </section>
+
+      <div class="notes-layout">
+        <!-- Sticky TOC for QB Sol -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            QB Quick Navigation
+          </div>
+          <ul class="toc-list">
+            <div class="toc-group-header">Module 1 (Node &amp; Express)</div>
+            <li><a class="toc-link" href="#qb-q1">Q1. Event-Driven &amp; Non-Blocking I/O</a></li>
+            <li><a class="toc-link" href="#qb-q2">Q2. Core vs Third-Party Modules</a></li>
+            <li><a class="toc-link" href="#qb-q4">Q4. Express Auth Middleware</a></li>
+            <li><a class="toc-link" href="#qb-q6">Q6. req.params vs req.query</a></li>
+            <li><a class="toc-link" href="#qb-q9">Q9. Express vs HTTP Module</a></li>
+            <li><a class="toc-link" href="#qb-q12">Q12. Bearer Header Validation</a></li>
+            <li><a class="toc-link" href="#qb-q13">Q13. Request Proc vs Response Gen</a></li>
+            <li><a class="toc-link" href="#qb-q14">Q14. Database Connection Pools</a></li>
+            <li><a class="toc-link" href="#qb-q18">Q18. Student Registration System</a></li>
+            <li><a class="toc-link" href="#qb-q19">Q19. Student JSON File Operations</a></li>
+            <li><a class="toc-link" href="#qb-q20">Q20. Multi-Route HTTP Server</a></li>
+            <li><a class="toc-link" href="#qb-q23">Q23. package.json vs lock.json</a></li>
+            <li><a class="toc-link" href="#qb-q24">Q24. Express.Router Separation</a></li>
+            <li><a class="toc-link" href="#qb-q25">Q25. Centralized Error Handling</a></li>
+            <li><a class="toc-link" href="#qb-m1-map">🧠 Module 1 Master Revision Map</a></li>
+
+            <div class="toc-group-header">Module 2 (PHP &amp; MySQL)</div>
+            <li><a class="toc-link" href="#qb-q26">Q26. Multidimensional Arrays + Loop</a></li>
+            <li><a class="toc-link" href="#qb-q27">Q27. $_GET vs $_POST Deep Dive</a></li>
+            <li><a class="toc-link" href="#qb-q29">Q29. PHP Cookies Lifecycle</a></li>
+            <li><a class="toc-link" href="#qb-q30">Q30. Type Declarations &amp; Defaults</a></li>
+            <li><a class="toc-link" href="#qb-q31">Q31. include vs require</a></li>
+            <li><a class="toc-link" href="#qb-q32">Q32. Exception Handling vs Errors</a></li>
+            <li><a class="toc-link" href="#qb-q34">Q34. Advantages of PHP in Web</a></li>
+            <li><a class="toc-link" href="#qb-q35">Q35. Secure User Registration</a></li>
+            <li><a class="toc-link" href="#qb-q36">Q36. Secure File Upload Pipeline</a></li>
+            <li><a class="toc-link" href="#qb-q38">Q38. PHP + XAMPP Execution Flow</a></li>
+            <li><a class="toc-link" href="#qb-q40">Q40. Complete PHP+MySQL CRUD</a></li>
+            <li><a class="toc-link" href="#qb-q42">Q42. Secure Login with password_verify</a></li>
+            <li><a class="toc-link" href="#qb-q43">Q43. SQLi, XSS, CSRF, Session Hijack</a></li>
+            <li><a class="toc-link" href="#qb-q44">Q44. Connection Failure &amp; PDO</a></li>
+            <li><a class="toc-link" href="#qb-q45">Q45. Server File Logging System</a></li>
+            <li><a class="toc-link" href="#qb-q46">Q46. PHP SSR vs PHP as REST API</a></li>
+            <li><a class="toc-link" href="#qb-q49">Q49. Validation vs Prepared Stmt</a></li>
+            <li><a class="toc-link" href="#qb-q50">Q50. MySQLi vs PDO Comparison</a></li>
+            <li><a class="toc-link" href="#qb-m2-map">🧠 Module 2 Master Revision Map</a></li>
+          </ul>
+        </aside>
+
+        <!-- QB Sol Content Body -->
+        <div class="notes-content">
+
+          <!-- MODULE 1 BANNER -->
+          <div class="part-banner" style="border-left-color: var(--accent-cyan); margin-top: 0;">
+            <div>
+              <span class="topic-badge">MODULE 1 SOLUTIONS</span>
+              <h3>NODE.JS &amp; EXPRESS.JS QUESTION BANK</h3>
+            </div>
+            <span class="section-pill">Exam-Oriented Explanations</span>
+          </div>
+
+          <!-- Q1 -->
+          <div class="topic-card" id="qb-q1">
+            <div class="topic-header">
+              <h4 class="topic-title">Q1. Event-Driven &amp; Non-Blocking I/O in Node.js (Concurrent Requests)</h4>
+              <span class="exam-tag">High-Yield Analysis Question</span>
+            </div>
+            <p><strong>Question:</strong> Demonstrate how Node.js uses an event-driven and non-blocking I/O architecture to handle multiple student requests concurrently.</p>
+
+            <div class="callout callout-info">
+              <span class="callout-title">🧠 Intuitive Mental Model:</span>
+              Suppose 100 students simultaneously request <code>GET /students</code>. In a traditional multi-threaded blocking server (like Apache), 1 thread waits idle for the database to return records. In Node.js, the single thread says: <em>"Database, continue processing. When the records are ready, emit an event and run my callback."</em> In the meantime, the single main thread handles student 2, student 3, and student 100!
+            </div>
+
+            <!-- Visual Flowchart for Q1 -->
+            <div class="visual-flowchart-card">
+              <div class="vf-node vf-node-client" style="text-align: center; max-width: 500px;">
+                <div style="font-weight: 800; color: #fff;">100 Concurrent Student Requests</div>
+                <div style="font-size: 0.76rem; color: var(--accent-cyan);">Student 1, Student 2, Student 3 ... Student 100</div>
+              </div>
+              <div class="vf-connector">
+                <div class="vf-arrow-pill">↓ Dispatched to Main Thread</div>
+              </div>
+              <div class="vf-node vf-node-backend" style="text-align: center; max-width: 540px;">
+                <div style="font-weight: 800; color: #fff;">Node.js Single-Threaded Event Loop</div>
+                <div style="font-size: 0.8rem; color: var(--accent-emerald);">Delegates DB / File I/O to background system immediately without blocking</div>
+              </div>
+              <div class="vf-connector">
+                <div class="vf-arrow-pill sql">↓ Asynchronous Hand-off</div>
+              </div>
+              <div class="vf-node vf-node-database" style="text-align: center; max-width: 500px;">
+                <div style="font-weight: 800; color: #fff;">Background Libuv Pool / Database Worker</div>
+                <div style="font-size: 0.78rem; color: #e9d5ff;">Query executes ➔ Event emitted ➔ Callback queued in Event Loop ➔ Client Response sent</div>
+              </div>
+            </div>
+
+            <div class="code-container">
+              <div class="code-header"><span>Demonstration Code (Non-blocking File Reading)</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>const fs = require("fs");
+
+console.log("Request received from Student 1");
+
+// Asynchronous non-blocking call
+fs.readFile("students.txt", "utf8", (err, data) => {
+    if (err) return console.error("Error reading file:", err.message);
+    console.log("Student data returned to Student 1:", data);
+});
+
+// The single thread immediately proceeds without waiting for disk I/O!
+console.log("Server thread is free to handle Student 2 request immediately!");
+
+// Terminal Output:
+// Request received from Student 1
+// Server thread is free to handle Student 2 request immediately!
+// Student data returned to Student 1: [content of students.txt]</code></pre>
+            </div>
+
+            <div class="callout callout-exam">
+              <span class="callout-title">⭐ Exact Exam Answer Paragraph:</span>
+              "Node.js uses an event-driven, non-blocking I/O architecture. When an I/O operation such as a database query or file-system operation is requested, Node.js does not wait synchronously for its completion. Instead, the operation is handled asynchronously by Libuv worker threads and a callback is scheduled when the result is available. The single-threaded Event Loop continuously processes events and callbacks, allowing Node.js to handle thousands of concurrent client requests with minimal memory overhead."
+              <br><br>
+              <strong>Keywords to write:</strong> <code>Event Loop</code> + <code>Event-driven</code> + <code>Non-blocking I/O</code> + <code>Asynchronous</code> + <code>Callback</code>.
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="topic-card" id="qb-q2">
+            <div class="topic-header">
+              <h4 class="topic-title">Q2. Core Modules vs Third-Party Modules</h4>
+              <span class="topic-badge">Comparison</span>
+            </div>
+            
+            <table class="custom-table">
+              <thead>
+                <tr><th>Feature</th><th>Core (Built-in) Modules</th><th>Third-Party Modules</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Origin</strong></td><td>Shipped and bundled natively within Node.js runtime</td><td>Created by community/external authors, distributed on npmjs.com</td></tr>
+                <tr><td><strong>Installation</strong></td><td><strong>No installation required</strong>; immediately available</td><td>Requires explicit installation via <code>npm install &lt;package&gt;</code></td></tr>
+                <tr><td><strong>Storage</strong></td><td>Compiled directly into Node.js binary</td><td>Downloaded and stored inside local <code>node_modules/</code> folder</td></tr>
+                <tr><td><strong>Examples</strong></td><td><code>fs</code>, <code>http</code>, <code>path</code>, <code>os</code>, <code>events</code>, <code>crypto</code></td><td><code>express</code>, <code>mysql2</code>, <code>cors</code>, <code>jsonwebtoken</code>, <code>mongoose</code></td></tr>
+                <tr><td><strong>Import Syntax</strong></td><td><code>const fs = require("fs");</code></td><td><code>const express = require("express");</code></td></tr>
+              </tbody>
+            </table>
+
+            <div class="callout callout-takeaway">
+              <span class="callout-title">⭐ Exam Memory Trick:</span>
+              Whenever an exam question states <em>"installed through NPM"</em> or <em>"external package"</em> ➔ immediately write <strong>Third-Party Module</strong>.
+            </div>
+          </div>
+
+          <!-- Q4 & Q12 -->
+          <div class="topic-card" id="qb-q4">
+            <div class="topic-header">
+              <h4 class="topic-title">Q4 &amp; Q12. Express Authentication &amp; Bearer Token Validation Middleware</h4>
+              <span class="exam-tag">Practical 10-Marker</span>
+            </div>
+            <p><strong>Scenario:</strong> Client accesses <code>GET /dashboard</code> or <code>GET /students</code>. Validate the HTTP Authorization header before granting access.</p>
+
+            <!-- Visual Middleware Execution Pipeline -->
+            <div class="pipeline-container">
+              <div class="pipeline-step">
+                <span style="font-size: 1.1rem;">📥</span>
+                <strong>1. Request</strong>
+                <span style="font-size: 0.7rem; color: var(--text-dim);">GET /dashboard</span>
+              </div>
+              <div class="pipeline-arrow">➔</div>
+              <div class="pipeline-step active">
+                <span style="font-size: 1.1rem;">🔍</span>
+                <strong>2. Check Header</strong>
+                <span style="font-size: 0.7rem; color: var(--accent-cyan);">Authorization?</span>
+              </div>
+              <div class="pipeline-arrow">➔</div>
+              <div class="pipeline-step active">
+                <span style="font-size: 1.1rem;">🛡️</span>
+                <strong>3. Bearer Format</strong>
+                <span style="font-size: 0.7rem; color: var(--accent-emerald);">Bearer &lt;token&gt;</span>
+              </div>
+              <div class="pipeline-arrow">➔</div>
+              <div class="pipeline-step">
+                <span style="font-size: 1.1rem;">🎯</span>
+                <strong>4. Route Handler</strong>
+                <span style="font-size: 0.7rem; color: var(--text-dim);">next() executed</span>
+              </div>
+            </div>
+
+            <div class="code-container" id="qb-q12">
+              <div class="code-header"><span>Robust Bearer Authorization Middleware</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>function checkAuthorization(req, res, next) {
+    const authHeader = req.headers.authorization;
+
+    // Check 1: Existence of Authorization header
+    if (!authHeader) {
+        return res.status(401).json({
+            error: "Unauthorized",
+            message: "Authorization header is missing"
+        });
+    }
+
+    // Check 2: Correct RFC 6750 Bearer token format
+    if (!authHeader.startsWith("Bearer ")) {
+        return res.status(401).json({
+            error: "Unauthorized",
+            message: "Invalid authorization format. Must be 'Bearer &lt;token&gt;'"
+        });
+    }
+
+    const token = authHeader.split(" ")[1];
+    if (!token || token.trim() === "") {
+        return res.status(401).json({ error: "Unauthorized", message: "Token payload empty" });
+    }
+
+    // Pass control to the protected route handler
+    next();
+}
+
+// Protected Route Example
+app.get("/api/dashboard", checkAuthorization, (req, res) => {
+    res.json({ message: "Access granted: Welcome to student admin dashboard!" });
+});</code></pre>
+            </div>
+          </div>
+
+          <!-- Q6 -->
+          <div class="topic-card" id="qb-q6">
+            <div class="topic-header">
+              <h4 class="topic-title">Q6. req.params vs req.query</h4>
+              <span class="exam-tag">Guaranteed Exam Difference</span>
+            </div>
+
+            <table class="custom-table">
+              <thead>
+                <tr><th>Attribute</th><th><code>req.params</code></th><th><code>req.query</code></th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Location</strong></td><td>Embedded directly in the <strong>URL path pattern</strong> (e.g., <code>/students/:id</code>)</td><td>Appended after the question mark <code>?</code> in query string</td></tr>
+                <tr><td><strong>Purpose</strong></td><td><strong>Identifies a specific resource</strong> (Primary key / slug)</td><td><strong>Filters, sorts, searches, or paginates</strong> results</td></tr>
+                <tr><td><strong>Example URL</strong></td><td><code>http://localhost:3000/students/101</code></td><td><code>http://localhost:3000/students?course=BCA&amp;year=2</code></td></tr>
+                <tr><td><strong>Express Route</strong></td><td><code>app.get("/students/:id", (req, res) => ...)</code></td><td><code>app.get("/students", (req, res) => ...)</code></td></tr>
+                <tr><td><strong>Access Code</strong></td><td><code>req.params.id</code> ➔ <code>"101"</code></td><td><code>req.query.course</code> ➔ <code>"BCA"</code></td></tr>
+              </tbody>
+            </table>
+
+            <div class="callout callout-takeaway">
+              <span class="callout-title">Visual Memory Anchor:</span>
+              <code>/students/101</code> ➔ <strong>PARAM</strong> (Resource Identity)<br>
+              <code>/students?course=BCA</code> ➔ <strong>QUERY</strong> (Filter Option)
+            </div>
+          </div>
+
+          <!-- Q9 -->
+          <div class="topic-card" id="qb-q9">
+            <div class="topic-header">
+              <h4 class="topic-title">Q9. Why Express is Better Than the Native Node.js HTTP Module</h4>
+              <span class="topic-badge">Framework Comparison</span>
+            </div>
+
+            <table class="custom-table">
+              <thead>
+                <tr><th>Aspect</th><th>Native Node.js <code>http</code> Module</th><th>Express.js Web Framework</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Abstraction Level</strong></td><td>Low-level networking API</td><td>High-level, structured, robust application framework</td></tr>
+                <tr><td><strong>Routing Mechanism</strong></td><td>Cumbersome manual <code>if-else</code> or <code>switch(req.url, req.method)</code></td><td>Declarative REST routing: <code>app.get()</code>, <code>app.post()</code>, router modules</td></tr>
+                <tr><td><strong>Middleware Support</strong></td><td>No native pipeline; must be hand-coded</td><td>Pluggable middleware architecture (CORS, Auth, body-parser)</td></tr>
+                <tr><td><strong>Body Parsing</strong></td><td>Manual chunk streaming with <code>req.on('data')</code> and buffer concatenation</td><td>One-line JSON body parsing: <code>app.use(express.json())</code></td></tr>
+                <tr><td><strong>Response Handling</strong></td><td>Requires manual MIME headers &amp; <code>res.end(JSON.stringify(data))</code></td><td>Convenient helper methods: <code>res.json()</code>, <code>res.status().send()</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Q13 -->
+          <div class="topic-card" id="qb-q13">
+            <div class="topic-header">
+              <h4 class="topic-title">Q13. Request Processing vs Response Generation</h4>
+              <span class="topic-badge">Lifecycle Concept</span>
+            </div>
+            
+            <p>Every web interaction splits cleanly into two distinct phases on the server:</p>
+            <ol>
+              <li><strong>Request Processing (Inbound Phase):</strong>
+                <ul>
+                  <li>Receives incoming raw TCP/HTTP stream.</li>
+                  <li>Parses URL path parameters (<code>req.params</code>) and search query string (<code>req.query</code>).</li>
+                  <li>Parses incoming request JSON payload (<code>req.body</code>).</li>
+                  <li>Executes authentication middleware and input validation.</li>
+                  <li>Runs database query or business rule computations.</li>
+                </ul>
+              </li>
+              <li><strong>Response Generation (Outbound Phase):</strong>
+                <ul>
+                  <li>Takes the business logic / database result.</li>
+                  <li>Serializes data into standard format (typically JSON or HTML view).</li>
+                  <li>Sets appropriate HTTP status header (e.g., <code>200 OK</code>, <code>201 Created</code>, <code>404 Not Found</code>).</li>
+                  <li>Sets <code>Content-Type: application/json</code> header and streams data back to client socket.</li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Q14 -->
+          <div class="topic-card" id="qb-q14">
+            <div class="topic-header">
+              <h4 class="topic-title">Q14. Database Connection Pools (High-Concurrency Optimization)</h4>
+              <span class="exam-tag">Critical Architecture Concept</span>
+            </div>
+
+            <p><strong>The Problem with Single/Ad-hoc Connections:</strong> If 100 students submit requests simultaneously, establishing a new TCP handshake, authenticating, and tearing down 100 separate database connections introduces enormous latency and server memory exhaustion.</p>
+
+            <div class="callout callout-takeaway">
+              <span class="callout-title">The Connection Pool Solution:</span>
+              A Connection Pool maintains a warm, reusable cache of persistent database connections (e.g., <code>connectionLimit: 10</code>). Requests grab an available connection from the pool, execute their query, and immediately release it back to the pool!
+            </div>
+
+            <div class="code-container">
+              <div class="code-header"><span>Configuring Connection Pool with mysql2</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>const mysql = require("mysql2");
+
+// Create Connection Pool
+const pool = mysql.createPool({
+    host: "localhost",
+    user: "root",
+    password: process.env.DB_PASSWORD || "",
+    database: "college",
+    connectionLimit: 10,       // Max 10 simultaneous connections
+    waitForConnections: true,  // Queue requests when all 10 connections are busy
+    queueLimit: 0              // Unlimited request queue
+});
+
+// Queries automatically borrow, execute, and release connections:
+pool.query("SELECT * FROM students", (err, results) => {
+    if (err) throw err;
+    console.log("Students retrieved via pool:", results);
+});</code></pre>
+            </div>
+          </div>
+
+          <!-- Q18, Q19, Q20 -->
+          <div class="topic-card" id="qb-q18">
+            <div class="topic-header">
+              <h4 class="topic-title">Q18, Q19 &amp; Q20. Online Registration Architecture &amp; File Operations</h4>
+              <span class="topic-badge">End-to-End Solutions</span>
+            </div>
+
+            <p><strong>Q18 Architecture Flow:</strong> Student Form ➔ <code>POST /api/students</code> ➔ Validation Middleware ➔ Auth Middleware ➔ Controller ➔ MySQL Insertion ➔ 201 Response.</p>
+
+            <div class="code-container" id="qb-q19">
+              <div class="code-header"><span>Q19: Student JSON File Storage CRUD (fs Module)</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>const fs = require("fs");
+const FILE_PATH = "students.json";
+
+// 1. READ ALL STUDENTS
+function readStudents(callback) {
+    fs.readFile(FILE_PATH, "utf8", (err, data) => {
+        if (err) return callback(err, null);
+        callback(null, JSON.parse(data || "[]"));
+    });
+}
+
+// 2. ADD STUDENT & SAVE
+function addStudent(newStudent) {
+    readStudents((err, students) => {
+        if (err) return console.error(err);
+        students.push(newStudent);
+        fs.writeFile(FILE_PATH, JSON.stringify(students, null, 2), (err) => {
+            if (err) console.error("Error writing file:", err);
+            else console.log("Student added to JSON storage successfully!");
+        });
+    });
+}</code></pre>
+            </div>
+
+            <div class="code-container" id="qb-q20">
+              <div class="code-header"><span>Q20: Native HTTP Server with Multiple Routing Paths</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>const http = require("http");
+
+const server = http.createServer((req, res) => {
+    res.setHeader("Content-Type", "text/plain");
+
+    if (req.url === "/" && req.method === "GET") {
+        res.writeHead(200);
+        res.end("Welcome to University Home Page");
+    } else if (req.url === "/students" && req.method === "GET") {
+        res.writeHead(200);
+        res.end("Students Directory Page");
+    } else if (req.url === "/about" && req.method === "GET") {
+        res.writeHead(200);
+        res.end("About College Department");
+    } else {
+        res.writeHead(404);
+        res.end("404 Error: Page Not Found");
+    }
+});
+
+server.listen(3000, () => console.log("Native server running on port 3000"));</code></pre>
+            </div>
+          </div>
+
+          <!-- Q23, Q24, Q25 -->
+          <div class="topic-card" id="qb-q23">
+            <div class="topic-header">
+              <h4 class="topic-title">Q23, Q24 &amp; Q25. Package Locks, Router Separation &amp; Error Handling</h4>
+              <span class="topic-badge">Production Architecture</span>
+            </div>
+
+            <p><strong>Q23: <code>package.json</code> vs <code>package-lock.json</code>:</strong></p>
+            <ul>
+              <li><code>package.json</code>: <em>"What packages does my project need?"</em> Contains declared dependency names and loose semantic version ranges (e.g. <code>^5.0.0</code>).</li>
+              <li><code>package-lock.json</code>: <em>"Exactly what versions and nested dependency tree were installed?"</em> Stores exact version numbers, download URLs, and integrity hashes to prevent discrepancies between developer machines.</li>
+            </ul>
+
+            <div class="code-container" id="qb-q24">
+              <div class="code-header"><span>Q24: Modular Routing with Express.Router()</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>// File: routes/students.js
+const express = require("express");
+const router = express.Router();
+
+router.get("/", (req, res) => res.json({ message: "All students" }));
+router.get("/:id", (req, res) => res.json({ message: `Student ${req.params.id}` }));
+
+module.exports = router;
+
+// File: server.js
+const studentRoutes = require("./routes/students");
+const courseRoutes = require("./routes/courses");
+
+app.use("/api/students", studentRoutes);
+app.use("/api/courses", courseRoutes);</code></pre>
+            </div>
+
+            <div class="code-container" id="qb-q25">
+              <div class="code-header"><span>Q25: Centralized 4-Parameter Error Handling Middleware</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>// Triggering an error from any route handler:
+app.get("/api/test-error", (req, res, next) => {
+    const err = new Error("Database query execution failed");
+    err.statusCode = 500;
+    next(err); // Forwards control straight to central error handler!
+});
+
+// Centralized Error Handler (Notice the 4 arguments: err, req, res, next)
+app.use((err, req, res, next) => {
+    console.error("Central Error Caught:", err.stack);
+    const status = err.statusCode || 500;
+    res.status(status).json({
+        success: false,
+        error: {
+            message: err.message || "Internal Server Error",
+            timestamp: new Date().toISOString()
+        }
+    });
+});</code></pre>
+            </div>
+          </div>
+
+          <!-- M1 MAP -->
+          <div class="topic-card" id="qb-m1-map">
+            <div class="topic-header">
+              <h4 class="topic-title">🧠 Module 1 — Super Revision Map</h4>
+              <span class="exam-tag">Quick Exam Cheat-Sheet</span>
+            </div>
+
+            <div class="tier-visual-container">
+              <div class="tier-box">
+                <span class="tier-badge">Node.js Core</span>
+                <h5>Event Loop &amp; Modules</h5>
+                <ul>
+                  <li><strong>Event Loop:</strong> Single-threaded non-blocking I/O.</li>
+                  <li><strong>Modules:</strong> Core (<code>fs</code>, <code>http</code>) vs Third-Party (<code>express</code>) vs Custom.</li>
+                  <li><strong>npm:</strong> <code>package.json</code> (ranges) vs <code>package-lock.json</code> (exact).</li>
+                </ul>
+              </div>
+
+              <div class="tier-box">
+                <span class="tier-badge">Express.js API</span>
+                <h5>Routes &amp; Middleware</h5>
+                <ul>
+                  <li><strong>REST CRUD:</strong> GET (Read), POST (Create), PUT (Update), DELETE (Delete).</li>
+                  <li><strong>Parameters:</strong> <code>req.params</code> (Path / ID) vs <code>req.query</code> (Search / Filter).</li>
+                  <li><strong>Middleware:</strong> Sequential pipeline calling <code>next()</code>.</li>
+                </ul>
+              </div>
+
+              <div class="tier-box">
+                <span class="tier-badge">Database &amp; Resilience</span>
+                <h5>Pools &amp; Error Handling</h5>
+                <ul>
+                  <li><strong>Connection Pool:</strong> Reuses active MySQL sockets for high concurrency.</li>
+                  <li><strong>Central Error:</strong> 4-arg middleware <code>(err, req, res, next)</code>.</li>
+                  <li><strong>Secrets:</strong> Loaded via <code>process.env.DB_PASSWORD</code>.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- ======================================================= -->
+          <!-- MODULE 2: PHP + MYSQL QUESTION BANK -->
+          <!-- ======================================================= -->
+          <div class="part-banner part-b" style="border-left-color: var(--accent-purple);">
+            <div>
+              <span class="topic-badge">MODULE 2 SOLUTIONS</span>
+              <h3>PHP &amp; MYSQL QUESTION BANK</h3>
+            </div>
+            <span class="section-pill">Exam-Oriented Explanations</span>
+          </div>
+
+          <!-- Q26 -->
+          <div class="topic-card" id="qb-q26">
+            <div class="topic-header">
+              <h4 class="topic-title">Q26. Multidimensional Arrays + Foreach + Examination Records</h4>
+              <span class="exam-tag">Classic Practical Code</span>
+            </div>
+            <p><strong>Question:</strong> Apply PHP control structures and multidimensional arrays to store and display student examination records with Pass/Fail results.</p>
+
+            <div class="code-container">
+              <div class="code-header"><span>PHP Multidimensional Examination Processing</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>&lt;?php
+$students = [
+    [
+        "roll" => 101,
+        "name" => "Rahul Sharma",
+        "maths" => 85,
+        "dbms" => 78,
+        "os" => 90
+    ],
+    [
+        "roll" => 102,
+        "name" => "Aman Verma",
+        "maths" => 72,
+        "dbms" => 80,
+        "os" => 75
+    ],
+    [
+        "roll" => 103,
+        "name" => "Priya Singh",
+        "maths" => 35,
+        "dbms" => 38,
+        "os" => 32
+    ]
+];
+
+foreach ($students as $student) {
+    $total = $student["maths"] + $student["dbms"] + $student["os"];
+    $percentage = round($total / 3, 2);
+    $isPassed = ($percentage &gt;= 40);
+
+    echo "Roll No: " . $student["roll"] . " | Name: " . $student["name"] . "&lt;br&gt;";
+    echo "Total Marks: " . $total . "/300 | Percentage: " . $percentage . "%&lt;br&gt;";
+    echo "Status: " . ($isPassed ? "&lt;b style='color:green;'&gt;PASS&lt;/b&gt;" : "&lt;b style='color:red;'&gt;FAIL&lt;/b&gt;") . "&lt;br&gt;";
+    echo "&lt;hr&gt;";
+}
+?&gt;</code></pre>
+            </div>
+          </div>
+
+          <!-- Q27 -->
+          <div class="topic-card" id="qb-q27">
+            <div class="topic-header">
+              <h4 class="topic-title">Q27. $_GET vs $_POST Deep Dive</h4>
+              <span class="exam-tag">Crucial Exam Difference</span>
+            </div>
+
+            <table class="custom-table">
+              <thead>
+                <tr><th>Comparison Factor</th><th>GET (<code>$_GET</code>)</th><th>POST (<code>$_POST</code>)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Data Placement</strong></td><td>Appended in plain text to URL query string</td><td>Encapsulated in HTTP message body payload</td></tr>
+                <tr><td><strong>Visibility</strong></td><td>Visible in browser address bar, server logs, browser history</td><td>Invisible in URL; cannot be bookmarked or cached</td></tr>
+                <tr><td><strong>Data Size Limit</strong></td><td>Restricted by URL length limitations (~2048 characters)</td><td>Effectively unlimited (governed by <code>post_max_size</code> in php.ini)</td></tr>
+                <tr><td><strong>Idempotency</strong></td><td>Idempotent; safe for read-only lookups &amp; search queries</td><td>Non-idempotent; required for state mutations &amp; account creation</td></tr>
+                <tr><td><strong>Security Reality</strong></td><td>Insecure for credentials or sensitive tokens</td><td>Hides data from URL, but <strong>still requires HTTPS, validation &amp; CSRF protection!</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Q29 & Q30 -->
+          <div class="topic-card" id="qb-q29">
+            <div class="topic-header">
+              <h4 class="topic-title">Q29 &amp; Q30. PHP Cookies Lifecycle &amp; Typed Functions</h4>
+              <span class="topic-badge">PHP Language Features</span>
+            </div>
+
+            <div class="code-container">
+              <div class="code-header"><span>Cookie Complete Lifecycle (Create, Read, Update, Delete)</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>&lt;?php
+// 1. CREATE Cookie (Expires in 1 hour with secure flags)
+setcookie("username", "Rahul", [
+    "expires" => time() + 3600,
+    "path" => "/",
+    "secure" => true,      // HTTPS only
+    "httponly" => true,    // Inaccessible to JavaScript (XSS defense)
+    "samesite" => "Lax"    // CSRF mitigation
+]);
+
+// 2. READ Cookie
+if (isset($_COOKIE["username"])) {
+    echo "Welcome back, " . htmlspecialchars($_COOKIE["username"]);
+}
+
+// 3. UPDATE Cookie
+setcookie("username", "Aman", time() + 3600, "/");
+
+// 4. DELETE Cookie (Set timestamp into the past)
+setcookie("username", "", time() - 3600, "/");
+?&gt;</code></pre>
+            </div>
+
+            <div class="code-container" id="qb-q30">
+              <div class="code-header"><span>Q30: Invoice Calculation with Type Declarations &amp; Default Parameters</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>&lt;?php
+// Function with float return type and default $taxRate = 18.0
+function calculateInvoice(float $amount, float $taxRate = 18.0): float {
+    $tax = ($amount * $taxRate) / 100;
+    return $amount + $tax;
+}
+
+echo "Total with 18% default GST: ₹" . calculateInvoice(1000.0) . "&lt;br&gt;"; // ₹1180
+echo "Total with 10% special tax: ₹" . calculateInvoice(1000.0, 10.0) . "&lt;br&gt;"; // ₹1100
+?&gt;</code></pre>
+            </div>
+          </div>
+
+          <!-- Q31 & Q32 -->
+          <div class="topic-card" id="qb-q31">
+            <div class="topic-header">
+              <h4 class="topic-title">Q31 &amp; Q32. include vs require &amp; Structured Exception Handling</h4>
+              <span class="topic-badge">Error Flow</span>
+            </div>
+
+            <table class="custom-table">
+              <thead>
+                <tr><th>Directive</th><th>Failure Behavior</th><th>Execution Continues?</th><th>Recommended Use-Case</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>include "file.php"</code></td><td>Generates an <code>E_WARNING</code></td><td><strong>Yes</strong>, script execution proceeds</td><td>Non-critical templates, footer widgets, banners</td></tr>
+                <tr><td><code>require "file.php"</code></td><td>Generates a fatal <code>E_COMPILE_ERROR</code></td><td><strong>No</strong>, script terminates immediately</td><td>Critical configs, database connections (<code>db.php</code>), security libraries</td></tr>
+              </tbody>
+            </table>
+
+            <div class="code-container" id="qb-q32">
+              <div class="code-header"><span>Structured Exception Handling (Try-Catch-Finally)</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>&lt;?php
+function processStudentScore($score) {
+    if ($score &lt; 0 || $score &gt; 100) {
+        throw new InvalidArgumentException("Score must be between 0 and 100. Received: $score");
+    }
+    return $score;
+}
+
+try {
+    echo processStudentScore(105);
+} catch (InvalidArgumentException $e) {
+    echo "Input Validation Error: " . $e-&gt;getMessage() . "&lt;br&gt;";
+} catch (Exception $e) {
+    echo "General System Exception: " . $e-&gt;getMessage() . "&lt;br&gt;";
+} finally {
+    echo "Execution block completed safely.";
+}
+?&gt;</code></pre>
+            </div>
+          </div>
+
+          <!-- Q35 & Q42 -->
+          <div class="topic-card" id="qb-q35">
+            <div class="topic-header">
+              <h4 class="topic-title">Q35 &amp; Q42. Secure User Authentication &amp; Registration Pipeline</h4>
+              <span class="exam-tag">High-Priority 10-Mark Question</span>
+            </div>
+
+            <!-- Visual Flowchart for Q42 Secure Login -->
+            <div class="visual-flowchart-card" id="qb-q42">
+              <div class="vf-node vf-node-client" style="text-align: center; max-width: 480px;">
+                <div style="font-weight: 800; color: #fff;">1. USER SUBMITS CREDENTIALS</div>
+                <div style="font-size: 0.76rem; color: var(--accent-cyan);">Email + Plaintext Password via HTTPS POST</div>
+              </div>
+              <div class="vf-connector">
+                <div class="vf-arrow-pill">↓ Sanitize &amp; Validate Form</div>
+              </div>
+              <div class="vf-node vf-node-backend" style="text-align: center; max-width: 520px;">
+                <div style="font-weight: 800; color: #fff;">2. DATABASE LOOKUP WITH PREPARED STATEMENT</div>
+                <div style="font-size: 0.78rem; color: #cbd5e1;"><code>SELECT id, password FROM users WHERE email = ?</code></div>
+              </div>
+              <div class="vf-connector">
+                <div class="vf-arrow-pill sql">↓ Verify Hash</div>
+              </div>
+              <div class="vf-node vf-node-database" style="text-align: center; max-width: 540px;">
+                <div style="font-weight: 800; color: #fff;">3. password_verify($password, $user['password'])</div>
+                <div style="font-size: 0.8rem; color: #e9d5ff; margin-top: 0.3rem;">
+                  ✓ Match ➔ <code>session_regenerate_id(true)</code> ➔ Set <code>$_SESSION['user_id']</code> ➔ Dashboard<br>
+                  ✗ Mismatch ➔ Generic "Invalid credentials" error response
+                </div>
+              </div>
+            </div>
+
+            <div class="code-container">
+              <div class="code-header"><span>Production-Grade Secure Login Script</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>&lt;?php
+session_start();
+$conn = new mysqli("localhost", "root", "", "college");
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $email = trim($_POST["email"] ?? "");
+    $password = $_POST["password"] ?? "";
+
+    // 1. Prepared Statement prevents SQL Injection
+    $stmt = $conn-&gt;prepare("SELECT id, name, password FROM users WHERE email = ?");
+    $stmt-&gt;bind_param("s", $email);
+    $stmt-&gt;execute();
+    $result = $stmt-&gt;get_result();
+
+    if ($user = $result-&gt;fetch_assoc()) {
+        // 2. Cryptographic constant-time password verification
+        if (password_verify($password, $user["password"])) {
+            // 3. Session Fixation Defense
+            session_regenerate_id(true);
+
+            $_SESSION["user_id"] = $user["id"];
+            $_SESSION["user_name"] = $user["name"];
+            header("Location: dashboard.php");
+            exit;
+        }
+    }
+
+    // Always return generic error (prevents user enumeration attacks)
+    $error = "Invalid email or password combination.";
+}
+?&gt;</code></pre>
+            </div>
+          </div>
+
+          <!-- Q36 -->
+          <div class="topic-card" id="qb-q36">
+            <div class="topic-header">
+              <h4 class="topic-title">Q36. PHP Secure File Upload Architecture</h4>
+              <span class="exam-tag">Security 5/7-Marker</span>
+            </div>
+
+            <p><strong>Never trust user uploads directly!</strong> Blindly storing uploaded files leads to Remote Code Execution (RCE). Always follow this 5-stage verification funnel:</p>
+
+            <div class="code-container">
+              <div class="code-header"><span>Complete Multi-Stage File Upload Validator</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>&lt;?php
+if ($_SERVER["REQUEST_METHOD"] === "POST" &amp;&amp; isset($_FILES["document"])) {
+    $file = $_FILES["document"];
+
+    // 1. Check for standard upload error codes
+    if ($file["error"] !== UPLOAD_ERR_OK) {
+        die("Upload failed with error code: " . $file["error"]);
+    }
+
+    // 2. Enforce strict file size limits (Max 2MB)
+    if ($file["size"] &gt; 2 * 1024 * 1024) {
+        die("Security error: File exceeds 2MB limit.");
+    }
+
+    // 3. Whitelist file extensions
+    $ext = strtolower(pathinfo($file["name"], PATHINFO_EXTENSION));
+    $allowedExts = ["pdf", "jpg", "jpeg", "png"];
+    if (!in_array($ext, $allowedExts, true)) {
+        die("Security error: File extension not permitted.");
+    }
+
+    // 4. Server-Side MIME Inspection (Don't trust client header)
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $mimeType = finfo_file($finfo, $file["tmp_name"]);
+    finfo_close($finfo);
+
+    $allowedMimes = ["application/pdf", "image/jpeg", "image/png"];
+    if (!in_array($mimeType, $allowedMimes, true)) {
+        die("Security error: Fake MIME type detected.");
+    }
+
+    // 5. Generate unguessable randomized filename
+    $safeName = bin2hex(random_bytes(16)) . "." . $ext;
+    $destination = "uploads/" . $safeName;
+
+    if (move_uploaded_file($file["tmp_name"], $destination)) {
+        echo "File securely uploaded as: " . htmlspecialchars($safeName);
+    }
+}
+?&gt;</code></pre>
+            </div>
+          </div>
+
+          <!-- Q43 -->
+          <div class="topic-card" id="qb-q43">
+            <div class="topic-header">
+              <h4 class="topic-title">Q43. Web Security Threats: SQLi, XSS, CSRF &amp; Session Hijacking</h4>
+              <span class="exam-tag">High-Yield Theory Master Table</span>
+            </div>
+
+            <table class="custom-table">
+              <thead>
+                <tr><th>Threat Name</th><th>Attack Vector / Mechanism</th><th>Primary Defense Strategy</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>SQL Injection (SQLi)</strong></td><td>Attacker injects raw SQL commands into inputs (e.g., <code>' OR 1=1 --</code>) to bypass authentication or dump tables.</td><td><strong>Parameterized Prepared Statements</strong> (<code>$stmt-&gt;prepare()</code>); never concatenate variables into SQL strings.</td></tr>
+                <tr><td><strong>Cross-Site Scripting (XSS)</strong></td><td>Attacker injects malicious <code>&lt;script&gt;</code> tags into database/forms, which execute in other users' browsers to steal cookies.</td><td>HTML output escaping using <code>htmlspecialchars($var, ENT_QUOTES, 'UTF-8')</code> and strict Content Security Policy (CSP).</td></tr>
+                <tr><td><strong>Cross-Site Request Forgery (CSRF)</strong></td><td>Tricks an authenticated browser into sending unauthorized commands (like transferring money) via embedded image/form links.</td><td>Cryptographic <strong>anti-CSRF tokens</strong> verified on POST requests, combined with <code>SameSite=Strict/Lax</code> cookie flags.</td></tr>
+                <tr><td><strong>Session Hijacking</strong></td><td>Attacker intercepts or guesses a valid session ID to impersonate an authenticated user.</td><td>Force <strong>HTTPS</strong> encryption, set <code>HttpOnly</code> on session cookies, and call <code>session_regenerate_id(true)</code> on login.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Q46 & Q50 -->
+          <div class="topic-card" id="qb-q46">
+            <div class="topic-header">
+              <h4 class="topic-title">Q46 &amp; Q50. Server-Side Rendering vs REST API &amp; MySQLi vs PDO</h4>
+              <span class="topic-badge">Architectural Choices</span>
+            </div>
+
+            <p><strong>Q46: Traditional SSR vs Decoupled REST API Architecture:</strong></p>
+            <ul>
+              <li><strong>PHP SSR (Server-Side Rendering):</strong> PHP code directly outputs HTML tags (<code>echo "&lt;h1&gt;$title&lt;/h1&gt;"</code>). Browser receives pre-rendered markup. Great for SEO and traditional multi-page web applications.</li>
+              <li><strong>PHP as REST API:</strong> PHP acts as a backend service returning JSON payloads (<code>echo json_encode($data)</code>). Decouples backend from frontend (React, Vue, iOS, Android).</li>
+            </ul>
+
+            <h4 id="qb-q50">MySQLi vs PDO Comparison</h4>
+            <table class="custom-table">
+              <thead>
+                <tr><th>Feature</th><th>MySQLi Driver</th><th>PDO (PHP Data Objects)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Database Support</strong></td><td>Exclusively supports MySQL / MariaDB</td><td>Supports <strong>12 different database drivers</strong> (PostgreSQL, SQLite, Oracle, etc.)</td></tr>
+                <tr><td><strong>API Paradigm</strong></td><td>Both Procedural and Object-Oriented APIs</td><td>Strictly Object-Oriented</td></tr>
+                <tr><td><strong>Named Parameters</strong></td><td>No (uses positional <code>?</code> placeholders only)</td><td>Yes (supports both <code>:id</code> named params and <code>?</code> positional params)</td></tr>
+                <tr><td><strong>Connection Failures</strong></td><td>Requires manual error inspection</td><td>Throws <code>PDOException</code> automatically with <code>ATTR_ERRMODE_EXCEPTION</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- M2 MAP -->
+          <div class="topic-card" id="qb-m2-map">
+            <div class="topic-header">
+              <h4 class="topic-title">🧠 Module 2 — Master Revision Map</h4>
+              <span class="exam-tag">Quick Exam Cheat-Sheet</span>
+            </div>
+
+            <div class="tier-visual-container">
+              <div class="tier-box">
+                <span class="tier-badge">PHP Language</span>
+                <h5>Syntax &amp; Arrays</h5>
+                <ul>
+                  <li><strong>Arrays:</strong> Indexed vs Associative (<code>$key =&gt; $val</code>) vs Multidimensional.</li>
+                  <li><strong>Functions:</strong> Type declarations <code>function f(float $x): float</code>.</li>
+                  <li><strong>File Inclusion:</strong> <code>include</code> (warning) vs <code>require</code> (fatal error).</li>
+                </ul>
+              </div>
+
+              <div class="tier-box">
+                <span class="tier-badge">Form &amp; State</span>
+                <h5>GET/POST, Cookies, Sessions</h5>
+                <ul>
+                  <li><strong>Forms:</strong> <code>$_GET</code> (URL query) vs <code>$_POST</code> (request body).</li>
+                  <li><strong>Cookies:</strong> Client-side storage via <code>setcookie()</code> (~4KB).</li>
+                  <li><strong>Sessions:</strong> Server-side authenticated state via <code>session_start()</code>.</li>
+                </ul>
+              </div>
+
+              <div class="tier-box">
+                <span class="tier-badge">Database &amp; Security</span>
+                <h5>MySQLi, PDO &amp; Defenses</h5>
+                <ul>
+                  <li><strong>SQL Injection:</strong> Prevented 100% via Prepared Statements (<code>bind_param</code>).</li>
+                  <li><strong>Passwords:</strong> <code>password_hash()</code> + <code>password_verify()</code>.</li>
+                  <li><strong>XSS:</strong> Sanitized with <code>htmlspecialchars()</code>.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
     <!-- ============================================================ -->
     <!-- VIEW 2: VISUAL DIAGRAMS & SLIDES GALLERY -->
     <!-- ============================================================ -->
@@ -3096,9 +4009,11 @@ const dbPass = process.env.DB_PASSWORD;</code></pre>
     // Tab View Switcher
     function switchView(viewName) {
       document.getElementById('view-notes').classList.toggle('active', viewName === 'notes');
+      document.getElementById('view-qb').classList.toggle('active', viewName === 'qb');
       document.getElementById('view-gallery').classList.toggle('active', viewName === 'gallery');
 
       document.getElementById('tab-notes-btn').classList.toggle('active', viewName === 'notes');
+      document.getElementById('tab-qb-btn').classList.toggle('active', viewName === 'qb');
       document.getElementById('tab-gallery-btn').classList.toggle('active', viewName === 'gallery');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -3106,8 +4021,11 @@ const dbPass = process.env.DB_PASSWORD;</code></pre>
     // Quick Jump Handler
     function handleQuickJump(targetId) {
       if (!targetId) return;
-      // Ensure notes tab is active
-      switchView('notes');
+      if (targetId.startsWith('qb-')) {
+        switchView('qb');
+      } else {
+        switchView('notes');
+      }
       setTimeout(() => {
         const el = document.getElementById(targetId);
         if (el) {
