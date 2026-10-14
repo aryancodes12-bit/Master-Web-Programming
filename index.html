@@ -1,0 +1,2744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full-Stack Web Programming: Syllabus, Notes & Architecture Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #070a13;
+      --bg-secondary: #0d1322;
+      --bg-card: rgba(15, 23, 42, 0.75);
+      --bg-card-hover: rgba(24, 36, 64, 0.85);
+      --bg-code: #0b1120;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(56, 189, 248, 0.4);
+      --accent-cyan: #38bdf8;
+      --accent-blue: #3b82f6;
+      --accent-indigo: #6366f1;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --accent-purple: #a855f7;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      --shadow-hover: 0 20px 40px -15px rgba(56, 189, 248, 0.25), 0 0 0 1px rgba(56, 189, 248, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: radial-gradient(circle at 10% 10%, #111a30 0%, #070a13 55%, #03050a 100%);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      line-height: 1.6;
+      padding-bottom: 6rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Ambient background glow */
+    .glow-blob {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(140px);
+      z-index: 0;
+      opacity: 0.12;
+    }
+    .glow-blob-1 {
+      top: -100px;
+      left: 10%;
+      background: var(--accent-cyan);
+    }
+    .glow-blob-2 {
+      bottom: 10%;
+      right: 5%;
+      background: var(--accent-indigo);
+    }
+
+    /* Top Sticky Header */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(7, 10, 19, 0.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.85rem 1.5rem;
+    }
+
+    .nav-container {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #0284c7, #6366f1);
+      border-radius: 12px;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4);
+    }
+
+    .brand-info h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+    }
+
+    .brand-info p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .nav-tabs {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 0.25rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      gap: 0.25rem;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.45rem 1rem;
+      border-radius: 6px;
+      font-size: 0.83rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+    }
+
+    .tab-btn.active {
+      background: var(--accent-cyan);
+      color: #070a13;
+      box-shadow: 0 2px 8px rgba(56, 189, 248, 0.35);
+    }
+
+    .quick-jump-select {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.45rem 0.85rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      font-family: inherit;
+      outline: none;
+      cursor: pointer;
+    }
+    .quick-jump-select option {
+      background: #0d1322;
+      color: #fff;
+    }
+
+    /* Main Container Layout */
+    .main-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* View Sections */
+    .view-section {
+      display: none;
+      animation: fadeIn 0.3s ease forwards;
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Layout for Notes View */
+    .notes-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    @media (max-width: 1024px) {
+      .notes-layout {
+        grid-template-columns: 1fr;
+      }
+      .toc-sidebar {
+        display: none;
+      }
+    }
+
+    /* TOC Sidebar */
+    .toc-sidebar {
+      position: sticky;
+      top: 5.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      max-height: calc(100vh - 7rem);
+      overflow-y: auto;
+      backdrop-filter: blur(12px);
+    }
+
+    .toc-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-cyan);
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .toc-group-header {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      margin-top: 0.6rem;
+      margin-bottom: 0.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .toc-link {
+      display: block;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      padding: 0.35rem 0.5rem;
+      border-radius: 6px;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .toc-link:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--accent-cyan);
+      padding-left: 0.75rem;
+    }
+
+    /* Syllabus Hero Header */
+    .syllabus-hero {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(99, 102, 241, 0.1));
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .syllabus-hero h2 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(to right, #ffffff, #cbd5e1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .syllabus-hero p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 900px;
+    }
+
+    .block-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .block-chip {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 0.9rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .block-chip span.num {
+      background: var(--accent-cyan);
+      color: #070a13;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 800;
+    }
+
+    /* Syllabus Content Sections */
+    .part-banner {
+      background: linear-gradient(90deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.6));
+      border-left: 4px solid var(--accent-cyan);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 1rem 1.5rem;
+      margin: 3rem 0 1.5rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .part-banner.part-b {
+      border-left-color: var(--accent-purple);
+    }
+
+    .part-banner.part-c {
+      border-left-color: var(--accent-emerald);
+    }
+
+    .part-banner.part-arch {
+      border-left-color: var(--accent-amber);
+      background: linear-gradient(90deg, rgba(245, 158, 11, 0.12), rgba(15, 23, 42, 0.7));
+    }
+
+    .part-banner h3 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .topic-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      margin-bottom: 1.75rem;
+      box-shadow: var(--shadow-card);
+      transition: border-color 0.2s ease;
+    }
+
+    .topic-card:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .topic-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .topic-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .topic-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--accent-cyan);
+      border: 1px solid var(--border-color);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .exam-tag {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--accent-amber);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    /* Content Typography within topics */
+    .topic-card p {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .topic-card h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin: 1.25rem 0 0.6rem 0;
+    }
+
+    .topic-card ul, .topic-card ol {
+      margin: 0.5rem 0 1rem 1.5rem;
+      color: #cbd5e1;
+      font-size: 0.93rem;
+    }
+
+    .topic-card li {
+      margin-bottom: 0.35rem;
+    }
+
+    /* Highlight Callouts */
+    .callout {
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      font-size: 0.92rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .callout-exam {
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-left: 4px solid var(--accent-amber);
+    }
+    .callout-exam .callout-title {
+      color: var(--accent-amber);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .callout-info {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-left: 4px solid var(--accent-cyan);
+    }
+    .callout-info .callout-title {
+      color: var(--accent-cyan);
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .callout-takeaway {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-left: 4px solid var(--accent-emerald);
+    }
+    .callout-takeaway .callout-title {
+      color: var(--accent-emerald);
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    /* Code Blocks */
+    .code-container {
+      background: var(--bg-code);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      margin: 0.85rem 0 1.25rem 0;
+      overflow: hidden;
+    }
+
+    .code-header {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.4rem 0.9rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    .copy-btn {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .copy-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-main);
+    }
+
+    pre code {
+      display: block;
+      padding: 1rem;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.86rem;
+      line-height: 1.55;
+      color: #e2e8f0;
+    }
+
+    /* ASCII Diagrams in Pre */
+    .ascii-diagram {
+      background: #060911;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--accent-cyan);
+      overflow-x: auto;
+      line-height: 1.35;
+      margin: 1rem 0;
+    }
+
+    /* Comparison Tables */
+    .custom-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 1.5rem 0;
+      font-size: 0.9rem;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .custom-table th {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .custom-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: #cbd5e1;
+    }
+
+    .custom-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .custom-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Tier Graphic Cards (Inspired by User Attachments) */
+    .tier-visual-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.25rem;
+      margin: 1.5rem 0;
+    }
+
+    .tier-box {
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(9, 13, 22, 0.95));
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      position: relative;
+    }
+
+    .tier-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-cyan);
+      margin-bottom: 0.6rem;
+    }
+
+    .tier-box h5 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+
+    .tier-box ul {
+      margin-left: 1.25rem;
+      font-size: 0.88rem;
+      color: #cbd5e1;
+    }
+
+    /* Quick Memorize Grid */
+    .memorize-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .memorize-card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      border-top: 3px solid var(--accent-cyan);
+    }
+
+    .memorize-card h5 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+
+    .memorize-chain {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--accent-cyan);
+      line-height: 1.6;
+    }
+
+    /* Section Headers */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--text-main);
+    }
+
+    .section-pill {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    /* SVG Section - Full Width Architecture Showcase */
+    .svg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 640px) {
+      .svg-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Screenshots Grid */
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .screenshots-grid.view-flow {
+      grid-template-columns: 1fr;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .screenshots-grid.view-compact {
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    /* Card styling */
+    .item-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      backdrop-filter: blur(8px);
+    }
+
+    .item-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--border-accent);
+      background: var(--bg-card-hover);
+    }
+
+    .card-figure {
+      position: relative;
+      background: #060911;
+      overflow: hidden;
+      cursor: zoom-in;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .svg-card .card-figure {
+      padding: 1rem;
+      background: #ffffff;
+      min-height: 380px;
+    }
+
+    .screenshot-card .card-figure {
+      aspect-ratio: 16 / 9;
+    }
+
+    .view-flow .screenshot-card .card-figure {
+      aspect-ratio: auto;
+      max-height: 650px;
+    }
+
+    .card-figure img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .item-card:hover .card-figure img {
+      transform: scale(1.02);
+    }
+
+    .card-hover-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(9, 13, 22, 0.7) 100%);
+      opacity: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding: 1rem;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+    }
+
+    .item-card:hover .card-hover-overlay {
+      opacity: 1;
+    }
+
+    .zoom-hint {
+      background: rgba(15, 23, 42, 0.9);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-meta {
+      padding: 0.9rem 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      background: rgba(15, 23, 42, 0.4);
+    }
+
+    .card-details {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .card-index {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--accent-cyan);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    .card-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .card-btn:hover {
+      background: var(--accent-cyan);
+      color: #090d16;
+      border-color: var(--accent-cyan);
+    }
+
+    /* Modal / Lightbox */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(4, 7, 13, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      display: none;
+      flex-direction: column;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      background: rgba(9, 13, 22, 0.8);
+    }
+
+    .modal-title-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      min-width: 0;
+    }
+
+    .modal-counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--accent-cyan);
+      font-weight: 700;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .modal-filename {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .modal-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .modal-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all 0.2s ease;
+    }
+
+    .modal-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .modal-body {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 1rem;
+    }
+
+    .modal-image-container {
+      max-width: 100%;
+      max-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease-out;
+    }
+
+    .modal-img {
+      max-width: 95vw;
+      max-height: 84vh;
+      object-fit: contain;
+      border-radius: var(--radius-md);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+      background: #ffffff;
+    }
+
+    .modal-img.dark-bg {
+      background: #060911;
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid var(--border-color);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+    }
+
+    .lightbox-nav:hover {
+      background: var(--accent-cyan);
+      color: #090d16;
+      border-color: var(--accent-cyan);
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .lightbox-prev {
+      left: 1.5rem;
+    }
+
+    .lightbox-next {
+      right: 1.5rem;
+    }
+
+    .modal-footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background: rgba(9, 13, 22, 0.8);
+      border-top: 1px solid var(--border-color);
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    .modal-footer kbd {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-color);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .btn-control {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .btn-control:hover, .btn-control.active {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090d16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Glow Background -->
+  <div class="glow-blob glow-blob-1"></div>
+  <div class="glow-blob glow-blob-2"></div>
+
+  <!-- Sticky Top Navigation -->
+  <header class="top-nav">
+    <div class="nav-container">
+      <div class="brand">
+        <div class="brand-badge">⚡</div>
+        <div class="brand-info">
+          <h1>Full-Stack Web Development</h1>
+          <p>Syllabus, Structured Notes &amp; Visual Architecture</p>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="nav-tabs">
+        <button class="tab-btn active" id="tab-notes-btn" onclick="switchView('notes')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          Structured Notes &amp; Syllabus
+        </button>
+        <button class="tab-btn" id="tab-gallery-btn" onclick="switchView('gallery')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          Visual Diagrams (24 Slides &amp; SVGs)
+        </button>
+      </div>
+
+      <!-- Quick Topic Jump -->
+      <div>
+        <select class="quick-jump-select" onchange="handleQuickJump(this.value)">
+          <option value="">Jump to Topic...</option>
+          <optgroup label="⭐ Core Exam Must-Know">
+            <option value="universal-architecture">⭐ Universal Architecture (Universal Model)</option>
+            <option value="exam-diagram">🔥 The Ultimate Exam Diagram</option>
+            <option value="memorize-section">🧠 What You Should Memorize</option>
+          </optgroup>
+          <optgroup label="Part A: Node.js & Express">
+            <option value="sec-1">1. Client vs Server-Side</option>
+            <option value="sec-2">2. Node.js Introduction</option>
+            <option value="sec-3">3. Node.js Architecture (Event Loop)</option>
+            <option value="sec-5">5. NPM & Dependencies</option>
+            <option value="sec-7">7. File System Operations</option>
+            <option value="sec-9">9. Express.js Framework</option>
+            <option value="sec-10">10. Routing (REST HTTP Verbs)</option>
+            <option value="sec-11">11. Middleware Concept</option>
+            <option value="sec-15">15. Complete REST API Example</option>
+            <option value="sec-17">17. MySQL Connectivity in Node</option>
+          </optgroup>
+          <optgroup label="Part B: PHP & MySQL">
+            <option value="sec-18">18. Introduction to PHP</option>
+            <option value="sec-25">25. Form Handling (GET vs POST)</option>
+            <option value="sec-26">26. Sessions & Cookies</option>
+            <option value="sec-30">30. PHP + MySQL Connection</option>
+            <option value="sec-31">31. PHP CRUD Operations</option>
+            <option value="sec-32">32. PHP Security & Prepared Statements</option>
+          </optgroup>
+          <optgroup label="Part C: Full-Stack Dev">
+            <option value="sec-34">34. 3-Tier Full-Stack Architecture</option>
+            <option value="sec-35">35. Frontend-Backend fetch() Integration</option>
+            <option value="sec-36">36. Authentication vs Authorization</option>
+            <option value="sec-39">39. Deployment & Env Variables</option>
+            <option value="sec-42">42. Security Best Practices (Top 10)</option>
+          </optgroup>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Wrapper -->
+  <main class="main-wrapper">
+
+    <!-- ============================================================ -->
+    <!-- VIEW 1: STRUCTURED NOTES & SYLLABUS -->
+    <!-- ============================================================ -->
+    <div id="view-notes" class="view-section active">
+      
+      <!-- Hero Banner -->
+      <section class="syllabus-hero">
+        <div class="hero-tag">Course Syllabus &amp; Exam Master Guide</div>
+        <h2>Web Programming &amp; Universal Full-Stack Architecture</h2>
+        <p>A structured, end-to-end curriculum encompassing server-side execution, database transactions, API design, security, and an industry-standard universal architecture reusable across all exam use-cases (Library, Student, Hospital, Employee, and E-commerce Management).</p>
+        
+        <div class="block-chips">
+          <div class="block-chip"><span class="num">1</span> Part A: Node.js + Express.js</div>
+          <div class="block-chip"><span class="num">2</span> Part B: PHP + MySQL</div>
+          <div class="block-chip"><span class="num">3</span> Part C: Full-Stack Application Dev</div>
+          <div class="block-chip"><span class="num">⭐</span> Universal Reusable Architecture</div>
+        </div>
+      </section>
+
+      <div class="notes-layout">
+        <!-- Sticky Table of Contents Sidebar -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            Table of Contents
+          </div>
+          <ul class="toc-list">
+            <div class="toc-group-header">High Yield &amp; Architecture</div>
+            <li><a class="toc-link" href="#universal-architecture">⭐ Universal Architecture</a></li>
+            <li><a class="toc-link" href="#exam-diagram">🔥 Ultimate Exam Diagram</a></li>
+            <li><a class="toc-link" href="#memorize-section">🧠 Exam Memorize Cram Sheet</a></li>
+
+            <div class="toc-group-header">Part A — Node.js &amp; Express</div>
+            <li><a class="toc-link" href="#sec-1">1. Server-Side Intro</a></li>
+            <li><a class="toc-link" href="#sec-2">2. Node.js Overview</a></li>
+            <li><a class="toc-link" href="#sec-3">3. Node Architecture</a></li>
+            <li><a class="toc-link" href="#sec-4">4. Features of Node.js</a></li>
+            <li><a class="toc-link" href="#sec-5">5. NPM &amp; Dependencies</a></li>
+            <li><a class="toc-link" href="#sec-6">6. Modules (Built-in &amp; Custom)</a></li>
+            <li><a class="toc-link" href="#sec-7">7. File System (fs)</a></li>
+            <li><a class="toc-link" href="#sec-8">8. Creating HTTP Server</a></li>
+            <li><a class="toc-link" href="#sec-9">9. Express.js Basics</a></li>
+            <li><a class="toc-link" href="#sec-10">10. Routing &amp; HTTP Verbs</a></li>
+            <li><a class="toc-link" href="#sec-11">11. Middleware</a></li>
+            <li><a class="toc-link" href="#sec-12">12. Request / Response Handling</a></li>
+            <li><a class="toc-link" href="#sec-13">13. Template Engines (EJS)</a></li>
+            <li><a class="toc-link" href="#sec-14">14. RESTful API Principles</a></li>
+            <li><a class="toc-link" href="#sec-15">15. Complete REST API Code</a></li>
+            <li><a class="toc-link" href="#sec-16">16. Error Handling &amp; Status Codes</a></li>
+            <li><a class="toc-link" href="#sec-17">17. Database Connectivity (MySQL)</a></li>
+
+            <div class="toc-group-header">Part B — PHP &amp; MySQL</div>
+            <li><a class="toc-link" href="#sec-18">18. Introduction to PHP</a></li>
+            <li><a class="toc-link" href="#sec-19">19. Syntax &amp; Variables</a></li>
+            <li><a class="toc-link" href="#sec-20">20. Data Types &amp; Operators</a></li>
+            <li><a class="toc-link" href="#sec-22">22. Control Structures &amp; Loops</a></li>
+            <li><a class="toc-link" href="#sec-23">23. Functions &amp; Arrays</a></li>
+            <li><a class="toc-link" href="#sec-25">25. Form Handling (GET vs POST)</a></li>
+            <li><a class="toc-link" href="#sec-26">26. Sessions &amp; State</a></li>
+            <li><a class="toc-link" href="#sec-27">27. Cookies vs Sessions</a></li>
+            <li><a class="toc-link" href="#sec-28">28. File Handling</a></li>
+            <li><a class="toc-link" href="#sec-29">29. Exception Handling</a></li>
+            <li><a class="toc-link" href="#sec-30">30. PHP + MySQL Connectivity</a></li>
+            <li><a class="toc-link" href="#sec-31">31. CRUD Operations in PHP</a></li>
+            <li><a class="toc-link" href="#sec-32">32. PHP Security &amp; Prepared Stmt</a></li>
+
+            <div class="toc-group-header">Part C — Full-Stack Development</div>
+            <li><a class="toc-link" href="#sec-33">33. What is Full Stack?</a></li>
+            <li><a class="toc-link" href="#sec-34">34. 3-Tier Architecture</a></li>
+            <li><a class="toc-link" href="#sec-35">35. Frontend-Backend fetch()</a></li>
+            <li><a class="toc-link" href="#sec-36">36. AuthN vs AuthZ</a></li>
+            <li><a class="toc-link" href="#sec-37">37. State Management (JWT)</a></li>
+            <li><a class="toc-link" href="#sec-38">38. Full CRUD Data Flow</a></li>
+            <li><a class="toc-link" href="#sec-39">39. Deployment &amp; Env Vars</a></li>
+            <li><a class="toc-link" href="#sec-40">40. Git &amp; GitHub Workflow</a></li>
+            <li><a class="toc-link" href="#sec-41">41. Testing &amp; Debugging</a></li>
+            <li><a class="toc-link" href="#sec-42">42. Security Best Practices</a></li>
+          </ul>
+        </aside>
+
+        <!-- Main Structured Syllabus Content -->
+        <div class="notes-content">
+
+          <!-- ======================================================= -->
+          <!-- ⭐ CORE HIGHLIGHT: UNIVERSAL FULL-STACK ARCHITECTURE -->
+          <!-- ======================================================= -->
+          <div class="part-banner part-arch" id="universal-architecture">
+            <div>
+              <span class="exam-tag">⭐ MOST IMPORTANT PART OF SYLLABUS</span>
+              <h3>UNIVERSAL FULL-STACK ARCHITECTURE</h3>
+            </div>
+            <span class="section-pill">Reusable Across All Management Systems</span>
+          </div>
+
+          <div class="topic-card">
+            <p>One universal architecture that you can reproduce in almost every exam question (Library Management, Student Management, Hospital Management, Employee Management, Inventory Management, Course Management, E-commerce). <strong>Only the entities and tables change; the architecture, middleware, routing, and data flow remain identical.</strong></p>
+
+            <h4>Universal System Architecture</h4>
+            <div class="ascii-diagram">
+                     USER
+                       │
+                       ▼
+              ┌─────────────────┐
+              │    FRONTEND     │
+              │                 │
+              │ HTML/CSS/JS     │
+              │ or React        │
+              └────────┬────────┘
+                       │
+                 HTTP / HTTPS
+                       │
+                       ▼
+              ┌─────────────────┐
+              │     BACKEND     │
+              │                 │
+              │ Node.js         │
+              │ Express.js      │
+              │                 │
+              │ ┌─────────────┐ │
+              │ │   Routes    │ │
+              │ └──────┬──────┘ │
+              │        ↓        │
+              │ ┌─────────────┐ │
+              │ │ Middleware  │ │
+              │ └──────┬──────┘ │
+              │        ↓        │
+              │ ┌─────────────┐ │
+              │ │   Business  │ │
+              │ │    Logic    │ │
+              │ └──────┬──────┘ │
+              └────────┼────────┘
+                       │
+                       │ SQL
+                       ▼
+              ┌─────────────────┐
+              │    DATABASE     │
+              │     MySQL       │
+              │                 │
+              │ Users           │
+              │ Students        │
+              │ Books           │
+              │ Transactions    │
+              └─────────────────┘
+            </div>
+
+            <!-- Visual 3-Tier Comparison Box (from user attachments) -->
+            <h4>Industry 3-Tier Web App Mapping</h4>
+            <div class="tier-visual-container">
+              <div class="tier-box">
+                <span class="tier-badge">Tier 1: Client Tier</span>
+                <h5>Frontend Presentation</h5>
+                <ul>
+                  <li><strong>Technologies:</strong> HTML5, CSS3, JavaScript, React.js / Angular</li>
+                  <li><strong>Environment:</strong> Web Browser (Chrome, Safari, Firefox) / Mobile</li>
+                  <li><strong>Role:</strong> Collects user input, renders dynamic UI, dispatches HTTP requests via <code>fetch()</code> / Axios.</li>
+                </ul>
+              </div>
+
+              <div class="tier-box">
+                <span class="tier-badge">Tier 2: Business Logic Tier</span>
+                <h5>Application / API Server</h5>
+                <ul>
+                  <li><strong>Technologies:</strong> Node.js + Express.js (or PHP)</li>
+                  <li><strong>Environment:</strong> Server runtime / Cloud host</li>
+                  <li><strong>Role:</strong> Intercepts requests via Middleware (Auth/Validation), parses endpoints via Routes, executes business logic in Controllers, interfaces with DB.</li>
+                </ul>
+              </div>
+
+              <div class="tier-box">
+                <span class="tier-badge">Tier 3: Database Tier</span>
+                <h5>Data Storage &amp; Persistence</h5>
+                <ul>
+                  <li><strong>Technologies:</strong> MySQL (Relational DB) / MongoDB</li>
+                  <li><strong>Environment:</strong> Database Server</li>
+                  <li><strong>Role:</strong> Stores structured tables, manages constraints, primary/foreign keys, transactions, and executes queries (SELECT, INSERT, UPDATE, DELETE).</li>
+                </ul>
+              </div>
+            </div>
+
+            <h4>Database Design (Library Management Example)</h4>
+            <div class="ascii-diagram">
+Users table:        Books table:        Students table:       Transactions table:
+-----------------   -----------------   -------------------   ---------------------
+id (PK)             id (PK)             id (PK)               id (PK)
+name                title               name                  student_id (FK)
+email               author              course                book_id (FK)
+password (hashed)   quantity            email                 issue_date, return_date
+role (Admin/User)                                             status (issued/returned)
+
+Relationships:
+Student (1) ──── (Many) Transactions (Many) ──── (1) Book
+            </div>
+
+            <h4>REST API Design</h4>
+            <div class="code-container">
+              <div class="code-header"><span>REST Endpoints Specification</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>// Student APIs
+GET     /api/students           -> Retrieve all students
+GET     /api/students/:id       -> Retrieve single student by ID
+POST    /api/students           -> Add new student
+PUT     /api/students/:id       -> Update student details
+DELETE  /api/students/:id       -> Remove student
+
+// Book APIs
+GET     /api/books              -> Retrieve book catalog
+POST    /api/books              -> Add new book
+PUT     /api/books/:id          -> Update book metadata/quantity
+DELETE  /api/books/:id          -> Remove book
+
+// Transaction APIs
+POST    /api/transactions/issue         -> Issue a book to student
+PUT     /api/transactions/return/:id    -> Process return of issued book
+GET     /api/transactions               -> Audit history / active loans</code></pre>
+            </div>
+
+            <h4>Backend Folder Structure</h4>
+            <div class="ascii-diagram">
+library-management/
+│
+├── frontend/
+│   ├── index.html
+│   ├── style.css
+│   └── app.js
+│
+├── backend/
+│   ├── server.js
+│   ├── routes/
+│   │   ├── studentRoutes.js
+│   │   ├── bookRoutes.js
+│   │   └── transactionRoutes.js
+│   ├── controllers/
+│   │   ├── studentController.js
+│   │   └── bookController.js
+│   ├── middleware/
+│   │   └── auth.js
+│   └── config/
+│       └── database.js
+│
+└── database/
+    └── library.sql
+            </div>
+
+            <h4>How One Request Travels (Step-by-Step Lifecycle)</h4>
+            <ol>
+              <li><strong>Step 1 — Frontend:</strong> User triggers action; code runs <code>fetch("/api/books")</code>.</li>
+              <li><strong>Step 2 — HTTP Request:</strong> Request with header <code>GET /api/books</code> travels over network to server.</li>
+              <li><strong>Step 3 — Express Route:</strong> Router matches URL: <code>app.get("/api/books", getBooks)</code>.</li>
+              <li><strong>Step 4 — Controller / Logic:</strong> Controller invokes <code>database.query("SELECT * FROM books")</code>.</li>
+              <li><strong>Step 5 — Database Execution:</strong> MySQL server processes SQL query on <code>books</code> table.</li>
+              <li><strong>Step 6 — Database Return:</strong> MySQL returns record rows back to Node server.</li>
+              <li><strong>Step 7 — JSON Response:</strong> Express serializes data into JSON array <code>[{ id: 1, title: "DBMS" }, ...]</code> and sends HTTP 200 response.</li>
+              <li><strong>Step 8 — Frontend Rendering:</strong> Browser receives JSON, parses it, and dynamically updates DOM.</li>
+            </ol>
+          </div>
+
+          <!-- THE ULTIMATE EXAM DIAGRAM -->
+          <div class="topic-card" id="exam-diagram">
+            <div class="topic-header">
+              <h3 class="topic-title">🔥 The Ultimate Exam Diagram</h3>
+              <span class="exam-tag">Write this for Full Marks in Any Full-Stack Question</span>
+            </div>
+            
+            <p><strong>Question:</strong> "Design a full-stack architecture for a Library / Student / Hospital Management System."</p>
+            
+            <div class="ascii-diagram">
+                         CLIENT
+                           │
+                           ▼
+                 ┌───────────────────┐
+                 │     FRONTEND      │
+                 │ HTML CSS JS/React │
+                 └─────────┬─────────┘
+                           │
+                    HTTP / HTTPS
+                           │
+                           ▼
+                 ┌───────────────────┐
+                 │      EXPRESS      │
+                 │      ROUTES       │
+                 └─────────┬─────────┘
+                           │
+                           ▼
+                 ┌───────────────────┐
+                 │    MIDDLEWARE     │
+                 │ Auth / Validation │
+                 └─────────┬─────────┘
+                           │
+                           ▼
+                 ┌───────────────────┐
+                 │ BUSINESS LOGIC    │
+                 │   Controllers     │
+                 └─────────┬─────────┘
+                           │
+                           ▼
+                 ┌───────────────────┐
+                 │      MYSQL        │
+                 │                   │
+                 │ Users             │
+                 │ Students          │
+                 │ Books             │
+                 │ Transactions      │
+                 └───────────────────┘
+            </div>
+
+            <div class="callout callout-exam">
+              <span class="callout-title">Standard Exam Theory Answer Paragraph:</span>
+              <p>"The frontend provides the user interface. It communicates with the Express.js backend through RESTful APIs over HTTP/HTTPS. Express routes receive incoming client requests and middleware performs authentication, security checks, and input validation. Business logic controllers process the request and communicate with MySQL using prepared statements. The database stores entities such as users, students, books, and transaction records. The backend formats the retrieved data and returns JSON responses back to the frontend to update the client display."</p>
+            </div>
+          </div>
+
+          <!-- ======================================================= -->
+          <!-- PART A: NODE.JS + EXPRESS.JS -->
+          <!-- ======================================================= -->
+          <div class="part-banner" id="part-a">
+            <div>
+              <span class="topic-badge">PART A</span>
+              <h3>SERVER-SIDE PROGRAMMING: NODE.JS + EXPRESS.JS</h3>
+            </div>
+            <span class="section-pill">Sections 1 – 17</span>
+          </div>
+
+          <!-- 1. Intro -->
+          <div class="topic-card" id="sec-1">
+            <div class="topic-header">
+              <h4 class="topic-title">1. Introduction to Server-Side Programming</h4>
+              <span class="topic-badge">Foundation</span>
+            </div>
+            <p><strong>Client-side vs Server-side:</strong></p>
+            <ul>
+              <li><strong>Client-side:</strong> Code runs in user's browser (HTML, CSS, JavaScript, React). Focuses on presentation, user experience, and DOM manipulation.</li>
+              <li><strong>Server-side:</strong> Code runs on the host server (Node.js, PHP, Python/Django, Java/Spring). Focuses on business rules, database access, security, and authentication.</li>
+            </ul>
+
+            <div class="ascii-diagram">
+User ──► Browser / Frontend ──► HTTP Request ──► Server ──► Backend Logic ──► Database
+                                                                                 │
+User ◄── Browser / Frontend ◄── HTTP Response ◄── Server ◄── JSON / Data ────────┘
+            </div>
+
+            <div class="callout callout-exam">
+              <span class="callout-title">Formal Exam Definition:</span>
+              "Server-side programming is the process of executing application logic on a server to process client requests, communicate with databases, perform authentication, and return appropriate responses to clients."
+            </div>
+          </div>
+
+          <!-- 2 & 3. Node.js & Architecture -->
+          <div class="topic-card" id="sec-2">
+            <div class="topic-header">
+              <h4 class="topic-title">2 &amp; 3. Node.js &amp; Architecture (The Event Loop)</h4>
+              <span class="exam-tag">Very Important for Exams</span>
+            </div>
+            <p>Node.js allows execution of JavaScript outside the browser, natively on the server. Built on Google's high-performance <strong>V8 JavaScript Engine</strong>.</p>
+            
+            <div class="ascii-diagram" id="sec-3">
+              Client
+                 ↓
+          HTTP Request
+                 ↓
+        ┌────────────────┐
+        │    Node.js     │
+        │    Server      │
+        └───────┬────────┘
+                ↓
+          Event Loop (Single-Threaded)
+                ↓
+      ┌─────────┴─────────┐
+      ↓                   ↓
+Synchronous work     Async operations
+                          ↓
+                  OS / Database / File System (Libuv Thread Pool)
+                          ↓
+                     Callback
+                          ↓
+                     Event Loop
+                          ↓
+                    Response
+            </div>
+
+            <div class="callout callout-takeaway">
+              <span class="callout-title">Golden Exam Keywords:</span>
+              <strong>Single-threaded + Event-driven + Non-blocking I/O + Event Loop.</strong>
+            </div>
+
+            <p><strong>Why non-blocking?</strong> Node does not sit idle waiting for I/O operations (file reading, DB queries, network calls). It delegates them to the system/thread pool and continues executing other code:</p>
+            <div class="code-container">
+              <div class="code-header"><span>Async Demonstration (fs.readFile)</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>const fs = require("fs");
+
+fs.readFile("data.txt", "utf8", (err, data) => {
+    console.log(data); // Printed AFTER "Hello"
+});
+
+console.log("Hello");
+
+// Output:
+// Hello
+// [contents of data.txt]</code></pre>
+            </div>
+          </div>
+
+          <!-- 4. Features of Node.js -->
+          <div class="topic-card" id="sec-4">
+            <div class="topic-header">
+              <h4 class="topic-title">4. Key Features of Node.js</h4>
+              <span class="topic-badge">Theory 5-Marker</span>
+            </div>
+            <ol>
+              <li><strong>Asynchronous:</strong> All APIs of Node.js library are non-blocking. Server moves to the next API immediately.</li>
+              <li><strong>Non-blocking I/O:</strong> No execution thread is held hostage waiting for disk or network.</li>
+              <li><strong>Event-driven:</strong> Uses observer pattern; event emitters fire events and listener functions react.</li>
+              <li><strong>Cross-platform:</strong> Runs seamlessly across Windows, Linux, and macOS.</li>
+              <li><strong>Massive NPM Ecosystem:</strong> Over 2 million free open-source packages available.</li>
+              <li><strong>Blazing Fast:</strong> Built on Google Chrome's V8 engine that JIT-compiles JS straight into native machine code.</li>
+            </ol>
+          </div>
+
+          <!-- 5. NPM -->
+          <div class="topic-card" id="sec-5">
+            <div class="topic-header">
+              <h4 class="topic-title">5. NPM — Node Package Manager</h4>
+              <span class="topic-badge">Tooling</span>
+            </div>
+            <p>Used to install packages, track dependencies, run development scripts, and configure project metadata.</p>
+            <div class="code-container">
+              <div class="code-header"><span>Core NPM Commands</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>npm init                    # Initialize package.json
+npm install express         # Install local dependency
+npm install -g nodemon      # Install tool globally (auto server restart)</code></pre>
+            </div>
+
+            <table class="custom-table">
+              <thead>
+                <tr><th>File / Directory</th><th>Meaning &amp; Exam Distinction</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>package.json</code></td><td>Project manifest, script commands, and authorized dependency version ranges (e.g., <code>^5.0.0</code>).</td></tr>
+                <tr><td><code>package-lock.json</code></td><td>Locks exact dependency tree, exact commit hashes, and nested sub-dependencies for deterministic installs.</td></tr>
+                <tr><td><code>node_modules/</code></td><td>Physical folder containing the actual downloaded code packages and libraries.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 6 & 7. Modules & File System -->
+          <div class="topic-card" id="sec-6">
+            <div class="topic-header">
+              <h4 class="topic-title">6 &amp; 7. Modules &amp; File System (fs) Operations</h4>
+              <span class="topic-badge">Code Practice</span>
+            </div>
+            <p>Modules are reusable code blocks. Node provides <strong>Built-in</strong> (<code>fs</code>, <code>http</code>, <code>path</code>, <code>os</code>), <strong>Third-party</strong> (<code>express</code>, <code>mysql2</code>), and <strong>User-defined</strong> modules.</p>
+            
+            <div class="code-container">
+              <div class="code-header"><span>math.js &amp; app.js (Custom Module)</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>// math.js
+function add(a, b) {
+    return a + b;
+}
+module.exports = add;
+
+// app.js
+const add = require("./math");
+console.log(add(10, 20)); // Output: 30</code></pre>
+            </div>
+
+            <div class="code-container" id="sec-7">
+              <div class="code-header"><span>File System (fs) CRUD Operations</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>const fs = require("fs");
+
+// 1. Read
+fs.readFile("data.txt", "utf8", (err, data) => {
+    if (err) return console.error(err);
+    console.log(data);
+});
+
+// 2. Write
+fs.writeFile("data.txt", "Hello Node", (err) => {
+    if (err) console.error(err);
+});
+
+// 3. Append
+fs.appendFile("data.txt", "\nNew Data line", (err) => {});
+
+// 4. Delete
+fs.unlink("data.txt", (err) => {});</code></pre>
+            </div>
+          </div>
+
+          <!-- 8, 9, 10. HTTP Server & Express -->
+          <div class="topic-card" id="sec-8">
+            <div class="topic-header">
+              <h4 class="topic-title">8, 9 &amp; 10. HTTP Server, Express.js &amp; Routing</h4>
+              <span class="topic-badge">Core Backend</span>
+            </div>
+            <p>While Node has a native <code>http</code> module, <strong>Express.js</strong> is the dominant web framework that simplifies routing, middleware, and request/response dispatching.</p>
+
+            <div class="code-container" id="sec-9">
+              <div class="code-header"><span>Basic Express Server &amp; REST Routing</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>const express = require("express");
+const app = express();
+
+app.use(express.json()); // Built-in middleware to parse incoming JSON bodies
+
+// REST HTTP Method Mapping
+app.get("/students", (req, res) => res.send("All Students (READ)"));
+app.post("/students", (req, res) => res.send("Student Added (CREATE)"));
+app.put("/students/:id", (req, res) => res.send("Student Updated (UPDATE)"));
+app.delete("/students/:id", (req, res) => res.send("Student Deleted (DELETE)"));
+
+app.listen(3000, () => console.log("Server listening on port 3000"));</code></pre>
+            </div>
+
+            <table class="custom-table" id="sec-10">
+              <thead>
+                <tr><th>HTTP Verb</th><th>CRUD Action</th><th>Typical Endpoint</th><th>Purpose</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>GET</code></td><td>Read / Retrieve</td><td><code>/students</code> or <code>/students/:id</code></td><td>Fetch records safely without modifying data</td></tr>
+                <tr><td><code>POST</code></td><td>Create / Insert</td><td><code>/students</code></td><td>Send new payload in body to create a record</td></tr>
+                <tr><td><code>PUT / PATCH</code></td><td>Update / Modify</td><td><code>/students/:id</code></td><td>Overwrite (PUT) or patch specific attributes</td></tr>
+                <tr><td><code>DELETE</code></td><td>Delete / Remove</td><td><code>/students/:id</code></td><td>Permanently delete record by identifier</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 11 & 12. Middleware & Request/Response -->
+          <div class="topic-card" id="sec-11">
+            <div class="topic-header">
+              <h4 class="topic-title">11 &amp; 12. Middleware &amp; Request/Response Handling</h4>
+              <span class="topic-badge">Concept</span>
+            </div>
+            <p><strong>Middleware</strong> functions execute in sequence between the incoming request and the outgoing response.</p>
+            
+            <div class="ascii-diagram">
+Client Request ──► [ Middleware 1: Logger ] ──► [ Middleware 2: Auth Check ] ──► [ Route Handler ] ──► Client Response
+                               next()                          next()
+            </div>
+
+            <div class="code-container">
+              <div class="code-header"><span>Custom Middleware &amp; Parameter Extraction</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>// Custom Logger Middleware
+app.use((req, res, next) => {
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+    next(); // Pass control to next handler in pipeline
+});
+
+// 1. Route Parameters (req.params) -> e.g. /students/101
+app.get("/students/:id", (req, res) => {
+    console.log("Student ID:", req.params.id); // 101
+});
+
+// 2. Query Parameters (req.query) -> e.g. /students?course=BCA
+app.get("/students", (req, res) => {
+    console.log("Filtered Course:", req.query.course); // BCA
+});
+
+// 3. Request Body (req.body)
+app.post("/students", (req, res) => {
+    console.log("Submitted Data:", req.body.name, req.body.age);
+});</code></pre>
+            </div>
+          </div>
+
+          <!-- 13, 14, 15. Templates & REST API -->
+          <div class="topic-card" id="sec-13">
+            <div class="topic-header">
+              <h4 class="topic-title">13, 14 &amp; 15. Template Engines &amp; Complete REST API Example</h4>
+              <span class="topic-badge">Full Working Code</span>
+            </div>
+            <p><strong>Template Engines</strong> (EJS, Pug, Handlebars) dynamically inject server-side variables into HTML files before returning them to the client (Server-Side Rendering).</p>
+
+            <div class="code-container" id="sec-15">
+              <div class="code-header"><span>Complete In-Memory REST API Server (Express)</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>const express = require("express");
+const app = express();
+app.use(express.json());
+
+let students = [
+    { id: 1, name: "Rahul", course: "BCA" },
+    { id: 2, name: "Aman", course: "B.Tech" }
+];
+
+// GET all students
+app.get("/api/students", (req, res) => {
+    res.json(students);
+});
+
+// GET single student
+app.get("/api/students/:id", (req, res) => {
+    const student = students.find(s => s.id == req.params.id);
+    if (!student) return res.status(404).json({ error: "Student not found" });
+    res.json(student);
+});
+
+// POST new student
+app.post("/api/students", (req, res) => {
+    const newStudent = {
+        id: students.length + 1,
+        name: req.body.name,
+        course: req.body.course
+    };
+    students.push(newStudent);
+    res.status(201).json(newStudent);
+});
+
+// DELETE student
+app.delete("/api/students/:id", (req, res) => {
+    students = students.filter(s => s.id != req.params.id);
+    res.json({ message: "Student deleted successfully" });
+});
+
+app.listen(3000, () => console.log("REST API running on port 3000"));</code></pre>
+            </div>
+          </div>
+
+          <!-- 16 & 17. Error Handling, Status Codes & MySQL -->
+          <div class="topic-card" id="sec-16">
+            <div class="topic-header">
+              <h4 class="topic-title">16 &amp; 17. Error Handling, HTTP Status Codes &amp; MySQL Connectivity</h4>
+              <span class="topic-badge">Database &amp; Resilience</span>
+            </div>
+
+            <table class="custom-table">
+              <thead>
+                <tr><th>Status Code</th><th>Label</th><th>Practical Meaning</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>200 OK</code></td><td>Success</td><td>Standard response for successful HTTP requests (GET, PUT).</td></tr>
+                <tr><td><code>201 Created</code></td><td>Resource Created</td><td>Successful creation of a record via POST.</td></tr>
+                <tr><td><code>400 Bad Request</code></td><td>Client Error</td><td>Malformed request syntax or missing required fields.</td></tr>
+                <tr><td><code>401 Unauthorized</code></td><td>Authentication Failure</td><td>Missing or invalid credentials / JWT token.</td></tr>
+                <tr><td><code>403 Forbidden</code></td><td>Authorization Failure</td><td>User authenticated but lacks permission for resource.</td></tr>
+                <tr><td><code>404 Not Found</code></td><td>Missing Resource</td><td>Endpoint or requested ID doesn't exist on server.</td></tr>
+                <tr><td><code>500 Server Error</code></td><td>Internal Error</td><td>Server-side exception, unhandled crash, or database failure.</td></tr>
+              </tbody>
+            </table>
+
+            <div class="code-container" id="sec-17">
+              <div class="code-header"><span>Node.js + MySQL Connectivity (mysql2)</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>const mysql = require("mysql2");
+
+const db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: process.env.DB_PASSWORD || "password",
+    database: "college"
+});
+
+db.connect((err) => {
+    if (err) throw err;
+    console.log("Connected to MySQL Database");
+});
+
+// Executing a Query
+db.query("SELECT * FROM students", (err, results) => {
+    if (err) throw err;
+    console.log("Query Results:", results);
+});</code></pre>
+            </div>
+          </div>
+
+          <!-- ======================================================= -->
+          <!-- PART B: PHP + MYSQL -->
+          <!-- ======================================================= -->
+          <div class="part-banner part-b" id="part-b">
+            <div>
+              <span class="topic-badge">PART B</span>
+              <h3>SERVER-SIDE SCRIPTING: PHP + MYSQL</h3>
+            </div>
+            <span class="section-pill">Sections 18 – 32</span>
+          </div>
+
+          <!-- 18, 19, 20. PHP Intro & Data Types -->
+          <div class="topic-card" id="sec-18">
+            <div class="topic-header">
+              <h4 class="topic-title">18, 19, 20 &amp; 21. PHP Introduction, Syntax, Types &amp; Operators</h4>
+              <span class="topic-badge">PHP Fundamentals</span>
+            </div>
+            <p><strong>PHP (Hypertext Preprocessor)</strong> is an established server-side scripting language dynamically embedded in HTML to produce dynamic web pages.</p>
+
+            <div class="code-container" id="sec-19">
+              <div class="code-header"><span>PHP Syntax &amp; Data Types</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>&lt;?php
+// Variables start with $ sign (dynamically typed)
+$name = "Aryan";             // String
+$age = 20;                   // Integer
+$percentage = 85.5;          // Float
+$isStudent = true;           // Boolean
+$hobbies = ["Code", "Read"]; // Array
+
+echo "Name: " . $name . "&lt;br&gt;"; // String concatenation uses dot (.)
+
+// Operators:
+// Arithmetic: +, -, *, /, %
+// Comparison: == (value), === (value + type), !=, &gt;, &lt;
+// Logical: &&, ||, !
+?&gt;</code></pre>
+            </div>
+          </div>
+
+          <!-- 22, 23, 24. Control Structures, Functions & Arrays -->
+          <div class="topic-card" id="sec-22">
+            <div class="topic-header">
+              <h4 class="topic-title">22, 23 &amp; 24. Control Structures, Functions &amp; Arrays</h4>
+              <span class="topic-badge">PHP Control Flow</span>
+            </div>
+
+            <div class="code-container" id="sec-23">
+              <div class="code-header"><span>PHP Arrays &amp; Functions</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>&lt;?php
+// Function definition
+function calculateGrade($marks) {
+    if ($marks &gt;= 80) return "A";
+    elseif ($marks &gt;= 60) return "B";
+    else return "Fail";
+}
+
+// 1. Indexed Array
+$students = ["Rahul", "Aman", "Priya"];
+echo $students[0]; // Rahul
+
+// 2. Associative Array (Key => Value) - Crucial for database rows
+$student = [
+    "name" => "Rahul",
+    "course" => "BCA",
+    "marks" => 85
+];
+echo $student["name"] . " is enrolled in " . $student["course"];
+?&gt;</code></pre>
+            </div>
+          </div>
+
+          <!-- 25. Form Handling -->
+          <div class="topic-card" id="sec-25">
+            <div class="topic-header">
+              <h4 class="topic-title">25. Form Handling (GET vs POST)</h4>
+              <span class="exam-tag">Classic Theory Question</span>
+            </div>
+
+            <table class="custom-table">
+              <thead>
+                <tr><th>Attribute</th><th>GET Method (<code>$_GET</code>)</th><th>POST Method (<code>$_POST</code>)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Data Transmission</strong></td><td>Appended directly to URL in query string: <code>?name=Aryan</code></td><td>Packaged invisibly within HTTP request payload body</td></tr>
+                <tr><td><strong>Visibility &amp; History</strong></td><td>Visible in address bar, browser history, and server logs</td><td>Invisible in URL; never bookmarked or cached</td></tr>
+                <tr><td><strong>Security</strong></td><td>Insecure for credentials, passwords, or credit card info</td><td>Secure against shoulder surfing; required for state mutations</td></tr>
+                <tr><td><strong>Payload Limit</strong></td><td>Restricted by URL length constraints (~2048 characters)</td><td>No inherent limit; configurable via <code>post_max_size</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 26 & 27. Sessions & Cookies -->
+          <div class="topic-card" id="sec-26">
+            <div class="topic-header">
+              <h4 class="topic-title">26 &amp; 27. State Tracking: Sessions vs Cookies</h4>
+              <span class="topic-badge">State Management</span>
+            </div>
+            
+            <div class="code-container" id="sec-27">
+              <div class="code-header"><span>PHP Session Authentication Workflow</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>&lt;?php
+// 1. Start or resume existing session
+session_start();
+
+// 2. Set authenticated state
+$_SESSION["user_id"] = 101;
+$_SESSION["username"] = "Aryan";
+
+// 3. Access on subsequent pages
+echo "Welcome back, " . $_SESSION["username"];
+
+// 4. Destroy on logout
+session_destroy();
+?&gt;</code></pre>
+            </div>
+
+            <table class="custom-table">
+              <thead>
+                <tr><th>Aspect</th><th>Session</th><th>Cookie</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Storage Location</strong></td><td>Stored on the <strong>Server</strong></td><td>Stored on user's <strong>Browser/Client</strong></td></tr>
+                <tr><td><strong>Capacity</strong></td><td>Virtually unlimited (governed by server RAM)</td><td>Strictly limited to ~4KB per domain</td></tr>
+                <tr><td><strong>Security</strong></td><td>High security; client only holds an encrypted session ID</td><td>Lower security; client can inspect, modify, or inject data</td></tr>
+                <tr><td><strong>Typical Use</strong></td><td>User logins, sensitive privileges, shopping carts</td><td>"Remember Me", dark theme preferences, analytics tracking</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 28 & 29. File Handling & Exceptions -->
+          <div class="topic-card" id="sec-28">
+            <div class="topic-header">
+              <h4 class="topic-title">28 &amp; 29. File Handling &amp; Exception Handling</h4>
+              <span class="topic-badge">File I/O &amp; Try/Catch</span>
+            </div>
+            <div class="code-container" id="sec-29">
+              <div class="code-header"><span>File Reading &amp; Try-Catch Block</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>&lt;?php
+// File Handling
+$file = fopen("log.txt", "w");
+fwrite($file, "Action logged at " . date("Y-m-d H:i:s") . "\n");
+fclose($file);
+
+// Error & Exception Handling
+try {
+    $dividend = 50;
+    $divisor = 0;
+    if ($divisor === 0) {
+        throw new Exception("Division by zero error!");
+    }
+    echo $dividend / $divisor;
+} catch (Exception $e) {
+    echo "Caught Exception: " . $e-&gt;getMessage();
+}
+?&gt;</code></pre>
+            </div>
+          </div>
+
+          <!-- 30, 31, 32. PHP + MySQL & Security -->
+          <div class="topic-card" id="sec-30">
+            <div class="topic-header">
+              <h4 class="topic-title">30, 31 &amp; 32. PHP + MySQL: Full CRUD &amp; Prepared Statements Security</h4>
+              <span class="exam-tag">High-Yield Exam Practical</span>
+            </div>
+
+            <div class="code-container" id="sec-31">
+              <div class="code-header"><span>Complete PHP + MySQL CRUD with Prepared Statements</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>&lt;?php
+// Database connection via MySQLi
+$conn = new mysqli("localhost", "root", "", "college");
+
+if ($conn-&gt;connect_error) {
+    die("Connection failed: " . $conn-&gt;connect_error);
+}
+
+// 1. CREATE with PREPARED STATEMENT (Prevents SQL Injection)
+$stmt = $conn-&gt;prepare("INSERT INTO students (name, course, marks) VALUES (?, ?, ?)");
+$stmt-&gt;bind_param("ssi", $name, $course, $marks);
+
+$name = "Aryan";
+$course = "BCA";
+$marks = 95;
+$stmt-&gt;execute();
+echo "Student inserted with ID: " . $stmt-&gt;insert_id;
+
+// 2. READ
+$sql = "SELECT id, name, course, marks FROM students";
+$result = $conn-&gt;query($sql);
+
+while ($row = $result-&gt;fetch_assoc()) {
+    echo "ID: " . $row["id"] . " - Name: " . $row["name"] . "&lt;br&gt;";
+}
+
+// 3. UPDATE with PREPARED STATEMENT
+$updateStmt = $conn-&gt;prepare("UPDATE students SET marks = ? WHERE id = ?");
+$updateStmt-&gt;bind_param("ii", $newMarks, $studentId);
+$newMarks = 98;
+$studentId = 1;
+$updateStmt-&gt;execute();
+
+// 4. DELETE
+$delStmt = $conn-&gt;prepare("DELETE FROM students WHERE id = ?");
+$delStmt-&gt;bind_param("i", $studentId);
+$delStmt-&gt;execute();
+?&gt;</code></pre>
+            </div>
+
+            <div class="callout callout-exam" id="sec-32">
+              <span class="callout-title">Critical Security Measure — Password Hashing:</span>
+              <p>Never store plaintext passwords in a database! Always use PHP's native cryptographic hashing:</p>
+              <pre><code>// Secure Password Hashing:
+$passwordHash = password_hash($userPassword, PASSWORD_DEFAULT);
+
+// Verifying on Login:
+if (password_verify($inputPassword, $storedHashFromDatabase)) {
+    // Login successful!
+}</code></pre>
+            </div>
+          </div>
+
+          <!-- ======================================================= -->
+          <!-- PART C: FULL-STACK WEB APPLICATION DEVELOPMENT -->
+          <!-- ======================================================= -->
+          <div class="part-banner part-c" id="part-c">
+            <div>
+              <span class="topic-badge">PART C</span>
+              <h3>FULL-STACK WEB APPLICATION DEVELOPMENT</h3>
+            </div>
+            <span class="section-pill">Sections 33 – 42</span>
+          </div>
+
+          <!-- 33, 34, 35. Full Stack Architecture & Fetch Integration -->
+          <div class="topic-card" id="sec-33">
+            <div class="topic-header">
+              <h4 class="topic-title">33, 34 &amp; 35. Architecture &amp; Frontend-Backend Integration</h4>
+              <span class="topic-badge">End-to-End Flow</span>
+            </div>
+            <p>Full-Stack encompasses the entire vertical slice of web development: <strong>Frontend</strong> (Presentation UI) + <strong>Backend</strong> (API &amp; Business Rules) + <strong>Database</strong> (Persistence).</p>
+
+            <div class="code-container" id="sec-35">
+              <div class="code-header"><span>Frontend fetch() to Express Backend Bridge</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>// Frontend (Browser / React / Vanilla JS)
+async function loadStudents() {
+    try {
+        const response = await fetch("http://localhost:3000/api/students");
+        const data = await response.json();
+        console.log("Students received:", data);
+        renderTable(data);
+    } catch (error) {
+        console.error("Network error:", error);
+    }
+}
+
+// Backend (Express API)
+app.get("/api/students", async (req, res) => {
+    const [rows] = await db.promise().query("SELECT * FROM students");
+    res.json(rows); // Automatically formats to application/json
+});</code></pre>
+            </div>
+          </div>
+
+          <!-- 36 & 37. Auth vs Authz & State Management -->
+          <div class="topic-card" id="sec-36">
+            <div class="topic-header">
+              <h4 class="topic-title">36 &amp; 37. Authentication vs Authorization &amp; State Management</h4>
+              <span class="exam-tag">Guaranteed Exam Question</span>
+            </div>
+
+            <table class="custom-table">
+              <thead>
+                <tr><th>Concept</th><th>Definition Question</th><th>Example in LMS</th><th>Tokens / Protocol</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Authentication (AuthN)</strong></td><td><em>"Who are you?"</em> (Validates identity)</td><td>Student logs in with email + password</td><td>Passports, Passwords, OTP, JWT signature</td></tr>
+                <tr><td><strong>Authorization (AuthZ)</strong></td><td><em>"What are you allowed to do?"</em> (Validates permissions)</td><td>Student can only read books; Librarian can issue/add books</td><td>Role-Based Access Control (RBAC), Scopes, Claims</td></tr>
+              </tbody>
+            </table>
+
+            <p id="sec-37"><strong>State Management in Stateless HTTP:</strong> Because HTTP is inherently stateless (each request is treated as independent), modern web apps maintain continuous user sessions using:</p>
+            <ul>
+              <li><strong>JSON Web Tokens (JWT):</strong> Self-contained cryptographically signed tokens stored in <code>localStorage</code> or HTTP-only cookies, sent in request headers: <code>Authorization: Bearer &lt;token&gt;</code>.</li>
+              <li><strong>Server-Side Sessions:</strong> Session ID stored in a cookie; session payload stored in server Redis/memory.</li>
+            </ul>
+          </div>
+
+          <!-- 38, 39, 40. Deployment, Git & DevOps -->
+          <div class="topic-card" id="sec-38">
+            <div class="topic-header">
+              <h4 class="topic-title">38, 39 &amp; 40. Full CRUD Flow, Deployment &amp; Git Version Control</h4>
+              <span class="topic-badge">DevOps Fundamentals</span>
+            </div>
+            
+            <p id="sec-39"><strong>Deployment:</strong> Transitioning from <code>localhost</code> (Development) to cloud servers (Production) requires strict separation of secrets via <strong>Environment Variables</strong> (<code>.env</code> file):</p>
+            <div class="code-container">
+              <div class="code-header"><span>Safe Environment Variable Practice</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>// BAD - NEVER hardcode passwords:
+const dbPass = "admin12345";
+
+// GOOD - Load from process environment:
+require("dotenv").config();
+const dbPass = process.env.DB_PASSWORD;</code></pre>
+            </div>
+
+            <h4 id="sec-40">Git Version Control Workflow</h4>
+            <div class="ascii-diagram">
+Working Directory ──( git add . )──► Staging Area ──( git commit -m )──► Local Repository ──( git push )──► GitHub Remote
+            </div>
+          </div>
+
+          <!-- 41 & 42. Testing & Security Best Practices -->
+          <div class="topic-card" id="sec-41">
+            <div class="topic-header">
+              <h4 class="topic-title">41 &amp; 42. Testing &amp; Web Application Security Best Practices</h4>
+              <span class="exam-tag">7-Mark Theory Checklist</span>
+            </div>
+
+            <ol id="sec-42">
+              <li><strong>Authentication:</strong> Thoroughly verify credentials before issuing session tokens.</li>
+              <li><strong>Authorization (RBAC):</strong> Enforce strict role validation on all protected API endpoints.</li>
+              <li><strong>Password Hashing:</strong> Always use adaptive algorithms (bcrypt, Argon2, <code>password_hash()</code> with salt).</li>
+              <li><strong>SQL Injection Prevention:</strong> Use <strong>Parameterized Prepared Statements</strong> for 100% of queries.</li>
+              <li><strong>Cross-Site Scripting (XSS) Prevention:</strong> Sanitize all incoming user data and escape HTML outputs.</li>
+              <li><strong>Cross-Site Request Forgery (CSRF) Protection:</strong> Implement anti-CSRF tokens for state-changing POST/PUT/DELETE requests.</li>
+              <li><strong>Transport Layer Security (HTTPS):</strong> Encrypt all data in transit via SSL/TLS.</li>
+              <li><strong>Input Validation &amp; Schema Checking:</strong> Reject invalid payloads before they reach business logic (e.g., Joi, Zod).</li>
+              <li><strong>Secure Cookie Flags:</strong> Always set <code>HttpOnly</code>, <code>Secure</code>, and <code>SameSite=Strict</code> flags.</li>
+              <li><strong>Environment Isolation:</strong> Never commit API keys, private tokens, or database passwords to public repositories.</li>
+            </ol>
+          </div>
+
+          <!-- ======================================================= -->
+          <!-- 🧠 WHAT YOU SHOULD MEMORIZE FOR EXAM -->
+          <!-- ======================================================= -->
+          <div class="part-banner" id="memorize-section" style="border-left-color: #ec4899; background: linear-gradient(90deg, rgba(236, 72, 153, 0.12), rgba(15, 23, 42, 0.7));">
+            <div>
+              <span class="exam-tag">🧠 QUICK REVISION FLASHCARDS</span>
+              <h3>WHAT YOU SHOULD MEMORIZE FOR THE EXAM</h3>
+            </div>
+            <span class="section-pill">Core Execution Patterns</span>
+          </div>
+
+          <div class="memorize-grid">
+            <div class="memorize-card">
+              <h5>Node.js Core</h5>
+              <div class="memorize-chain">
+                Node.js<br>
+                ↓<br>
+                Google V8 Engine<br>
+                ↓<br>
+                Event Loop<br>
+                ↓<br>
+                Non-blocking I/O
+              </div>
+            </div>
+
+            <div class="memorize-card">
+              <h5>Express Pipeline</h5>
+              <div class="memorize-chain">
+                HTTP Request<br>
+                ↓<br>
+                Middleware<br>
+                ↓<br>
+                Route<br>
+                ↓<br>
+                Controller (Logic)<br>
+                ↓<br>
+                Database Query<br>
+                ↓<br>
+                HTTP Response
+              </div>
+            </div>
+
+            <div class="memorize-card">
+              <h5>REST &amp; CRUD</h5>
+              <div class="memorize-chain">
+                GET &nbsp;&nbsp;&nbsp;→ Read<br>
+                POST &nbsp;&nbsp;→ Create<br>
+                PUT &nbsp;&nbsp;&nbsp;→ Update<br>
+                DELETE → Delete
+              </div>
+            </div>
+
+            <div class="memorize-card">
+              <h5>PHP + MySQL</h5>
+              <div class="memorize-chain">
+                Client Request<br>
+                ↓<br>
+                PHP Engine<br>
+                ↓<br>
+                MySQL Prepared Stmt<br>
+                ↓<br>
+                Dynamic HTML/JSON
+              </div>
+            </div>
+
+            <div class="memorize-card">
+              <h5>Auth Distinction</h5>
+              <div class="memorize-chain">
+                <strong>Authentication</strong><br>
+                "Who are you?" (Identity)<br><br>
+                <strong>Authorization</strong><br>
+                "What can you do?" (Privileges)
+              </div>
+            </div>
+
+            <div class="memorize-card">
+              <h5>Security Checklist</h5>
+              <div class="memorize-chain">
+                • Prepared Statements<br>
+                • Password Hashing<br>
+                • HTTPS Encryption<br>
+                • XSS / CSRF Defense<br>
+                • Environment Variables
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ============================================================ -->
+    <!-- VIEW 2: VISUAL DIAGRAMS & SLIDES GALLERY -->
+    <!-- ============================================================ -->
+    <div id="view-gallery" class="view-section">
+
+      <!-- Gallery Toolbar -->
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Visual Diagrams &amp; Architecture Showcase
+          </h2>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">2 High-Resolution SVGs + 22 Lecture Slides extracted from Zip archive</p>
+        </div>
+
+        <div style="display: flex; gap: 0.5rem; align-items: center;">
+          <button class="btn-control active" id="btn-grid" onclick="setLayout('grid')">Grid</button>
+          <button class="btn-control" id="btn-flow" onclick="setLayout('flow')">Flow</button>
+          <button class="btn-control" id="btn-compact" onclick="setLayout('compact')">Compact</button>
+        </div>
+      </div>
+
+      <!-- Section 1: Architecture SVGs -->
+      <div style="margin-bottom: 2.5rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+          <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--accent-cyan);">1. Vector Architecture Blueprints (2 SVG Files)</h3>
+          <span class="section-pill">Interactive Zoom Available</span>
+        </div>
+
+        <div class="svg-grid">
+          <!-- SVG 1 -->
+          <div class="item-card svg-card" data-index="0" data-src="fullstack-architecture.svg" data-title="Full-Stack Architecture: Library Management System">
+            <div class="card-figure" onclick="openLightbox(0)">
+              <img src="fullstack-architecture.svg" alt="Full-Stack Architecture: Library Management System" onerror="handleImgFallback(this, 'fullstack-architecture.svg')">
+              <div class="card-hover-overlay">
+                <span class="zoom-hint">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                  Click to Zoom
+                </span>
+              </div>
+            </div>
+            <div class="card-meta">
+              <div class="card-details">
+                <span class="card-index">VECTOR #01</span>
+                <div class="card-name" title="fullstack-architecture.svg">fullstack-architecture.svg</div>
+              </div>
+              <a class="card-btn" href="fullstack-architecture.svg" target="_blank" title="Open Original File" onclick="event.stopPropagation()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- SVG 2 -->
+          <div class="item-card svg-card" data-index="1" data-src="fullstack-workflow-detailed.svg" data-title="Full-Stack Workflow: Detailed Architecture &amp; Data Flow">
+            <div class="card-figure" onclick="openLightbox(1)">
+              <img src="fullstack-workflow-detailed.svg" alt="Full-Stack Workflow: Detailed Architecture & Data Flow" onerror="handleImgFallback(this, 'fullstack-workflow-detailed.svg')">
+              <div class="card-hover-overlay">
+                <span class="zoom-hint">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                  Click to Zoom
+                </span>
+              </div>
+            </div>
+            <div class="card-meta">
+              <div class="card-details">
+                <span class="card-index">VECTOR #02</span>
+                <div class="card-name" title="fullstack-workflow-detailed.svg">fullstack-workflow-detailed.svg</div>
+              </div>
+              <a class="card-btn" href="fullstack-workflow-detailed.svg" target="_blank" title="Open Original File" onclick="event.stopPropagation()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Screenshots from Zip -->
+      <div>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+          <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--accent-cyan);">2. Lecture Slides &amp; Visual Guides (22 Screenshots from Zip)</h3>
+          <span class="section-pill">Total 22 Items</span>
+        </div>
+
+        <div class="screenshots-grid" id="screenshots-grid">
+          <!-- Slide 1 -->
+          <div class="item-card screenshot-card" data-index="2" data-src="WhatsApp Image 2026-10-14 at 2.38.43 PM.jpeg" data-title="Universal Full-Stack Architecture (Library Management System Example)">
+            <div class="card-figure" onclick="openLightbox(2)">
+              <img src="WhatsApp Image 2026-10-14 at 2.38.43 PM.jpeg" alt="Universal Full-Stack Architecture" loading="lazy" onerror="handleImgFallback(this, 'WhatsApp Image 2026-10-14 at 2.38.43 PM.jpeg')">
+              <div class="card-hover-overlay"><span class="zoom-hint">Click to Zoom</span></div>
+            </div>
+            <div class="card-meta">
+              <div class="card-details">
+                <span class="card-index">MODULE #01</span>
+                <div class="card-name">Universal Full-Stack Architecture</div>
+              </div>
+              <a class="card-btn" href="WhatsApp Image 2026-10-14 at 2.38.43 PM.jpeg" target="_blank" onclick="event.stopPropagation()">↗</a>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="item-card screenshot-card" data-index="3" data-src="WhatsApp Image 2026-10-14 at 2.39.11 PM.jpeg" data-title="Node.js Architecture &amp; Key Features (Event Loop)">
+            <div class="card-figure" onclick="openLightbox(3)">
+              <img src="WhatsApp Image 2026-10-14 at 2.39.11 PM.jpeg" alt="Node.js Architecture" loading="lazy" onerror="handleImgFallback(this, 'WhatsApp Image 2026-10-14 at 2.39.11 PM.jpeg')">
+              <div class="card-hover-overlay"><span class="zoom-hint">Click to Zoom</span></div>
+            </div>
+            <div class="card-meta">
+              <div class="card-details">
+                <span class="card-index">MODULE #02</span>
+                <div class="card-name">Node.js Architecture &amp; Event Loop</div>
+              </div>
+              <a class="card-btn" href="WhatsApp Image 2026-10-14 at 2.39.11 PM.jpeg" target="_blank" onclick="event.stopPropagation()">↗</a>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="item-card screenshot-card" data-index="4" data-src="WhatsApp Image 2026-10-14 at 2.39.22 PM.jpeg" data-title="Express Routing &amp; Middleware Pipeline">
+            <div class="card-figure" onclick="openLightbox(4)">
+              <img src="WhatsApp Image 2026-10-14 at 2.39.22 PM.jpeg" alt="Express Routing & Middleware" loading="lazy" onerror="handleImgFallback(this, 'WhatsApp Image 2026-10-14 at 2.39.22 PM.jpeg')">
+              <div class="card-hover-overlay"><span class="zoom-hint">Click to Zoom</span></div>
+            </div>
+            <div class="card-meta">
+              <div class="card-details">
+                <span class="card-index">MODULE #03</span>
+                <div class="card-name">Express Routing &amp; Middleware</div>
+              </div>
+              <a class="card-btn" href="WhatsApp Image 2026-10-14 at 2.39.22 PM.jpeg" target="_blank" onclick="event.stopPropagation()">↗</a>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="item-card screenshot-card" data-index="5" data-src="WhatsApp Image 2026-10-14 at 2.39.33 PM.jpeg" data-title="REST API &amp; CRUD Operations Mapping">
+            <div class="card-figure" onclick="openLightbox(5)">
+              <img src="WhatsApp Image 2026-10-14 at 2.39.33 PM.jpeg" alt="REST API & CRUD" loading="lazy" onerror="handleImgFallback(this, 'WhatsApp Image 2026-10-14 at 2.39.33 PM.jpeg')">
+              <div class="card-hover-overlay"><span class="zoom-hint">Click to Zoom</span></div>
+            </div>
+            <div class="card-meta">
+              <div class="card-details">
+                <span class="card-index">MODULE #04</span>
+                <div class="card-name">REST API &amp; CRUD Operations</div>
+              </div>
+              <a class="card-btn" href="WhatsApp Image 2026-10-14 at 2.39.33 PM.jpeg" target="_blank" onclick="event.stopPropagation()">↗</a>
+            </div>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="item-card screenshot-card" data-index="6" data-src="WhatsApp Image 2026-10-14 at 2.39.42 PM.jpeg" data-title="The Request / Response Cycle (Bedrock of Web Dev)">
+            <div class="card-figure" onclick="openLightbox(6)">
+              <img src="WhatsApp Image 2026-10-14 at 2.39.42 PM.jpeg" alt="Request/Response Cycle" loading="lazy" onerror="handleImgFallback(this, 'WhatsApp Image 2026-10-14 at 2.39.42 PM.jpeg')">
+              <div class="card-hover-overlay"><span class="zoom-hint">Click to Zoom</span></div>
+            </div>
+            <div class="card-meta">
+              <div class="card-details">
+                <span class="card-index">MODULE #05</span>
+                <div class="card-name">The Request / Response Cycle</div>
+              </div>
+              <a class="card-btn" href="WhatsApp Image 2026-10-14 at 2.39.42 PM.jpeg" target="_blank" onclick="event.stopPropagation()">↗</a>
+            </div>
+          </div>
+
+          <!-- Slide 6 -->
+          <div class="item-card screenshot-card" data-index="7" data-src="WhatsApp Image 2026-10-14 at 2.40.10 PM.jpeg" data-title="PHP &amp; MySQL (Dynamic Web Applications)">
+            <div class="card-figure" onclick="openLightbox(7)">
+              <img src="WhatsApp Image 2026-10-14 at 2.40.10 PM.jpeg" alt="PHP & MySQL" loading="lazy" onerror="handleImgFallback(this, 'WhatsApp Image 2026-10-14 at 2.40.10 PM.jpeg')">
+              <div class="card-hover-overlay"><span class="zoom-hint">Click to Zoom</span></div>
+            </div>
+            <div class="card-meta">
+              <div class="card-details">
+                <span class="card-index">MODULE #06</span>
+                <div class="card-name">PHP &amp; MySQL Dynamic Applications</div>
+              </div>
+              <a class="card-btn" href="WhatsApp Image 2026-10-14 at 2.40.10 PM.jpeg" target="_blank" onclick="event.stopPropagation()">↗</a>
+            </div>
+          </div>
+
+          <!-- Slides 7 to 22 -->
+          <div class="item-card screenshot-card" data-index="8" data-src="WhatsApp Image 2026-10-14 at 2.40.25 PM.jpeg" data-title="Architecture Slide 07">
+            <div class="card-figure" onclick="openLightbox(8)">
+              <img src="WhatsApp Image 2026-10-14 at 2.40.25 PM.jpeg" alt="Slide 07" loading="lazy" onerror="handleImgFallback(this, 'WhatsApp Image 2026-10-14 at 2.40.25 PM.jpeg')">
+              <div class="card-hover-overlay"><span class="zoom-hint">Click to Zoom</span></div>
+            </div>
+            <div class="card-meta"><div class="card-details"><span class="card-index">MODULE #07</span><div class="card-name">Architecture Slide 07</div></div><a class="card-btn" href="WhatsApp Image 2026-10-14 at 2.40.25 PM.jpeg" target="_blank" onclick="event.stopPropagation()">↗</a></div>
+          </div>
+
+          <div class="item-card screenshot-card" data-index="9" data-src="WhatsApp Image 2026-10-14 at 2.40.43 PM.jpeg" data-title="Architecture Slide 08">
+            <div class="card-figure" onclick="openLightbox(9)">
+              <img src="WhatsApp Image 2026-10-14 at 2.40.43 PM.jpeg" alt="Slide 08" loading="lazy" onerror="handleImgFallback(this, 'WhatsApp Image 2026-10-14 at 2.40.43 PM.jpeg')">
+              <div class="card-hover-overlay"><span class="zoom-hint">Click to Zoom</span></div>
+            </div>
+            <div class="card-meta"><div class="card-details"><span class="card-index">MODULE #08</span><div class="card-name">Architecture Slide 08</div></div><a class="card-btn" href="WhatsApp Image 2026-10-14 at 2.40.43 PM.jpeg" target="_blank" onclick="event.stopPropagation()">↗</a></div>
+          </div>
+
+          <div class="item-card screenshot-card" data-index="10" data-src="WhatsApp Image 2026-10-14 at 2.40.54 PM.jpeg" data-title="Architecture Slide 09">
+            <div class="card-figure" onclick="openLightbox(10)">
+              <img src="WhatsApp Image 2026-10-14 at 2.40.54 PM.jpeg" alt="Slide 09" loading="lazy" onerror="handleImgFallback(this, 'WhatsApp Image 2026-10-14 at 2.40.54 PM.jpeg')">
+              <div class="card-hover-overlay"><span class="zoom-hint">Click to Zoom</span></div>
+            </div>
+            <div class="card-meta"><div class="card-details"><span class="card-index">MODULE #09</span><div class="card-name">Architecture Slide 09</div></div><a class="card-btn" href="WhatsApp Image 2026-10-14 at 2.40.54 PM.jpeg" target="_blank" onclick="event.stopPropagation()">↗</a></div>
+          </div>
+
+          <div class="item-card screenshot-card" data-index="11" data-src="WhatsApp Image 2026-10-14 at 2.41.05 PM.jpeg" data-title="Architecture Slide 10">
+            <div class="card-figure" onclick="openLightbox(11)">
+              <img src="WhatsApp Image 2026-10-14 at 2.41.05 PM.jpeg" alt="Slide 10" loading="lazy" onerror="handleImgFallback(this, 'WhatsApp Image 2026-10-14 at 2.41.05 PM.jpeg')">
+              <div class="card-hover-overlay"><span class="zoom-hint">Click to Zoom</span></div>
+            </div>
+            <div class="card-meta"><div class="card-details"><span class="card-index">MODULE #10</span><div class="card-name">Architecture Slide 10</div></div><a class="card-btn" href="WhatsApp Image 2026-10-14 at 2.41.05 PM.jpeg" target="_blank" onclick="event.stopPropagation()">↗</a></div>
+          </div>
+
+          <div class="item-card screenshot-card" data-index="12" data-src="WhatsApp Image 2026-10-14 at 2.41.18 PM.jpeg" data-title="Architecture Slide 11">
+            <div class="card-figure" onclick="openLightbox(12)">
+              <img src="WhatsApp Image 2026-10-14 at 2.41.18 PM.jpeg" alt="Slide 11" loading="lazy" onerror="handleImgFallback(this, 'WhatsApp Image 2026-10-14 at 2.41.18 PM.jpeg')">
+              <div class="card-hover-overlay"><span class="zoom-hint">Click to Zoom</span></div>
+            </div>
+            <div class="card-meta"><div class="card-details"><span class="card-index">MODULE #11</span><div class="card-name">Architecture Slide 11</div></div><a class="card-btn" href="WhatsApp Image 2026-10-14 at 2.41.18 PM.jpeg" target="_blank" onclick="event.stopPropagation()">↗</a></div>
+          </div>
+
+          <div class="item-card screenshot-card" data-index="13" data-src="WhatsApp Image 2026-10-14 at 2.41.33 PM.jpeg" data-title="Architecture Slide 12">
+            <div class="card-figure" onclick="openLightbox(13)">
+              <img src="WhatsApp Image 2026-10-14 at 2.41.33 PM.jpeg" alt="Slide 12" loading="lazy" onerror="handleImgFallback(this, 'WhatsApp Image 2026-10-14 at 2.41.33 PM.jpeg')">
+              <div class="card-hover-overlay"><span class="zoom-hint">Click to Zoom</span></div>
+            </div>
+            <div class="card-meta"><div class="card-details"><span class="card-index">MODULE #12</span><div class="card-name">Architecture Slide 12</div></div><a class="card-btn" href="WhatsApp Image 2026-10-14 at 2.41.33 PM.jpeg" target="_blank" onclick="event.stopPropagation()">↗</a></div>
+          </div>
+
+          <div class="item-card screenshot-card" data-index="14" data-src="WhatsApp Image 2026-10-14 at 2.41.41 PM.jpeg" data-title="Architecture Slide 13">
+            <div class="card-figure" onclick="openLightbox(14)">
+              <img src="WhatsApp Image 2026-10-14 at 2.41.41 PM.jpeg" alt="Slide 13" loading="lazy" onerror="handleImgFallback(this, 'WhatsApp Image 2026-10-14 at 2.41.41 PM.jpeg')">
+              <div class="card-hover-overlay"><span class="zoom-hint">Click to Zoom</span></div>
+            </div>
+            <div class="card-meta"><div class="card-details"><span class="card-index">MODULE #13</span><div class="card-name">Architecture Slide 13</div></div><a class="card-btn" href="WhatsApp Image 2026-10-14 at 2.41.41 PM.jpeg" target="_blank" onclick="event.stopPropagation()">↗</a></div>
+          </div>
+
+          <div class="item-card screenshot-card" data-index="15" data-src="WhatsApp Image 2026-10-14 at 2.41.49 PM.jpeg" data-title="Architecture Slide 14">
+            <div class="card-figure" onclick="openLightbox(15)">
+              <img src="WhatsApp Image 2026-10-14 at 2.41.49 PM.jpeg" alt="Slide 14" loading="lazy" onerror="handleImgFallback(this, 'WhatsApp Image 2026-10-14 at 2.41.49 PM.jpeg')">
+              <div class="card-hover-overlay"><span class="zoom-hint">Click to Zoom</span></div>
+            </div>
+            <div class="card-meta"><div class="card-details"><span class="card-index">MODULE #14</span><div class="card-name">Architecture Slide 14</div></div><a class="card-btn" href="WhatsApp Image 2026-10-14 at 2.41.49 PM.jpeg" target="_blank" onclick="event.stopPropagation()">↗</a></div>
+          </div>
+
+          <div class="item-card screenshot-card" data-index="16" data-src="WhatsApp Image 2026-10-14 at 2.41.58 PM.jpeg" data-title="Architecture Slide 15">
+            <div class="card-figure" onclick="openLightbox(16)">
+              <img src="WhatsApp Image 2026-10-14 at 2.41.58 PM.jpeg" alt="Slide 15" loading="lazy" onerror="handleImgFallback(this, 'WhatsApp Image 2026-10-14 at 2.41.58 PM.jpeg')">
+              <div class="card-hover-overlay"><span class="zoom-hint">Click to Zoom</span></div>
+            </div>
+            <div class="card-meta"><div class="card-details"><span class="card-index">MODULE #15</span><div class="card-name">Architecture Slide 15</div></div><a class="card-btn" href="WhatsApp Image 2026-10-14 at 2.41.58 PM.jpeg" target="_blank" onclick="event.stopPropagation()">↗</a></div>
+          </div>
+
+          <div class="item-card screenshot-card" data-index="17" data-src="WhatsApp Image 2026-10-14 at 2.42.06 PM.jpeg" data-title="Architecture Slide 16">
+            <div class="card-figure" onclick="openLightbox(17)">
+              <img src="WhatsApp Image 2026-10-14 at 2.42.06 PM.jpeg" alt="Slide 16" loading="lazy" onerror="handleImgFallback(this, 'WhatsApp Image 2026-10-14 at 2.42.06 PM.jpeg')">
+              <div class="card-hover-overlay"><span class="zoom-hint">Click to Zoom</span></div>
+            </div>
+            <div class="card-meta"><div class="card-details"><span class="card-index">MODULE #16</span><div class="card-name">Architecture Slide 16</div></div><a class="card-btn" href="WhatsApp Image 2026-10-14 at 2.42.06 PM.jpeg" target="_blank" onclick="event.stopPropagation()">↗</a></div>
+          </div>
+
+          <div class="item-card screenshot-card" data-index="18" data-src="WhatsApp Image 2026-10-14 at 2.42.13 PM.jpeg" data-title="Architecture Slide 17">
+            <div class="card-figure" onclick="openLightbox(18)">
+              <img src="WhatsApp Image 2026-10-14 at 2.42.13 PM.jpeg" alt="Slide 17" loading="lazy" onerror="handleImgFallback(this, 'WhatsApp Image 2026-10-14 at 2.42.13 PM.jpeg')">
+              <div class="card-hover-overlay"><span class="zoom-hint">Click to Zoom</span></div>
+            </div>
+            <div class="card-meta"><div class="card-details"><span class="card-index">MODULE #17</span><div class="card-name">Architecture Slide 17</div></div><a class="card-btn" href="WhatsApp Image 2026-10-14 at 2.42.13 PM.jpeg" target="_blank" onclick="event.stopPropagation()">↗</a></div>
+          </div>
+
+          <div class="item-card screenshot-card" data-index="19" data-src="WhatsApp Image 2026-10-14 at 2.42.20 PM.jpeg" data-title="Architecture Slide 18">
+            <div class="card-figure" onclick="openLightbox(19)">
+              <img src="WhatsApp Image 2026-10-14 at 2.42.20 PM.jpeg" alt="Slide 18" loading="lazy" onerror="handleImgFallback(this, 'WhatsApp Image 2026-10-14 at 2.42.20 PM.jpeg')">
+              <div class="card-hover-overlay"><span class="zoom-hint">Click to Zoom</span></div>
+            </div>
+            <div class="card-meta"><div class="card-details"><span class="card-index">MODULE #18</span><div class="card-name">Architecture Slide 18</div></div><a class="card-btn" href="WhatsApp Image 2026-10-14 at 2.42.20 PM.jpeg" target="_blank" onclick="event.stopPropagation()">↗</a></div>
+          </div>
+
+          <div class="item-card screenshot-card" data-index="20" data-src="WhatsApp Image 2026-10-14 at 2.42.26 PM.jpeg" data-title="Architecture Slide 19">
+            <div class="card-figure" onclick="openLightbox(20)">
+              <img src="WhatsApp Image 2026-10-14 at 2.42.26 PM.jpeg" alt="Slide 19" loading="lazy" onerror="handleImgFallback(this, 'WhatsApp Image 2026-10-14 at 2.42.26 PM.jpeg')">
+              <div class="card-hover-overlay"><span class="zoom-hint">Click to Zoom</span></div>
+            </div>
+            <div class="card-meta"><div class="card-details"><span class="card-index">MODULE #19</span><div class="card-name">Architecture Slide 19</div></div><a class="card-btn" href="WhatsApp Image 2026-10-14 at 2.42.26 PM.jpeg" target="_blank" onclick="event.stopPropagation()">↗</a></div>
+          </div>
+
+          <div class="item-card screenshot-card" data-index="21" data-src="WhatsApp Image 2026-10-14 at 2.42.40 PM.jpeg" data-title="Architecture Slide 20">
+            <div class="card-figure" onclick="openLightbox(21)">
+              <img src="WhatsApp Image 2026-10-14 at 2.42.40 PM.jpeg" alt="Slide 20" loading="lazy" onerror="handleImgFallback(this, 'WhatsApp Image 2026-10-14 at 2.42.40 PM.jpeg')">
+              <div class="card-hover-overlay"><span class="zoom-hint">Click to Zoom</span></div>
+            </div>
+            <div class="card-meta"><div class="card-details"><span class="card-index">MODULE #20</span><div class="card-name">Architecture Slide 20</div></div><a class="card-btn" href="WhatsApp Image 2026-10-14 at 2.42.40 PM.jpeg" target="_blank" onclick="event.stopPropagation()">↗</a></div>
+          </div>
+
+          <div class="item-card screenshot-card" data-index="22" data-src="WhatsApp Image 2026-10-14 at 2.42.52 PM.jpeg" data-title="Architecture Slide 21">
+            <div class="card-figure" onclick="openLightbox(22)">
+              <img src="WhatsApp Image 2026-10-14 at 2.42.52 PM.jpeg" alt="Slide 21" loading="lazy" onerror="handleImgFallback(this, 'WhatsApp Image 2026-10-14 at 2.42.52 PM.jpeg')">
+              <div class="card-hover-overlay"><span class="zoom-hint">Click to Zoom</span></div>
+            </div>
+            <div class="card-meta"><div class="card-details"><span class="card-index">MODULE #21</span><div class="card-name">Architecture Slide 21</div></div><a class="card-btn" href="WhatsApp Image 2026-10-14 at 2.42.52 PM.jpeg" target="_blank" onclick="event.stopPropagation()">↗</a></div>
+          </div>
+
+          <div class="item-card screenshot-card" data-index="23" data-src="WhatsApp Image 2026-10-14 at 2.43.50 PM.jpeg" data-title="Architecture Slide 22 (Core Concepts: Template Engines, State, File Handling, API Consumption)">
+            <div class="card-figure" onclick="openLightbox(23)">
+              <img src="WhatsApp Image 2026-10-14 at 2.43.50 PM.jpeg" alt="Slide 22" loading="lazy" onerror="handleImgFallback(this, 'WhatsApp Image 2026-10-14 at 2.43.50 PM.jpeg')">
+              <div class="card-hover-overlay"><span class="zoom-hint">Click to Zoom</span></div>
+            </div>
+            <div class="card-meta"><div class="card-details"><span class="card-index">MODULE #22</span><div class="card-name">Core Concepts 21-24 Summary</div></div><a class="card-btn" href="WhatsApp Image 2026-10-14 at 2.43.50 PM.jpeg" target="_blank" onclick="event.stopPropagation()">↗</a></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Fullscreen Lightbox Modal -->
+  <div class="lightbox-modal" id="lightbox-modal" role="dialog" aria-modal="true" aria-label="Image Lightbox">
+    <div class="modal-header">
+      <div class="modal-title-info">
+        <span class="modal-counter" id="modal-counter">1 / 24</span>
+        <span class="modal-filename" id="modal-title">Item Title</span>
+      </div>
+      <div class="modal-header-actions">
+        <a class="modal-btn" id="modal-open-link" href="#" target="_blank" title="Open Original File" aria-label="Open Original File">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+        <button class="modal-btn" onclick="closeLightbox()" title="Close (ESC)" aria-label="Close Lightbox">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="modal-body" onclick="handleModalBodyClick(event)">
+      <button class="lightbox-nav lightbox-prev" onclick="prevLightbox(event)" aria-label="Previous Item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+
+      <div class="modal-image-container" id="modal-container">
+        <img src="" alt="" class="modal-img" id="modal-img">
+      </div>
+
+      <button class="lightbox-nav lightbox-next" onclick="nextLightbox(event)" aria-label="Next Item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+
+    <div class="modal-footer">
+      <span>Use <kbd>←</kbd> <kbd>→</kbd> Arrow keys to navigate</span>
+      <span>Press <kbd>ESC</kbd> to exit</span>
+    </div>
+  </div>
+
+  <script>
+    // Tab View Switcher
+    function switchView(viewName) {
+      document.getElementById('view-notes').classList.toggle('active', viewName === 'notes');
+      document.getElementById('view-gallery').classList.toggle('active', viewName === 'gallery');
+
+      document.getElementById('tab-notes-btn').classList.toggle('active', viewName === 'notes');
+      document.getElementById('tab-gallery-btn').classList.toggle('active', viewName === 'gallery');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Quick Jump Handler
+    function handleQuickJump(targetId) {
+      if (!targetId) return;
+      // Ensure notes tab is active
+      switchView('notes');
+      setTimeout(() => {
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+
+    // Copy Code snippet to clipboard
+    function copyCode(btn) {
+      const codeBlock = btn.closest('.code-container').querySelector('code');
+      if (!codeBlock) return;
+      navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+        const origText = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = origText; }, 2000);
+      });
+    }
+
+    // Dataset of all 24 visual items (2 SVGs + 22 Screenshots)
+    const items = [
+      { src: "fullstack-architecture.svg", title: "Full-Stack Architecture: Library Management System", type: "svg" },
+      { src: "fullstack-workflow-detailed.svg", title: "Full-Stack Workflow: Detailed Architecture & Data Flow", type: "svg" },
+      { src: "WhatsApp Image 2026-10-14 at 2.38.43 PM.jpeg", title: "Universal Full-Stack Architecture", type: "image" },
+      { src: "WhatsApp Image 2026-10-14 at 2.39.11 PM.jpeg", title: "Node.js Architecture & Key Features (Event Loop)", type: "image" },
+      { src: "WhatsApp Image 2026-10-14 at 2.39.22 PM.jpeg", title: "Express Routing & Middleware Pipeline", type: "image" },
+      { src: "WhatsApp Image 2026-10-14 at 2.39.33 PM.jpeg", title: "REST API & CRUD Operations Mapping", type: "image" },
+      { src: "WhatsApp Image 2026-10-14 at 2.39.42 PM.jpeg", title: "The Request / Response Cycle", type: "image" },
+      { src: "WhatsApp Image 2026-10-14 at 2.40.10 PM.jpeg", title: "PHP & MySQL Dynamic Applications", type: "image" },
+      { src: "WhatsApp Image 2026-10-14 at 2.40.25 PM.jpeg", title: "Architecture Slide 07", type: "image" },
+      { src: "WhatsApp Image 2026-10-14 at 2.40.43 PM.jpeg", title: "Architecture Slide 08", type: "image" },
+      { src: "WhatsApp Image 2026-10-14 at 2.40.54 PM.jpeg", title: "Architecture Slide 09", type: "image" },
+      { src: "WhatsApp Image 2026-10-14 at 2.41.05 PM.jpeg", title: "Architecture Slide 10", type: "image" },
+      { src: "WhatsApp Image 2026-10-14 at 2.41.18 PM.jpeg", title: "Architecture Slide 11", type: "image" },
+      { src: "WhatsApp Image 2026-10-14 at 2.41.33 PM.jpeg", title: "Architecture Slide 12", type: "image" },
+      { src: "WhatsApp Image 2026-10-14 at 2.41.41 PM.jpeg", title: "Architecture Slide 13", type: "image" },
+      { src: "WhatsApp Image 2026-10-14 at 2.41.49 PM.jpeg", title: "Architecture Slide 14", type: "image" },
+      { src: "WhatsApp Image 2026-10-14 at 2.41.58 PM.jpeg", title: "Architecture Slide 15", type: "image" },
+      { src: "WhatsApp Image 2026-10-14 at 2.42.06 PM.jpeg", title: "Architecture Slide 16", type: "image" },
+      { src: "WhatsApp Image 2026-10-14 at 2.42.13 PM.jpeg", title: "Architecture Slide 17", type: "image" },
+      { src: "WhatsApp Image 2026-10-14 at 2.42.20 PM.jpeg", title: "Architecture Slide 18", type: "image" },
+      { src: "WhatsApp Image 2026-10-14 at 2.42.26 PM.jpeg", title: "Architecture Slide 19", type: "image" },
+      { src: "WhatsApp Image 2026-10-14 at 2.42.40 PM.jpeg", title: "Architecture Slide 20", type: "image" },
+      { src: "WhatsApp Image 2026-10-14 at 2.42.52 PM.jpeg", title: "Architecture Slide 21", type: "image" },
+      { src: "WhatsApp Image 2026-10-14 at 2.43.50 PM.jpeg", title: "Core Concepts 21-24 Summary", type: "image" }
+    ];
+
+    function handleImgFallback(img, originalFilename) {
+      if (!img.dataset.fallbackTried) {
+        img.dataset.fallbackTried = "true";
+        img.src = "extracted/" + originalFilename;
+      }
+    }
+
+    // Lightbox Logic
+    let currentIndex = 0;
+    const modal = document.getElementById('lightbox-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalTitle = document.getElementById('modal-title');
+    const modalCounter = document.getElementById('modal-counter');
+    const modalLink = document.getElementById('modal-open-link');
+
+    function openLightbox(index) {
+      currentIndex = index;
+      updateLightboxContent();
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function updateLightboxContent() {
+      const item = items[currentIndex];
+      modalCounter.textContent = `${currentIndex + 1} / ${items.length}`;
+      modalTitle.textContent = item.title;
+      modalLink.href = item.src;
+      modalImg.src = item.src;
+      modalImg.alt = item.title;
+
+      if (item.type === 'svg') {
+        modalImg.classList.remove('dark-bg');
+      } else {
+        modalImg.classList.add('dark-bg');
+      }
+    }
+
+    function nextLightbox(e) {
+      if (e) e.stopPropagation();
+      currentIndex = (currentIndex + 1) % items.length;
+      updateLightboxContent();
+    }
+
+    function prevLightbox(e) {
+      if (e) e.stopPropagation();
+      currentIndex = (currentIndex - 1 + items.length) % items.length;
+      updateLightboxContent();
+    }
+
+    function handleModalBodyClick(e) {
+      if (e.target.id === 'modal-container' || e.target.classList.contains('modal-body')) {
+        closeLightbox();
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (!modal.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextLightbox();
+      if (e.key === 'ArrowLeft') prevLightbox();
+    });
+
+    // Gallery Layout Switchers
+    function setLayout(mode) {
+      const gridEl = document.getElementById('screenshots-grid');
+      const btns = [document.getElementById('btn-grid'), document.getElementById('btn-flow'), document.getElementById('btn-compact')];
+      btns.forEach(b => b.classList.remove('active'));
+
+      if (mode === 'grid') {
+        gridEl.className = 'screenshots-grid';
+        document.getElementById('btn-grid').classList.add('active');
+      } else if (mode === 'flow') {
+        gridEl.className = 'screenshots-grid view-flow';
+        document.getElementById('btn-flow').classList.add('active');
+      } else if (mode === 'compact') {
+        gridEl.className = 'screenshots-grid view-compact';
+        document.getElementById('btn-compact').classList.add('active');
+      }
+    }
+  </script>
+</body>
+</html>
