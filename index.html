@@ -6,7 +6,7 @@
   <title>Full-Stack Web Programming: Syllabus, Notes & Architecture Guide</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-primary: #070a13;
@@ -447,7 +447,6 @@
       gap: 0.35rem;
     }
 
-    /* Content Typography within topics */
     .topic-card p {
       color: #cbd5e1;
       font-size: 0.95rem;
@@ -561,21 +560,314 @@
       font-size: 0.86rem;
       line-height: 1.55;
       color: #e2e8f0;
+      white-space: pre !important;
     }
 
-    /* ASCII Diagrams in Pre */
+    /* Fix for ASCII diagrams: always force white-space: pre so it never wraps */
     .ascii-diagram {
       background: #060911;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
-      padding: 1rem;
+      padding: 1.25rem;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.82rem;
       color: var(--accent-cyan);
       overflow-x: auto;
-      line-height: 1.35;
+      line-height: 1.45;
+      white-space: pre !important;
       margin: 1rem 0;
+      box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
     }
+
+    /* ============================================================ */
+    /* MODERN VISUAL FLOWCHART COMPONENTS (Replacing Fragile ASCII) */
+    /* ============================================================ */
+    .visual-flowchart-card {
+      background: linear-gradient(180deg, rgba(13, 21, 38, 0.95), rgba(7, 10, 19, 0.98));
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 1.25rem;
+      margin: 1.5rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 0 12px 36px -10px rgba(0, 0, 0, 0.7);
+      position: relative;
+    }
+
+    .vf-node {
+      width: 100%;
+      max-width: 580px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      padding: 1rem 1.25rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .vf-node:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.2);
+    }
+
+    /* Node color schemes */
+    .vf-node-client {
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(15, 23, 42, 0.9));
+      border-color: rgba(56, 189, 248, 0.5);
+    }
+
+    .vf-node-backend {
+      background: linear-gradient(135deg, rgba(6, 78, 59, 0.3), rgba(15, 23, 42, 0.9));
+      border-color: rgba(16, 185, 129, 0.5);
+      max-width: 640px;
+    }
+
+    .vf-node-database {
+      background: linear-gradient(135deg, rgba(88, 28, 135, 0.3), rgba(15, 23, 42, 0.9));
+      border-color: rgba(168, 85, 247, 0.5);
+    }
+
+    .vf-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .vf-title-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .vf-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .vf-badge-blue { background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.3); }
+    .vf-badge-green { background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald); border: 1px solid rgba(16, 185, 129, 0.3); }
+    .vf-badge-purple { background: rgba(168, 85, 247, 0.15); color: var(--accent-purple); border: 1px solid rgba(168, 85, 247, 0.3); }
+    .vf-badge-amber { background: rgba(245, 158, 11, 0.15); color: var(--accent-amber); border: 1px solid rgba(245, 158, 11, 0.3); }
+
+    .vf-desc {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .vf-substeps {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 0.85rem;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .vf-substep-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.84rem;
+      color: #e2e8f0;
+    }
+
+    .vf-step-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 800;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      color: var(--accent-cyan);
+      flex-shrink: 0;
+    }
+
+    /* Flow connector arrows */
+    .vf-connector {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+      color: var(--accent-cyan);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.25rem 0;
+      z-index: 2;
+    }
+
+    .vf-arrow-pill {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px dashed var(--accent-cyan);
+      padding: 0.2rem 0.75rem;
+      border-radius: 999px;
+      color: var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .vf-arrow-pill.sql {
+      border-color: var(--accent-amber);
+      color: var(--accent-amber);
+    }
+
+    /* Database tables preview badges */
+    .db-table-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.65rem;
+    }
+
+    .db-table-tag {
+      background: rgba(168, 85, 247, 0.12);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      color: #e9d5ff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    /* Event Loop Visual Diagram */
+    .event-loop-visual {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      width: 100%;
+      max-width: 680px;
+      margin-top: 0.75rem;
+    }
+
+    @media (max-width: 768px) {
+      .event-loop-visual {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .el-box {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem;
+      font-size: 0.82rem;
+    }
+
+    .el-box-fast { border-left: 3px solid var(--accent-emerald); }
+    .el-box-slow { border-left: 3px solid var(--accent-amber); }
+
+    /* Horizontal Pipeline Step Indicator */
+    .pipeline-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+      overflow-x: auto;
+      padding: 0.75rem 0;
+    }
+
+    .pipeline-step {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.65rem 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      flex-shrink: 0;
+      min-width: 130px;
+      text-align: center;
+    }
+
+    .pipeline-step.active {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+    }
+
+    .pipeline-arrow {
+      color: var(--text-dim);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    /* Entity Table Grid */
+    .entity-schema-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+
+    .entity-table-card {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .entity-header {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.6rem 0.9rem;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .entity-rows {
+      padding: 0.6rem 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: #cbd5e1;
+    }
+
+    .pk-pill { color: var(--accent-amber); font-weight: 700; font-size: 0.7rem; }
+    .fk-pill { color: var(--accent-cyan); font-weight: 700; font-size: 0.7rem; }
+
+    /* Folder Hierarchy Tree View */
+    .folder-tree {
+      background: #060911;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.83rem;
+      color: #e2e8f0;
+      line-height: 1.7;
+      overflow-x: auto;
+    }
+
+    .folder-name { color: var(--accent-cyan); font-weight: 700; }
+    .file-name { color: #cbd5e1; }
+    .comment-text { color: var(--text-dim); }
 
     /* Comparison Tables */
     .custom-table {
@@ -611,7 +903,7 @@
       background: rgba(255, 255, 255, 0.02);
     }
 
-    /* Tier Graphic Cards (Inspired by User Attachments) */
+    /* Tier Graphic Cards */
     .tier-visual-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -709,7 +1001,7 @@
       border: 1px solid rgba(56, 189, 248, 0.25);
     }
 
-    /* SVG Section - Full Width Architecture Showcase */
+    /* SVG Section */
     .svg-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
@@ -1262,55 +1554,95 @@
           <div class="topic-card">
             <p>One universal architecture that you can reproduce in almost every exam question (Library Management, Student Management, Hospital Management, Employee Management, Inventory Management, Course Management, E-commerce). <strong>Only the entities and tables change; the architecture, middleware, routing, and data flow remain identical.</strong></p>
 
-            <h4>Universal System Architecture</h4>
-            <div class="ascii-diagram">
-                     USER
-                       │
-                       ▼
-              ┌─────────────────┐
-              │    FRONTEND     │
-              │                 │
-              │ HTML/CSS/JS     │
-              │ or React        │
-              └────────┬────────┘
-                       │
-                 HTTP / HTTPS
-                       │
-                       ▼
-              ┌─────────────────┐
-              │     BACKEND     │
-              │                 │
-              │ Node.js         │
-              │ Express.js      │
-              │                 │
-              │ ┌─────────────┐ │
-              │ │   Routes    │ │
-              │ └──────┬──────┘ │
-              │        ↓        │
-              │ ┌─────────────┐ │
-              │ │ Middleware  │ │
-              │ └──────┬──────┘ │
-              │        ↓        │
-              │ ┌─────────────┐ │
-              │ │   Business  │ │
-              │ │    Logic    │ │
-              │ └──────┬──────┘ │
-              └────────┼────────┘
-                       │
-                       │ SQL
-                       ▼
-              ┌─────────────────┐
-              │    DATABASE     │
-              │     MySQL       │
-              │                 │
-              │ Users           │
-              │ Students        │
-              │ Books           │
-              │ Transactions    │
-              └─────────────────┘
+            <h4>Universal System Architecture Flowchart</h4>
+            
+            <!-- Modern Responsive Visual Architecture Flowchart -->
+            <div class="visual-flowchart-card">
+              <!-- Tier 1: Client -->
+              <div class="vf-node vf-node-client">
+                <div class="vf-header">
+                  <div class="vf-title-row">
+                    <span>💻</span>
+                    <span>CLIENT / FRONTEND TIER</span>
+                  </div>
+                  <span class="vf-badge vf-badge-blue">Presentation</span>
+                </div>
+                <div class="vf-desc">
+                  <strong>Technologies:</strong> HTML5, CSS3, JavaScript, or React.js<br>
+                  <strong>Role:</strong> Captures user interaction, triggers API calls via <code>fetch()</code> / Axios, renders responsive UI.
+                </div>
+              </div>
+
+              <!-- Connector 1 -->
+              <div class="vf-connector">
+                <div class="vf-arrow-pill">
+                  <span>↓ HTTP / HTTPS Request (e.g., <code>GET /api/books</code>)</span>
+                </div>
+                <span style="font-size: 0.7rem; color: var(--text-dim);">↑ JSON Response data payload</span>
+              </div>
+
+              <!-- Tier 2: Backend Server -->
+              <div class="vf-node vf-node-backend">
+                <div class="vf-header">
+                  <div class="vf-title-row">
+                    <span>⚙️</span>
+                    <span>BACKEND APPLICATION SERVER (Node.js + Express.js)</span>
+                  </div>
+                  <span class="vf-badge vf-badge-green">Business Logic</span>
+                </div>
+                <div class="vf-desc">
+                  Central application layer processing business logic, routing endpoints, and managing security checkpoints.
+                </div>
+
+                <!-- Internal Pipeline Substeps -->
+                <div class="vf-substeps">
+                  <div class="vf-substep-row">
+                    <span class="vf-step-pill">1. ROUTES</span>
+                    <span><code>app.get("/api/books", getBooks)</code> · URL &amp; HTTP method endpoint mapping</span>
+                  </div>
+                  <div style="color: var(--accent-cyan); font-size: 0.75rem; padding-left: 2rem;">↓ next() passes control</div>
+                  <div class="vf-substep-row">
+                    <span class="vf-step-pill">2. MIDDLEWARE</span>
+                    <span>Authentication (JWT check), Input Validation, Logging, CORS, Body Parser</span>
+                  </div>
+                  <div style="color: var(--accent-cyan); font-size: 0.75rem; padding-left: 2rem;">↓ next() passes control</div>
+                  <div class="vf-substep-row">
+                    <span class="vf-step-pill">3. CONTROLLERS</span>
+                    <span>Business logic execution, SQL query preparation &amp; database transactions</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Connector 2 -->
+              <div class="vf-connector">
+                <div class="vf-arrow-pill sql">
+                  <span>↓ SQL Queries (SELECT, INSERT, UPDATE, DELETE)</span>
+                </div>
+                <span style="font-size: 0.7rem; color: var(--accent-amber);">↑ Database result sets &amp; record rows</span>
+              </div>
+
+              <!-- Tier 3: Database -->
+              <div class="vf-node vf-node-database">
+                <div class="vf-header">
+                  <div class="vf-title-row">
+                    <span>🗄️</span>
+                    <span>DATABASE TIER (MySQL / MariaDB)</span>
+                  </div>
+                  <span class="vf-badge vf-badge-purple">Persistence</span>
+                </div>
+                <div class="vf-desc">
+                  Relational storage guaranteeing ACID compliance, foreign key integrity, and indexed query lookups.
+                </div>
+                <div class="db-table-tags">
+                  <span class="db-table-tag">📑 Users</span>
+                  <span class="db-table-tag">🎓 Students</span>
+                  <span class="db-table-tag">📚 Books</span>
+                  <span class="db-table-tag">🔄 Transactions</span>
+                </div>
+              </div>
             </div>
 
-            <!-- Visual 3-Tier Comparison Box (from user attachments) -->
+            <!-- Visual 3-Tier Comparison Box -->
             <h4>Industry 3-Tier Web App Mapping</h4>
             <div class="tier-visual-container">
               <div class="tier-box">
@@ -1344,18 +1676,63 @@
               </div>
             </div>
 
-            <h4>Database Design (Library Management Example)</h4>
-            <div class="ascii-diagram">
-Users table:        Books table:        Students table:       Transactions table:
------------------   -----------------   -------------------   ---------------------
-id (PK)             id (PK)             id (PK)               id (PK)
-name                title               name                  student_id (FK)
-email               author              course                book_id (FK)
-password (hashed)   quantity            email                 issue_date, return_date
-role (Admin/User)                                             status (issued/returned)
+            <h4>Database Schema Design (Library Management Example)</h4>
+            
+            <!-- Modern Entity Schema Grid -->
+            <div class="entity-schema-grid">
+              <!-- Users Table -->
+              <div class="entity-table-card">
+                <div class="entity-header"><span>📑 users</span><span class="vf-badge vf-badge-blue">Entity</span></div>
+                <div class="entity-rows">
+                  <div><span class="pk-pill">[PK]</span> id : INT AUTO_INCREMENT</div>
+                  <div>name : VARCHAR(100)</div>
+                  <div>email : VARCHAR(150) UNIQUE</div>
+                  <div>password : VARCHAR(255) (Hashed)</div>
+                  <div>role : ENUM('Admin', 'User')</div>
+                </div>
+              </div>
 
-Relationships:
-Student (1) ──── (Many) Transactions (Many) ──── (1) Book
+              <!-- Books Table -->
+              <div class="entity-table-card">
+                <div class="entity-header"><span>📚 books</span><span class="vf-badge vf-badge-green">Entity</span></div>
+                <div class="entity-rows">
+                  <div><span class="pk-pill">[PK]</span> id : INT AUTO_INCREMENT</div>
+                  <div>title : VARCHAR(200)</div>
+                  <div>author : VARCHAR(100)</div>
+                  <div>quantity : INT</div>
+                  <div>available : INT</div>
+                </div>
+              </div>
+
+              <!-- Students Table -->
+              <div class="entity-table-card">
+                <div class="entity-header"><span>🎓 students</span><span class="vf-badge vf-badge-purple">Entity</span></div>
+                <div class="entity-rows">
+                  <div><span class="pk-pill">[PK]</span> id : INT AUTO_INCREMENT</div>
+                  <div>name : VARCHAR(100)</div>
+                  <div>course : VARCHAR(50)</div>
+                  <div>email : VARCHAR(150)</div>
+                </div>
+              </div>
+
+              <!-- Transactions Table -->
+              <div class="entity-table-card">
+                <div class="entity-header"><span>🔄 transactions</span><span class="vf-badge vf-badge-amber">Junction Table</span></div>
+                <div class="entity-rows">
+                  <div><span class="pk-pill">[PK]</span> id : INT AUTO_INCREMENT</div>
+                  <div><span class="fk-pill">[FK]</span> student_id : INT</div>
+                  <div><span class="fk-pill">[FK]</span> book_id : INT</div>
+                  <div>issue_date : DATE</div>
+                  <div>return_date : DATE</div>
+                  <div>status : ENUM('Issued', 'Returned')</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="callout callout-info" style="margin: 0.75rem 0 1.25rem 0;">
+              <span class="callout-title">Entity Relationships (Cardinality):</span>
+              <strong>Student (1) ──── (Many) Transactions (Many) ──── (1) Book</strong><br>
+              A student can borrow many books over time through multiple transaction records. Each transaction belongs to one student and one book.
             </div>
 
             <h4>REST API Design</h4>
@@ -1381,33 +1758,35 @@ GET     /api/transactions               -> Audit history / active loans</code></
             </div>
 
             <h4>Backend Folder Structure</h4>
-            <div class="ascii-diagram">
-library-management/
-│
-├── frontend/
-│   ├── index.html
-│   ├── style.css
-│   └── app.js
-│
-├── backend/
-│   ├── server.js
-│   ├── routes/
-│   │   ├── studentRoutes.js
-│   │   ├── bookRoutes.js
-│   │   └── transactionRoutes.js
-│   ├── controllers/
-│   │   ├── studentController.js
-│   │   └── bookController.js
-│   ├── middleware/
-│   │   └── auth.js
-│   └── config/
-│       └── database.js
-│
-└── database/
-    └── library.sql
+            
+            <!-- Modern Folder Tree Hierarchy -->
+            <div class="folder-tree">
+              <div><span class="folder-name">📁 library-management/</span></div>
+              <div style="padding-left: 1.5rem;">│</div>
+              <div style="padding-left: 1.5rem;">├── <span class="folder-name">📁 frontend/</span> <span class="comment-text"># Client Tier (UI Presentation)</span></div>
+              <div style="padding-left: 3rem;">│   ├── <span class="file-name">📄 index.html</span> <span class="comment-text"># Markup Structure</span></div>
+              <div style="padding-left: 3rem;">│   ├── <span class="file-name">🎨 style.css</span> <span class="comment-text"># Styling &amp; Layout</span></div>
+              <div style="padding-left: 3rem;">│   └── <span class="file-name">⚡ app.js</span> <span class="comment-text"># Client logic &amp; fetch() API calls</span></div>
+              <div style="padding-left: 1.5rem;">│</div>
+              <div style="padding-left: 1.5rem;">├── <span class="folder-name">📁 backend/</span> <span class="comment-text"># Business Logic Tier (Application Server)</span></div>
+              <div style="padding-left: 3rem;">│   ├── <span class="file-name">🚀 server.js</span> <span class="comment-text"># Entry point &amp; Express app initialization</span></div>
+              <div style="padding-left: 3rem;">│   ├── <span class="folder-name">📁 routes/</span> <span class="comment-text"># URL routing definitions</span></div>
+              <div style="padding-left: 4.5rem;">│   ├── <span class="file-name">📄 studentRoutes.js</span></div>
+              <div style="padding-left: 4.5rem;">│   ├── <span class="file-name">📄 bookRoutes.js</span></div>
+              <div style="padding-left: 4.5rem;">│   └── <span class="file-name">📄 transactionRoutes.js</span></div>
+              <div style="padding-left: 3rem;">│   ├── <span class="folder-name">📁 controllers/</span> <span class="comment-text"># Route handler business logic</span></div>
+              <div style="padding-left: 4.5rem;">│   ├── <span class="file-name">📄 studentController.js</span></div>
+              <div style="padding-left: 4.5rem;">│   └── <span class="file-name">📄 bookController.js</span></div>
+              <div style="padding-left: 3rem;">│   ├── <span class="folder-name">📁 middleware/</span> <span class="comment-text"># Authentication &amp; request validation</span></div>
+              <div style="padding-left: 4.5rem;">│   └── <span class="file-name">📄 auth.js</span></div>
+              <div style="padding-left: 3rem;">│   └── <span class="folder-name">📁 config/</span> <span class="comment-text"># Database pool connection config</span></div>
+              <div style="padding-left: 4.5rem;">│       └── <span class="file-name">📄 database.js</span></div>
+              <div style="padding-left: 1.5rem;">│</div>
+              <div style="padding-left: 1.5rem;">└── <span class="folder-name">📁 database/</span> <span class="comment-text"># Database Tier (Schema scripts)</span></div>
+              <div style="padding-left: 3rem;">    └── <span class="file-name">🗄️ library.sql</span> <span class="comment-text"># DDL tables &amp; seeds</span></div>
             </div>
 
-            <h4>How One Request Travels (Step-by-Step Lifecycle)</h4>
+            <h4 style="margin-top: 1.5rem;">How One Request Travels (Step-by-Step Lifecycle)</h4>
             <ol>
               <li><strong>Step 1 — Frontend:</strong> User triggers action; code runs <code>fetch("/api/books")</code>.</li>
               <li><strong>Step 2 — HTTP Request:</strong> Request with header <code>GET /api/books</code> travels over network to server.</li>
@@ -1429,44 +1808,68 @@ library-management/
             
             <p><strong>Question:</strong> "Design a full-stack architecture for a Library / Student / Hospital Management System."</p>
             
-            <div class="ascii-diagram">
-                         CLIENT
-                           │
-                           ▼
-                 ┌───────────────────┐
-                 │     FRONTEND      │
-                 │ HTML CSS JS/React │
-                 └─────────┬─────────┘
-                           │
-                    HTTP / HTTPS
-                           │
-                           ▼
-                 ┌───────────────────┐
-                 │      EXPRESS      │
-                 │      ROUTES       │
-                 └─────────┬─────────┘
-                           │
-                           ▼
-                 ┌───────────────────┐
-                 │    MIDDLEWARE     │
-                 │ Auth / Validation │
-                 └─────────┬─────────┘
-                           │
-                           ▼
-                 ┌───────────────────┐
-                 │ BUSINESS LOGIC    │
-                 │   Controllers     │
-                 └─────────┬─────────┘
-                           │
-                           ▼
-                 ┌───────────────────┐
-                 │      MYSQL        │
-                 │                   │
-                 │ Users             │
-                 │ Students          │
-                 │ Books             │
-                 │ Transactions      │
-                 └───────────────────┘
+            <!-- Modern Responsive Visual Exam Flowchart -->
+            <div class="visual-flowchart-card">
+              <!-- Step 1: Client -->
+              <div class="vf-node vf-node-client" style="text-align: center;">
+                <div style="font-size: 1.1rem; font-weight: 800; color: #fff;">1. CLIENT / USER</div>
+                <div style="font-size: 0.8rem; color: var(--accent-cyan); font-family: 'JetBrains Mono', monospace;">Web Browser / Mobile Device</div>
+              </div>
+
+              <!-- Arrow -->
+              <div class="vf-connector">
+                <div class="vf-arrow-pill">↓ HTTP / HTTPS Request</div>
+              </div>
+
+              <!-- Step 2: Frontend -->
+              <div class="vf-node vf-node-client" style="text-align: center;">
+                <div style="font-size: 1.1rem; font-weight: 800; color: #fff;">2. FRONTEND (UI)</div>
+                <div style="font-size: 0.8rem; color: #cbd5e1;">HTML5 · CSS3 · JavaScript (or React.js)</div>
+              </div>
+
+              <!-- Arrow -->
+              <div class="vf-connector">
+                <div class="vf-arrow-pill">↓ fetch() API call</div>
+              </div>
+
+              <!-- Step 3: Express Routes -->
+              <div class="vf-node vf-node-backend" style="text-align: center;">
+                <div style="font-size: 1.05rem; font-weight: 800; color: #fff;">3. EXPRESS ROUTES</div>
+                <div style="font-size: 0.8rem; color: #cbd5e1;">Endpoint Mapping: GET, POST, PUT, DELETE</div>
+              </div>
+
+              <!-- Arrow -->
+              <div class="vf-connector">
+                <div class="vf-arrow-pill" style="border-style: solid; padding: 0.15rem 0.5rem; font-size: 0.7rem;">↓ next()</div>
+              </div>
+
+              <!-- Step 4: Middleware -->
+              <div class="vf-node vf-node-backend" style="text-align: center;">
+                <div style="font-size: 1.05rem; font-weight: 800; color: #fff;">4. MIDDLEWARE</div>
+                <div style="font-size: 0.8rem; color: #cbd5e1;">Auth Check (JWT) · Input Validation · CORS · Logger</div>
+              </div>
+
+              <!-- Arrow -->
+              <div class="vf-connector">
+                <div class="vf-arrow-pill" style="border-style: solid; padding: 0.15rem 0.5rem; font-size: 0.7rem;">↓ next()</div>
+              </div>
+
+              <!-- Step 5: Controllers -->
+              <div class="vf-node vf-node-backend" style="text-align: center;">
+                <div style="font-size: 1.05rem; font-weight: 800; color: #fff;">5. BUSINESS LOGIC &amp; CONTROLLERS</div>
+                <div style="font-size: 0.8rem; color: #cbd5e1;">Processes rules &amp; executes SQL queries</div>
+              </div>
+
+              <!-- Arrow -->
+              <div class="vf-connector">
+                <div class="vf-arrow-pill sql">↓ SQL Query Execution</div>
+              </div>
+
+              <!-- Step 6: MySQL Database -->
+              <div class="vf-node vf-node-database" style="text-align: center;">
+                <div style="font-size: 1.1rem; font-weight: 800; color: #fff;">6. MYSQL DATABASE</div>
+                <div style="font-size: 0.8rem; color: #e9d5ff;">Tables: Users · Students · Books · Transactions</div>
+              </div>
             </div>
 
             <div class="callout callout-exam">
@@ -1498,10 +1901,37 @@ library-management/
               <li><strong>Server-side:</strong> Code runs on the host server (Node.js, PHP, Python/Django, Java/Spring). Focuses on business rules, database access, security, and authentication.</li>
             </ul>
 
-            <div class="ascii-diagram">
-User ──► Browser / Frontend ──► HTTP Request ──► Server ──► Backend Logic ──► Database
-                                                                                 │
-User ◄── Browser / Frontend ◄── HTTP Response ◄── Server ◄── JSON / Data ────────┘
+            <!-- Visual Flowchart for Client/Server Request Cycle -->
+            <div class="pipeline-container">
+              <div class="pipeline-step active">
+                <span style="font-size: 1.1rem;">👤</span>
+                <strong>1. User</strong>
+                <span style="font-size: 0.72rem; color: var(--text-dim);">Clicks button</span>
+              </div>
+              <div class="pipeline-arrow">➔</div>
+              <div class="pipeline-step">
+                <span style="font-size: 1.1rem;">💻</span>
+                <strong>2. Frontend</strong>
+                <span style="font-size: 0.72rem; color: var(--text-dim);">Dispatches fetch()</span>
+              </div>
+              <div class="pipeline-arrow">➔</div>
+              <div class="pipeline-step">
+                <span style="font-size: 1.1rem;">🌐</span>
+                <strong>3. Server API</strong>
+                <span style="font-size: 0.72rem; color: var(--text-dim);">HTTP Handler</span>
+              </div>
+              <div class="pipeline-arrow">➔</div>
+              <div class="pipeline-step">
+                <span style="font-size: 1.1rem;">⚙️</span>
+                <strong>4. Logic</strong>
+                <span style="font-size: 0.72rem; color: var(--text-dim);">Controller</span>
+              </div>
+              <div class="pipeline-arrow">➔</div>
+              <div class="pipeline-step">
+                <span style="font-size: 1.1rem;">🗄️</span>
+                <strong>5. Database</strong>
+                <span style="font-size: 0.72rem; color: var(--text-dim);">SQL Query</span>
+              </div>
             </div>
 
             <div class="callout callout-exam">
@@ -1518,29 +1948,41 @@ User ◄── Browser / Frontend ◄── HTTP Response ◄── Server ◄�
             </div>
             <p>Node.js allows execution of JavaScript outside the browser, natively on the server. Built on Google's high-performance <strong>V8 JavaScript Engine</strong>.</p>
             
-            <div class="ascii-diagram" id="sec-3">
-              Client
-                 ↓
-          HTTP Request
-                 ↓
-        ┌────────────────┐
-        │    Node.js     │
-        │    Server      │
-        └───────┬────────┘
-                ↓
-          Event Loop (Single-Threaded)
-                ↓
-      ┌─────────┴─────────┐
-      ↓                   ↓
-Synchronous work     Async operations
-                          ↓
-                  OS / Database / File System (Libuv Thread Pool)
-                          ↓
-                     Callback
-                          ↓
-                     Event Loop
-                          ↓
-                    Response
+            <!-- Modern Visual Node.js Event Loop Architecture -->
+            <div class="visual-flowchart-card" id="sec-3">
+              <div class="vf-node vf-node-client" style="text-align: center; max-width: 480px;">
+                <div style="font-weight: 800; color: #fff;">CLIENTS (Multiple Concurrent Requests)</div>
+                <div style="font-size: 0.75rem; color: var(--accent-cyan);">Request 1, Request 2, Request 3...</div>
+              </div>
+
+              <div class="vf-connector">
+                <div class="vf-arrow-pill">↓ HTTP Request Received</div>
+              </div>
+
+              <div class="vf-node vf-node-backend" style="text-align: center; max-width: 540px;">
+                <div style="font-size: 1.1rem; font-weight: 800; color: #fff;">NODE.JS SERVER (Single Main Thread)</div>
+                <div style="font-size: 0.85rem; color: var(--accent-emerald); font-weight: 700; margin: 0.3rem 0;">THE EVENT LOOP</div>
+                
+                <div class="event-loop-visual">
+                  <div class="el-box el-box-fast">
+                    <strong style="color: var(--accent-emerald);">⚡ FAST PATH (Sync)</strong>
+                    <div style="color: var(--text-muted); font-size: 0.75rem; margin-top: 0.25rem;">Handled instantly on main thread (Simple calculations, in-memory checks)</div>
+                    <div style="color: var(--accent-emerald); font-size: 0.75rem; margin-top: 0.3rem;">➔ Immediate Response</div>
+                  </div>
+
+                  <div style="color: var(--text-dim); font-size: 0.8rem;">OR</div>
+
+                  <div class="el-box el-box-slow">
+                    <strong style="color: var(--accent-amber);">⏳ SLOW PATH (Async I/O)</strong>
+                    <div style="color: var(--text-muted); font-size: 0.75rem; margin-top: 0.25rem;">Delegated to Libuv Background Worker Pool (File I/O, DB query, network)</div>
+                    <div style="color: var(--accent-amber); font-size: 0.75rem; margin-top: 0.3rem;">➔ Callback returns to Loop</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="vf-connector">
+                <div class="vf-arrow-pill">↓ Response Sent to Client</div>
+              </div>
             </div>
 
             <div class="callout callout-takeaway">
@@ -1696,9 +2138,43 @@ app.listen(3000, () => console.log("Server listening on port 3000"));</code></pr
             </div>
             <p><strong>Middleware</strong> functions execute in sequence between the incoming request and the outgoing response.</p>
             
-            <div class="ascii-diagram">
-Client Request ──► [ Middleware 1: Logger ] ──► [ Middleware 2: Auth Check ] ──► [ Route Handler ] ──► Client Response
-                               next()                          next()
+            <!-- Visual Middleware Pipeline -->
+            <div class="pipeline-container">
+              <div class="pipeline-step">
+                <span style="font-size: 1.1rem;">📥</span>
+                <strong>HTTP Request</strong>
+                <span style="font-size: 0.72rem; color: var(--text-dim);">Incoming</span>
+              </div>
+              <div class="pipeline-arrow">➔</div>
+              <div class="pipeline-step active">
+                <span style="font-size: 1.1rem;">🛡️</span>
+                <strong>Middleware 1</strong>
+                <span style="font-size: 0.72rem; color: var(--accent-cyan);">Logger (next())</span>
+              </div>
+              <div class="pipeline-arrow">➔</div>
+              <div class="pipeline-step active">
+                <span style="font-size: 1.1rem;">🔑</span>
+                <strong>Middleware 2</strong>
+                <span style="font-size: 0.72rem; color: var(--accent-cyan);">Auth Check (next())</span>
+              </div>
+              <div class="pipeline-arrow">➔</div>
+              <div class="pipeline-step active">
+                <span style="font-size: 1.1rem;">📋</span>
+                <strong>Middleware 3</strong>
+                <span style="font-size: 0.72rem; color: var(--accent-cyan);">Validator (next())</span>
+              </div>
+              <div class="pipeline-arrow">➔</div>
+              <div class="pipeline-step">
+                <span style="font-size: 1.1rem;">🎯</span>
+                <strong>Route Handler</strong>
+                <span style="font-size: 0.72rem; color: var(--text-dim);">Controller / DB</span>
+              </div>
+              <div class="pipeline-arrow">➔</div>
+              <div class="pipeline-step">
+                <span style="font-size: 1.1rem;">📤</span>
+                <strong>HTTP Response</strong>
+                <span style="font-size: 0.72rem; color: var(--text-dim);">JSON sent back</span>
+              </div>
             </div>
 
             <div class="code-container">
@@ -2128,8 +2604,32 @@ const dbPass = process.env.DB_PASSWORD;</code></pre>
             </div>
 
             <h4 id="sec-40">Git Version Control Workflow</h4>
-            <div class="ascii-diagram">
-Working Directory ──( git add . )──► Staging Area ──( git commit -m )──► Local Repository ──( git push )──► GitHub Remote
+            
+            <!-- Modern Responsive Git Pipeline -->
+            <div class="pipeline-container">
+              <div class="pipeline-step">
+                <span style="font-size: 1.1rem;">💻</span>
+                <strong>Working Dir</strong>
+                <span style="font-size: 0.72rem; color: var(--text-dim);">Modified Files</span>
+              </div>
+              <div class="pipeline-arrow" style="font-size: 0.75rem; color: var(--accent-cyan); font-family: 'JetBrains Mono', monospace;">git add . ➔</div>
+              <div class="pipeline-step active">
+                <span style="font-size: 1.1rem;">📑</span>
+                <strong>Staging Area</strong>
+                <span style="font-size: 0.72rem; color: var(--accent-cyan);">Index / Tracked</span>
+              </div>
+              <div class="pipeline-arrow" style="font-size: 0.75rem; color: var(--accent-emerald); font-family: 'JetBrains Mono', monospace;">git commit ➔</div>
+              <div class="pipeline-step active">
+                <span style="font-size: 1.1rem;">📦</span>
+                <strong>Local Repo</strong>
+                <span style="font-size: 0.72rem; color: var(--accent-emerald);">.git / Commit History</span>
+              </div>
+              <div class="pipeline-arrow" style="font-size: 0.75rem; color: var(--accent-purple); font-family: 'JetBrains Mono', monospace;">git push ➔</div>
+              <div class="pipeline-step active">
+                <span style="font-size: 1.1rem;">☁️</span>
+                <strong>GitHub Remote</strong>
+                <span style="font-size: 0.72rem; color: var(--accent-purple);">Cloud Repository</span>
+              </div>
             </div>
           </div>
 
