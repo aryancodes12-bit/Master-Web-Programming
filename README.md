@@ -68,9 +68,10 @@ A comprehensive, exam-ready study guide, syllabus, and interactive architecture 
 
 ---
 
-### 5. **Question Bank Solutions (QB Sol: Q1–Q50)**
+### 5. **Question Bank Solutions (QB Sol: Q1–Q75)**
 - **Module 1 (Node.js & Express.js - Q1–Q25):** Event loop concurrent request handling, Core vs Third-party modules, Bearer token authorization middleware, `req.params` vs `req.query`, Express vs native HTTP, Database connection pools, Centralized error handling, and Module 1 Master Map.
 - **Module 2 (PHP & MySQL - Q26–Q50):** Multidimensional arrays + foreach, `$_GET` vs `$_POST`, Cookie lifecycle & security flags, Type declarations & default parameters, `include` vs `require`, Structured exceptions, Secure login pipeline with `password_verify()` and prepared statements, 5-stage file upload security validator, SQLi/XSS/CSRF/Session hijacking defenses, and MySQLi vs PDO comparison matrix.
+- **Module 3 (Full Stack, Security, Git, Testing & Deployment - Q51–Q75):** Git 4-stage lifecycle (`add`, `commit`, `push`, `pull`), JWT vs Session Cookies comparison, CORS preflight & 8-step debugging protocol, Frontend vs Database state synchronization, Git Merge vs Rebase, Static CDN vs Containerized Cloud deployment, Secure user registration & bcrypt hashing pipeline, Automated testing pyramid (Jest, Supertest, E2E), Fetch API `response.ok` traps, CI/CD GitHub Actions pipelines, HTTPS + CSP + OWASP defenses, E-Commerce full-stack system design, 14-Step complete request-response lifecycle, Performance tuning (caching, DB indexes, CDN, compression), MERN vs MEAN architecture matrix, Environment variables (`.env`), 4-Layer API defense hierarchy, Complete Full-Stack Student Management System CRUD implementation, 5-Tier integration troubleshooting funnel, 75-Question Master Synthesis, and 10 Golden Exam Revision Rules.
 
 ---
 

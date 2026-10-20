@@ -1409,7 +1409,7 @@
         </button>
         <button class="tab-btn" id="tab-qb-btn" onclick="switchView('qb')">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-          QB Sol (Q1–Q50)
+          QB Sol (Q1–Q75)
         </button>
         <button class="tab-btn" id="tab-gallery-btn" onclick="switchView('gallery')">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
@@ -1421,7 +1421,7 @@
       <div>
         <select class="quick-jump-select" onchange="handleQuickJump(this.value)">
           <option value="">Jump to Topic...</option>
-          <optgroup label="🎯 QB Solutions (Q1-Q50)">
+                    <optgroup label="📚 QB Solutions (Q1-Q75)">
             <option value="qb-q1">Q1. Event-Driven &amp; Non-Blocking I/O</option>
             <option value="qb-q4">Q4 &amp; Q12. Bearer Auth Middleware</option>
             <option value="qb-q6">Q6. req.params vs req.query</option>
@@ -1429,9 +1429,21 @@
             <option value="qb-q26">Q26. PHP Multidimensional Arrays</option>
             <option value="qb-q27">Q27. $_GET vs $_POST Deep Dive</option>
             <option value="qb-q35">Q35 &amp; Q42. Secure Login &amp; Passwords</option>
-            <option value="qb-q36">Q36. Secure File Upload Pipeline</option>
             <option value="qb-q43">Q43. SQLi, XSS, CSRF, Session Hijack</option>
-            <option value="qb-q50">Q50. MySQLi vs PDO Comparison</option>
+            <option value="qb-q51">Q51 &amp; Q55. Git Workflow &amp; Merge vs Rebase</option>
+            <option value="qb-q52">Q52 &amp; Q58. JWT vs Session Cookies</option>
+            <option value="qb-q53">Q53 &amp; Q68. CORS &amp; Debugging Protocol</option>
+            <option value="qb-q57">Q57 &amp; Q72. React + Express Secure Auth &amp; Reg</option>
+            <option value="qb-q60">Q60 &amp; Q69. Unit vs Integration Testing (Jest/Supertest)</option>
+            <option value="qb-q62">Q62. CI/CD Automated Pipelines</option>
+            <option value="qb-q63">Q63. HTTPS + CSP + OWASP Top 10</option>
+            <option value="qb-q65">Q65. Complete 14-Step Full-Stack Lifecycle</option>
+            <option value="qb-q67">Q67. Full-Stack Performance Strategies</option>
+            <option value="qb-q70">Q70. MERN vs MEAN Comparison</option>
+            <option value="qb-q71">Q71. Environment Variables &amp; Secrets</option>
+            <option value="qb-q73">Q73. 4-Tier Security (Val, AuthN, AuthZ, Error)</option>
+            <option value="qb-q74">⭐ Q74. Universal Student Management Architecture</option>
+            <option value="qb-q75">Q75. Full-Stack Integration Troubleshooting Funnel</option>
           </optgroup>
           <optgroup label="⭐ Core Exam Must-Know">
             <option value="universal-architecture">⭐ Universal Architecture (Universal Model)</option>
@@ -1484,11 +1496,11 @@
         <h2>Web Programming &amp; Universal Full-Stack Architecture</h2>
         <p>A structured, end-to-end curriculum encompassing server-side execution, database transactions, API design, security, and an industry-standard universal architecture reusable across all exam use-cases (Library, Student, Hospital, Employee, and E-commerce Management).</p>
         
-        <div class="block-chips">
-          <div class="block-chip"><span class="num">1</span> Part A: Node.js + Express.js</div>
-          <div class="block-chip"><span class="num">2</span> Part B: PHP + MySQL</div>
-          <div class="block-chip"><span class="num">3</span> Part C: Full-Stack Application Dev</div>
-          <div class="block-chip"><span class="num">⭐</span> Universal Reusable Architecture</div>
+                <div class="block-chips">
+          <div class="block-chip"><span class="num">M1</span> Node.js &amp; Express.js (Q1-Q25)</div>
+          <div class="block-chip"><span class="num">M2</span> PHP &amp; MySQL (Q26-Q50)</div>
+          <div class="block-chip" style="border-color: rgba(16, 185, 129, 0.4);"><span class="num" style="background: rgba(16, 185, 129, 0.2); color: var(--accent-green);">M3</span> Full Stack + Security + Git + Testing + Deploy (Q51-Q75)</div>
+          <div class="block-chip"><span class="num">⭐</span> Exam Cheat Tricks &amp; Master Architecture</div>
         </div>
       </section>
 
@@ -2773,13 +2785,14 @@ const dbPass = process.env.DB_PASSWORD;</code></pre>
         <div class="hero-tag" style="background: rgba(168, 85, 247, 0.2); color: var(--accent-purple); border-color: rgba(168, 85, 247, 0.4);">
           ⭐ Verified University Question Bank Solutions
         </div>
-        <h2>Question Bank Solutions (Module 1 &amp; Module 2)</h2>
+        <h2>Question Bank Solutions (Module 1, Module 2 &amp; Module 3)</h2>
         <p>Curated, exam-targeted model solutions, code demonstrations, architectural workflows, and comparison matrices for university exam questions across Node.js, Express.js, PHP, MySQL, and Web Security.</p>
         
-        <div class="block-chips">
-          <div class="block-chip"><span class="num">M1</span> Node.js &amp; Express.js Solutions (Q1–Q25)</div>
-          <div class="block-chip"><span class="num">M2</span> PHP &amp; MySQL Solutions (Q26–Q50)</div>
-          <div class="block-chip"><span class="num">🔥</span> Exam Cheat Tricks &amp; Model Code</div>
+                <div class="block-chips">
+          <div class="block-chip"><span class="num">M1</span> Node.js &amp; Express.js (Q1-Q25)</div>
+          <div class="block-chip"><span class="num">M2</span> PHP &amp; MySQL (Q26-Q50)</div>
+          <div class="block-chip" style="border-color: rgba(16, 185, 129, 0.4);"><span class="num" style="background: rgba(16, 185, 129, 0.2); color: var(--accent-green);">M3</span> Full Stack + Security + Git + Testing + Deploy (Q51-Q75)</div>
+          <div class="block-chip"><span class="num">⭐</span> Exam Cheat Tricks &amp; Master Architecture</div>
         </div>
       </section>
 
@@ -2828,6 +2841,30 @@ const dbPass = process.env.DB_PASSWORD;</code></pre>
             <li><a class="toc-link" href="#qb-q49">Q49. Validation vs Prepared Stmt</a></li>
             <li><a class="toc-link" href="#qb-q50">Q50. MySQLi vs PDO Comparison</a></li>
             <li><a class="toc-link" href="#qb-m2-map">🧠 Module 2 Master Revision Map</a></li>
+          
+            <div class="toc-group-header">Module 3 (Full Stack, Security, Git, Deploy)</div>
+            <li><a class="toc-link" href="#qb-q51">Q51. Git Basic Workflow</a></li>
+            <li><a class="toc-link" href="#qb-q52">Q52 &amp; Q58. JWT vs Session Cookies</a></li>
+            <li><a class="toc-link" href="#qb-q53">Q53 &amp; Q68. CORS Deep Dive &amp; Debugging</a></li>
+            <li><a class="toc-link" href="#qb-q54">Q54. Frontend vs Backend State</a></li>
+            <li><a class="toc-link" href="#qb-q55">Q55. Git Merge vs Git Rebase</a></li>
+            <li><a class="toc-link" href="#qb-q56">Q56 &amp; Q66. Static vs Cloud Deployment</a></li>
+            <li><a class="toc-link" href="#qb-q57">Q57 &amp; Q72. Secure Auth &amp; Registration</a></li>
+            <li><a class="toc-link" href="#qb-q59">Q59. Team Git Branching Strategy</a></li>
+            <li><a class="toc-link" href="#qb-q60">Q60 &amp; Q69. Unit vs Integration Testing</a></li>
+            <li><a class="toc-link" href="#qb-q61">Q61. Fetch API Integration &amp; response.ok</a></li>
+            <li><a class="toc-link" href="#qb-q62">Q62. CI/CD Automation Pipeline</a></li>
+            <li><a class="toc-link" href="#qb-q63">Q63. HTTPS + CSP + OWASP Top 10</a></li>
+            <li><a class="toc-link" href="#qb-q64">Q64. Full-Stack E-Commerce Architecture</a></li>
+            <li><a class="toc-link" href="#qb-q65">Q65. Complete 14-Step Request Lifecycle</a></li>
+            <li><a class="toc-link" href="#qb-q67">Q67. Full-Stack Performance Tuning</a></li>
+            <li><a class="toc-link" href="#qb-q70">Q70. MERN vs MEAN Architecture Matrix</a></li>
+            <li><a class="toc-link" href="#qb-q71">Q71. Environment Variables (.env)</a></li>
+            <li><a class="toc-link" href="#qb-q73">Q73. 4-Layer API Defense Hierarchy</a></li>
+            <li><a class="toc-link" href="#qb-q74">⭐ Q74. Complete Full-Stack System Architecture</a></li>
+            <li><a class="toc-link" href="#qb-q75">Q75. Universal Troubleshooting Funnel</a></li>
+            <li><a class="toc-link" href="#qb-m3-map">🎯 75-Question Master Synthesis</a></li>
+            <li><a class="toc-link" href="#qb-exam-must-know">⭐ 10 Golden Exam Revision Points</a></li>
           </ul>
         </aside>
 
@@ -3653,6 +3690,1114 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" &amp;&amp; isset($_FILES["document"]))
               </div>
             </div>
           </div>
+
+          <!-- ======================================================= -->
+          <!-- MODULE 3: FULL-STACK DEVELOPMENT, SECURITY, GIT, TESTING & DEPLOYMENT -->
+          <!-- ======================================================= -->
+          <div class="part-banner part-c" id="qb-m3-section" style="border-left-color: var(--accent-green); margin-top: 3.5rem;">
+            <div>
+              <span class="topic-badge" style="background: rgba(16, 185, 129, 0.2); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.4);">MODULE 3 SOLUTIONS</span>
+              <h3>FULL-STACK, SECURITY, GIT, TESTING &amp; DEPLOYMENT</h3>
+            </div>
+            <span class="section-pill" style="border-color: rgba(16, 185, 129, 0.4); color: var(--accent-green);">Questions 51 – 75 &bull; 5 &amp; 10 Marks Models</span>
+          </div>
+
+          <!-- Q51 -->
+          <div class="topic-card" id="qb-q51">
+            <div class="topic-header">
+              <h4 class="topic-title">Q51. Git Basic Workflow &amp; Fundamental Lifecycle</h4>
+              <span class="exam-tag">5 Marks Core Theory</span>
+            </div>
+            <p><strong>Question:</strong> Explain the standard Git Version Control workflow from local file edits to remote repository sync with commands and lifecycle stages.</p>
+
+            <div class="hinglish-box">
+              <span class="hinglish-label">Hinglish Memory Hack</span>
+              Git ek distributed version control system hai jo file history track karta hai. Daily workflow ka universal mantra hai: <strong>Working Directory &rarr; (git add) &rarr; Staging Area &rarr; (git commit) &rarr; Local Repo &rarr; (git push) &rarr; Remote Repo</strong>. Dusro ka latest kaam laane ke liye: <code>git pull</code>!
+            </div>
+
+            <!-- Visual Flowchart for Git Workflow -->
+            <div class="visual-flowchart-card">
+              <div class="vflow-header">
+                <span class="vflow-title">Git 4-Stage State Lifecycle</span>
+                <span class="vflow-badge">Working &rarr; Staged &rarr; Committed &rarr; Remote</span>
+              </div>
+              <div class="pipeline-container">
+                <div class="pipe-node">
+                  <span class="pipe-node-step">Stage 1</span>
+                  <div class="pipe-node-title">Working Tree</div>
+                  <div class="pipe-node-desc">Uncommitted edits in your local workspace</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">Stage 2: git add .</span>
+                  <div class="pipe-node-title">Staging Area</div>
+                  <div class="pipe-node-desc">Index of snapshots prepared for next commit</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">Stage 3: git commit</span>
+                  <div class="pipe-node-title">Local Repo (.git)</div>
+                  <div class="pipe-node-desc">Permanently saved cryptographic commit hash</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">Stage 4: git push</span>
+                  <div class="pipe-node-title">Remote Repository</div>
+                  <div class="pipe-node-desc">Cloud origin (GitHub/GitLab) team mirror</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="code-container">
+              <div class="code-header"><span>Git Essential Command Reference</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code># 1. Check workspace status (tracked/untracked changes)
+git status
+
+# 2. Stage all modifications and new files
+git add .
+
+# 3. Create a snapshot commit with a descriptive semantic message
+git commit -m "feat(auth): implement JWT token verification middleware"
+
+# 4. Push local branch commits to remote upstream
+git push origin main
+
+# 5. Fetch and merge latest remote team changes in one step
+git pull origin main</code></pre>
+            </div>
+          </div>
+
+          <!-- Q52 & Q58 -->
+          <div class="topic-card" id="qb-q52">
+            <div class="topic-header">
+              <h4 class="topic-title">Q52 &amp; Q58. JWT (JSON Web Tokens) vs Session Cookies Deep Dive</h4>
+              <span class="exam-tag">High-Frequency 5 &amp; 10 Marks</span>
+            </div>
+            <p><strong>Question:</strong> Detail the anatomy of a JSON Web Token (JWT). Contrast stateless JWT token authentication with traditional stateful session cookies.</p>
+
+            <div class="hinglish-box">
+              <span class="hinglish-label">Core Anatomy</span>
+              JWT consists of three Base64URL-encoded strings joined by dots: <code>header.payload.signature</code>.
+              <ul>
+                <li><strong>Header:</strong> Algorithm &amp; token type (e.g., <code>{"alg": "HS256", "typ": "JWT"}</code>).</li>
+                <li><strong>Payload:</strong> Claims like <code>userId</code>, <code>role</code>, <code>exp</code> (⚠️ <em>Never put passwords here—payload is encoded, not encrypted!</em>).</li>
+                <li><strong>Signature:</strong> <code>HMACSHA256(base64(header) + "." + base64(payload), secret)</code> ensuring tamper-proof validation.</li>
+              </ul>
+            </div>
+
+            <!-- Comparison Table -->
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th>Evaluation Feature</th>
+                  <th>Session Cookie Authentication</th>
+                  <th>JWT (JSON Web Token)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>State Location</strong></td>
+                  <td><strong>Stateful:</strong> Session data stored on server RAM/Redis/DB</td>
+                  <td><strong>Stateless:</strong> All claims carried self-contained in token</td>
+                </tr>
+                <tr>
+                  <td><strong>Scalability</strong></td>
+                  <td>Requires sticky sessions or shared cache cluster (Redis)</td>
+                  <td>Horizontally scalable across microservices without shared DB</td>
+                </tr>
+                <tr>
+                  <td><strong>Client Transport</strong></td>
+                  <td>Sent automatically by browser in <code>Cookie</code> header</td>
+                  <td>Sent explicitly in <code>Authorization: Bearer &lt;token&gt;</code> header</td>
+                </tr>
+                <tr>
+                  <td><strong>Revocation / Logout</strong></td>
+                  <td>Instant: Server deletes session entry from DB/Redis</td>
+                  <td>Difficult: Valid until expiry unless blocklist/Redis maintained</td>
+                </tr>
+                <tr>
+                  <td><strong>Primary Vulnerabilities</strong></td>
+                  <td>CSRF (Cross-Site Request Forgery) &rarr; needs anti-CSRF token</td>
+                  <td>XSS token theft if kept in <code>localStorage</code></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="code-container">
+              <div class="code-header"><span>Node.js JWT Minting &amp; Verification (jsonwebtoken)</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>const jwt = require("jsonwebtoken");
+
+// 1. Issuing a JWT on successful authentication
+function issueToken(user) {
+    return jwt.sign(
+        { userId: user.id, role: user.role },
+        process.env.JWT_SECRET,
+        { expiresIn: "1h", algorithm: "HS256" }
+    );
+}
+
+// 2. Express Authentication Middleware
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers["authorization"];
+    const token = authHeader && authHeader.split(" ")[1]; // Bearer &lt;TOKEN&gt;
+
+    if (!token) return res.status(401).json({ error: "Access Denied: No Token" });
+
+    jwt.verify(token, process.env.JWT_SECRET, (err, decodedUser) => {
+        if (err) return res.status(403).json({ error: "Invalid or expired token" });
+        req.user = decodedUser;
+        next();
+    });
+}</code></pre>
+            </div>
+          </div>
+
+          <!-- Q53 & Q68 -->
+          <div class="topic-card" id="qb-q53">
+            <div class="topic-header">
+              <h4 class="topic-title">Q53 &amp; Q68. CORS (Cross-Origin Resource Sharing) &amp; Step-by-Step Debugging Protocol</h4>
+              <span class="exam-tag">Crucial Troubleshooting Question</span>
+            </div>
+            <p><strong>Question:</strong> What causes CORS errors? Describe preflight <code>OPTIONS</code> requests and provide an 8-step protocol for debugging CORS authentication failures.</p>
+
+            <div class="hinglish-box">
+              <span class="hinglish-label">Kyun Aata Hai CORS Error?</span>
+              Browser ki <strong>Same-Origin Policy (SOP)</strong> restrict karti hai ki ek origin (e.g. <code>http://localhost:3000</code>) doosre origin (e.g. <code>http://localhost:5000</code>) ke backend se data tab tak na padh sake jab tak backend explicit headers na bheje. Non-simple requests (jaise custom <code>Authorization: Bearer</code> headers ya <code>PUT/DELETE</code>) par browser pehle ek <strong>Preflight HTTP OPTIONS</strong> request bhejta hai.
+            </div>
+
+            <div class="visual-flowchart-card">
+              <div class="vflow-header">
+                <span class="vflow-title">CORS Preflight &amp; Request Validation Cycle</span>
+                <span class="vflow-badge">Browser Security Enforcement</span>
+              </div>
+              <div class="pipeline-container">
+                <div class="pipe-node">
+                  <span class="pipe-node-step">1. Preflight</span>
+                  <div class="pipe-node-title">OPTIONS Request</div>
+                  <div class="pipe-node-desc">Sends Origin + Access-Control-Request-Headers</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">2. Server Header</span>
+                  <div class="pipe-node-title">Access-Control-Allow-Origin</div>
+                  <div class="pipe-node-desc">Returns allowed origins, methods, credentials</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">3. Actual Call</span>
+                  <div class="pipe-node-title">GET/POST/PUT</div>
+                  <div class="pipe-node-desc">Browser fires real request with Bearer token</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">4. Completion</span>
+                  <div class="pipe-node-title">200 OK Response</div>
+                  <div class="pipe-node-desc">Client JavaScript processes parsed JSON data</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 8-Step Debugging Protocol List -->
+            <div class="tier-visual-container">
+              <div class="tier-box">
+                <span class="tier-badge">Step 1 &ndash; 3: Network Tab</span>
+                <h5>Origin &amp; URL Verification</h5>
+                <ul>
+                  <li><strong>Step 1:</strong> Inspect Network tab &rarr; check failed URL.</li>
+                  <li><strong>Step 2:</strong> Check Origin matching (e.g., <code>localhost:3000</code> vs <code>127.0.0.1:3000</code> are different origins!).</li>
+                  <li><strong>Step 3:</strong> Check backend <code>cors()</code> middleware origin config.</li>
+                </ul>
+              </div>
+              <div class="tier-box">
+                <span class="tier-badge">Step 4 &ndash; 6: Preflight &amp; Headers</span>
+                <h5>Preflight &amp; Auth Handshake</h5>
+                <ul>
+                  <li><strong>Step 4:</strong> Check if <code>OPTIONS</code> request returned <code>204 No Content</code> or <code>200 OK</code>.</li>
+                  <li><strong>Step 5:</strong> Ensure backend permits <code>Authorization</code> in <code>allowedHeaders</code>.</li>
+                  <li><strong>Step 6:</strong> Check server logs for middleware crashes before headers send.</li>
+                </ul>
+              </div>
+              <div class="tier-box">
+                <span class="tier-badge">Step 7 &ndash; 8: Auth &amp; Tokens</span>
+                <h5>Token &amp; Credentials Sync</h5>
+                <ul>
+                  <li><strong>Step 7:</strong> If using cookies, set <code>credentials: 'include'</code> &amp; backend <code>credentials: true</code>.</li>
+                  <li><strong>Step 8:</strong> Verify JWT secret and signature on the server to prevent silent 401/403 blocks.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="code-container">
+              <div class="code-header"><span>Robust Express CORS Configuration</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>const cors = require("cors");
+
+const corsOptions = {
+    origin: "http://localhost:3000", // Allow only trusted client origin
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true, // Allow cookies if needed
+    maxAge: 86400 // Cache preflight response for 24 hours
+};
+
+app.use(cors(corsOptions));</code></pre>
+            </div>
+          </div>
+
+          <!-- Q54 -->
+          <div class="topic-card" id="qb-q54">
+            <div class="topic-header">
+              <h4 class="topic-title">Q54. Frontend State vs Backend Database State Synchronization</h4>
+              <span class="exam-tag">State Architecture</span>
+            </div>
+            <p><strong>Question:</strong> Why does state inconsistency occur between frontend client state and backend persistent database state? How do modern apps prevent stale data and lost updates?</p>
+
+            <div class="hinglish-box">
+              <span class="hinglish-label">Golden Rule</span>
+              <strong>Backend Database is the ONLY Source of Truth!</strong> Agar client side par state update ho gayi par network error ki wajah se database insert fail ho gaya, to UI galat data display karegi (Optimistic UI trap).
+            </div>
+
+            <div class="tier-visual-container">
+              <div class="tier-box">
+                <span class="tier-badge" style="background: rgba(239, 68, 68, 0.2); color: var(--accent-red);">Danger 1: Stale Data</span>
+                <h5>Outdated UI Snapshots</h5>
+                <p>User A edits student marks; User B is viewing yesterday's cached browser state and makes decisions based on obsolete numbers.</p>
+              </div>
+              <div class="tier-box">
+                <span class="tier-badge" style="background: rgba(245, 158, 11, 0.2); color: var(--accent-amber);">Danger 2: Lost Updates</span>
+                <h5>Concurrent Overwrites</h5>
+                <p>Two admins submit edits simultaneously; the slower network response overwrites the faster one without concurrency checks.</p>
+              </div>
+              <div class="tier-box">
+                <span class="tier-badge" style="background: rgba(16, 185, 129, 0.2); color: var(--accent-green);">Best Solution</span>
+                <h5>Pessimistic Sync &amp; Invalidation</h5>
+                <p>Send mutation &rarr; wait for HTTP 200 &rarr; re-fetch query cache or update state directly from backend response JSON payload.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q55 & Q59 -->
+          <div class="topic-card" id="qb-q55">
+            <div class="topic-header">
+              <h4 class="topic-title">Q55 &amp; Q59. Git Merge vs Git Rebase &amp; Team Branching Strategies</h4>
+              <span class="exam-tag">Version Control Architecture</span>
+            </div>
+            <p><strong>Question:</strong> Compare Git Merge and Git Rebase with commit graphs. Outline an industry-standard feature-branching strategy for team collaboration.</p>
+
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th>Criteria</th>
+                  <th>Git Merge (<code>git merge feature</code>)</th>
+                  <th>Git Rebase (<code>git rebase main</code>)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Commit History</strong></td>
+                  <td>Preserves exact non-linear chronological history</td>
+                  <td>Rewrites commit history into a single linear timeline</td>
+                </tr>
+                <tr>
+                  <td><strong>Merge Commit</strong></td>
+                  <td>Creates a distinct 2-parent <em>Merge Commit</em></td>
+                  <td>No merge commit; replays commits on top of target branch</td>
+                </tr>
+                <tr>
+                  <td><strong>Safety on Shared Branches</strong></td>
+                  <td><strong>100% Safe:</strong> Never alters existing commit hashes</td>
+                  <td><strong>Dangerous:</strong> Rewrites SHA hashes; never rebase shared/public branches!</td>
+                </tr>
+                <tr>
+                  <td><strong>Best Practice Use</strong></td>
+                  <td>Integrating completed features into <code>main</code> via Pull Request</td>
+                  <td>Keeping a local feature branch up to date with <code>main</code> before PR</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="visual-flowchart-card">
+              <div class="vflow-header">
+                <span class="vflow-title">Production Git Branching Hierarchy</span>
+                <span class="vflow-badge">Feature Branch Workflow</span>
+              </div>
+              <div class="pipeline-container">
+                <div class="pipe-node">
+                  <span class="pipe-node-step">Base</span>
+                  <div class="pipe-node-title">main branch</div>
+                  <div class="pipe-node-desc">Production-ready, protected, CI/CD automated</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">Feature</span>
+                  <div class="pipe-node-title">feature/student-api</div>
+                  <div class="pipe-node-desc">Developers work in isolated local branches</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">Review</span>
+                  <div class="pipe-node-title">Pull Request (PR)</div>
+                  <div class="pipe-node-desc">Peer code review, automated linter &amp; test suite</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">Release</span>
+                  <div class="pipe-node-title">Merge to main</div>
+                  <div class="pipe-node-desc">Triggers automated deployment pipeline</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q56 & Q66 -->
+          <div class="topic-card" id="qb-q56">
+            <div class="topic-header">
+              <h4 class="topic-title">Q56 &amp; Q66. Static CDN Hosting vs Containerized Cloud Deployment</h4>
+              <span class="exam-tag">Cloud &amp; DevOps</span>
+            </div>
+            <p><strong>Question:</strong> Distinguish between Static Frontend Hosting (CDN/S3/Vercel) and Containerized Cloud Deployment (Docker/AWS/Render) for full-stack architectures.</p>
+
+            <div class="tier-visual-container">
+              <div class="tier-box">
+                <span class="tier-badge">Static Edge Hosting (CDN)</span>
+                <h5>Frontend: React / HTML / CSS / JS</h5>
+                <ul>
+                  <li><strong>Target:</strong> Pre-built HTML/JS bundles generated by <code>npm run build</code>.</li>
+                  <li><strong>Distribution:</strong> Geographically distributed CDN Edge points (Vercel, Cloudflare, Netlify).</li>
+                  <li><strong>Cost &amp; Speed:</strong> Ultra-fast, near-zero server maintenance, pennies per GB.</li>
+                </ul>
+              </div>
+
+              <div class="tier-box">
+                <span class="tier-badge" style="background: rgba(56, 189, 248, 0.2); color: var(--accent-blue);">Containerized Cloud (Docker)</span>
+                <h5>Backend: Node.js / Express / MySQL</h5>
+                <ul>
+                  <li><strong>Target:</strong> Long-running Node server, database daemons, socket connections.</li>
+                  <li><strong>Isolation:</strong> Packaged in Docker containers guaranteeing identical OS libraries across dev &amp; prod.</li>
+                  <li><strong>Scaling:</strong> Auto-scales compute clusters (Kubernetes, AWS ECS, Render, Railway).</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q57 & Q72 -->
+          <div class="topic-card" id="qb-q57">
+            <div class="topic-header">
+              <h4 class="topic-title">Q57 &amp; Q72. Complete User Registration &amp; Secure Authentication Pipeline</h4>
+              <span class="exam-tag">10 Marks Practical Architecture</span>
+            </div>
+            <p><strong>Question:</strong> Design the end-to-end registration and login workflow spanning React client form submission, bcrypt password hashing, MySQL storage, and JWT token issuance.</p>
+
+            <div class="visual-flowchart-card">
+              <div class="vflow-header">
+                <span class="vflow-title">Secure Registration &amp; Authentication Flow</span>
+                <span class="vflow-badge">Bcrypt + MySQL + JWT</span>
+              </div>
+              <div class="pipeline-container">
+                <div class="pipe-node">
+                  <span class="pipe-node-step">1. Client</span>
+                  <div class="pipe-node-title">React Form</div>
+                  <div class="pipe-node-desc">Inputs email &amp; plaintext password</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">2. Hash</span>
+                  <div class="pipe-node-title">bcrypt.hash()</div>
+                  <div class="pipe-node-desc">Cost salt factor 12 &rarr; 60 char irreversible hash</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">3. Database</span>
+                  <div class="pipe-node-title">MySQL INSERT</div>
+                  <div class="pipe-node-desc">Stores (email, password_hash) via Prepared Statement</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">4. Login / Token</span>
+                  <div class="pipe-node-title">JWT Issue</div>
+                  <div class="pipe-node-desc">Server verifies hash &amp; returns signed Bearer Token</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="code-container">
+              <div class="code-header"><span>Secure Registration API Endpoint (Express + bcrypt)</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>const bcrypt = require("bcrypt");
+const db = require("./db"); // MySQL connection pool
+
+app.post("/api/register", async (req, res, next) => {
+    try {
+        const { name, email, password } = req.body;
+
+        // 1. Validation Layer
+        if (!email || !password || password.length < 8) {
+            return res.status(400).json({ error: "Password must be at least 8 characters" });
+        }
+
+        // 2. Check for duplicate existing user
+        const [existing] = await db.query("SELECT id FROM users WHERE email = ?", [email]);
+        if (existing.length > 0) {
+            return res.status(409).json({ error: "Email already registered" });
+        }
+
+        // 3. Cryptographic Salting & Hashing (NEVER save plaintext password!)
+        const saltRounds = 12;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+        // 4. Parameterized Insert
+        const [result] = await db.query(
+            "INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)",
+            [name, email, hashedPassword]
+        );
+
+        res.status(201).json({ message: "Registration successful", userId: result.insertId });
+    } catch (err) {
+        next(err);
+    }
+});</code></pre>
+            </div>
+          </div>
+
+          <!-- Q60 & Q69 -->
+          <div class="topic-card" id="qb-q60">
+            <div class="topic-header">
+              <h4 class="topic-title">Q60 &amp; Q69. Automated Testing Pyramid: Unit vs Integration (Jest &amp; Supertest) vs E2E</h4>
+              <span class="exam-tag">Quality Assurance &amp; Testing</span>
+            </div>
+            <p><strong>Question:</strong> Formulate an automated testing strategy for a full-stack student management application. Contrast unit, integration, and end-to-end tests with code examples.</p>
+
+            <div class="tier-visual-container">
+              <div class="tier-box">
+                <span class="tier-badge">1. Unit Testing (Jest)</span>
+                <h5>Isolated Pure Functions</h5>
+                <p>Tests individual utility functions or business logic calculations without external network/DB dependencies.</p>
+                <code>expect(calculateGrade(85)).toBe('A');</code>
+              </div>
+
+              <div class="tier-box">
+                <span class="tier-badge" style="background: rgba(168, 85, 247, 0.2); color: var(--accent-purple);">2. Integration Testing (Supertest)</span>
+                <h5>Routes + Middleware + DB</h5>
+                <p>Tests complete HTTP request/response lifecycles, headers, status codes, and DB persistence.</p>
+                <code>request(app).post('/api/students').expect(201);</code>
+              </div>
+
+              <div class="tier-box">
+                <span class="tier-badge" style="background: rgba(16, 185, 129, 0.2); color: var(--accent-green);">3. End-to-End (E2E)</span>
+                <h5>Full User Journeys (Playwright/Cypress)</h5>
+                <p>Simulates real user opening browser, filling form, clicking Submit, and asserting that the student shows up on the table.</p>
+              </div>
+            </div>
+
+            <div class="code-container">
+              <div class="code-header"><span>Integration Test with Jest &amp; Supertest</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>const request = require("supertest");
+const app = require("../app");
+
+describe("Student API Integration Suite", () => {
+    test("POST /api/students should reject unauthenticated requests", async () => {
+        const res = await request(app)
+            .post("/api/students")
+            .send({ name: "Rahul", email: "rahul@test.com" });
+        expect(res.statusCode).toBe(401);
+    });
+
+    test("GET /api/students returns 200 with list of records", async () => {
+        const res = await request(app)
+            .get("/api/students")
+            .set("Authorization", "Bearer valid_test_token");
+        expect(res.statusCode).toBe(200);
+        expect(Array.isArray(res.body)).toBe(true);
+    });
+});</code></pre>
+            </div>
+          </div>
+
+          <!-- Q61 -->
+          <div class="topic-card" id="qb-q61">
+            <div class="topic-header">
+              <h4 class="topic-title">Q61. Frontend Fetch API Integration &amp; The `response.ok` Trap</h4>
+              <span class="exam-tag">Client-Side Architecture</span>
+            </div>
+            <p><strong>Question:</strong> Demonstrate how modern React frontends interact with REST APIs using `fetch()`. Why must developers always inspect `response.ok`?</p>
+
+            <div class="hinglish-box">
+              <span class="hinglish-label">⚠️ The response.ok Trap</span>
+              <code>fetch()</code> promise <strong>sirf tab reject hoti hai jab network connection fail ho</strong> (e.g. DNS failure ya offline). Agar server <code>404 Not Found</code> ya <code>500 Internal Server Error</code> return karta hai, tab bhi fetch resolve ho jaati hai! Isiliye <code>if (!response.ok) throw new Error(...)</code> lagana mandatory hai.
+            </div>
+
+            <div class="code-container">
+              <div class="code-header"><span>Production-Ready React Fetch Pattern with 3 UI States</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>async function fetchStudents() {
+    setLoading(true);
+    setError(null);
+    try {
+        const response = await fetch("http://localhost:5000/api/students", {
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
+            }
+        });
+
+        // CRITICAL CHECK: Status code 200-299 range
+        if (!response.ok) {
+            const errBody = await response.json().catch(() => ({}));
+            throw new Error(errBody.error || `HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setStudents(data);
+    } catch (err) {
+        setError(err.message);
+    } finally {
+        setLoading(false);
+    }
+}</code></pre>
+            </div>
+          </div>
+
+          <!-- Q62 -->
+          <div class="topic-card" id="qb-q62">
+            <div class="topic-header">
+              <h4 class="topic-title">Q62. CI/CD (Continuous Integration &amp; Continuous Deployment) Pipelines</h4>
+              <span class="exam-tag">DevOps Automation</span>
+            </div>
+            <p><strong>Question:</strong> Explain the stages and benefits of automated CI/CD pipelines compared to error-prone manual deployment workflows.</p>
+
+            <div class="visual-flowchart-card">
+              <div class="vflow-header">
+                <span class="vflow-title">Automated GitHub Actions CI/CD Pipeline</span>
+                <span class="vflow-badge">Continuous Quality Gate</span>
+              </div>
+              <div class="pipeline-container">
+                <div class="pipe-node">
+                  <span class="pipe-node-step">1. Push</span>
+                  <div class="pipe-node-title">git push origin</div>
+                  <div class="pipe-node-desc">Developer pushes branch or merges PR</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">2. CI: Quality</span>
+                  <div class="pipe-node-title">Lint &amp; Test</div>
+                  <div class="pipe-node-desc">npm run lint &rarr; Jest unit &amp; supertest passes</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">3. CI: Build</span>
+                  <div class="pipe-node-title">Docker / Bundle</div>
+                  <div class="pipe-node-desc">Compiles React assets &amp; creates container image</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">4. CD: Deploy</span>
+                  <div class="pipe-node-title">Production Cloud</div>
+                  <div class="pipe-node-desc">Zero-downtime rolling update on cloud cluster</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q63 -->
+          <div class="topic-card" id="qb-q63">
+            <div class="topic-header">
+              <h4 class="topic-title">Q63. Enterprise Security: HTTPS, Content Security Policy (CSP) &amp; OWASP Top 10</h4>
+              <span class="exam-tag">Defense in Depth</span>
+            </div>
+            <p><strong>Question:</strong> Discuss defense-in-depth principles: How HTTPS, CSP headers, and OWASP mitigation strategies secure modern full-stack web applications.</p>
+
+            <div class="tier-visual-container">
+              <div class="tier-box">
+                <span class="tier-badge">HTTPS (TLS 1.3)</span>
+                <h5>Encryption in Transit</h5>
+                <p>Encrypts all HTTP payloads and URL query parameters between browser and server, eliminating Man-In-The-Middle (MITM) eavesdropping.</p>
+              </div>
+
+              <div class="tier-box">
+                <span class="tier-badge" style="background: rgba(168, 85, 247, 0.2); color: var(--accent-purple);">CSP Header</span>
+                <h5>Anti-XSS Browser Lockdown</h5>
+                <p>HTTP response header telling browsers which domains can load scripts: <code>Content-Security-Policy: default-src 'self'; script-src 'self' https://trusted.cdn.com;</code></p>
+              </div>
+
+              <div class="tier-box">
+                <span class="tier-badge" style="background: rgba(239, 68, 68, 0.2); color: var(--accent-red);">OWASP Top 10</span>
+                <h5>Vulnerability Defenses</h5>
+                <p>Prevent Injection via Prepared Statements; prevent Broken Access Control via RBAC; hash passwords using bcrypt/Argon2.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q64 -->
+          <div class="topic-card" id="qb-q64">
+            <div class="topic-header">
+              <h4 class="topic-title">Q64. Full-Stack E-Commerce System Architecture</h4>
+              <span class="exam-tag">10 Marks System Design</span>
+            </div>
+            <p><strong>Question:</strong> Present the full-stack architecture, relational database tables, and REST endpoints for an E-Commerce platform handling catalog, cart, and orders.</p>
+
+            <div class="tier-visual-container">
+              <div class="tier-box">
+                <span class="tier-badge">Client Layer (React)</span>
+                <h5>Storefront Experience</h5>
+                <ul>
+                  <li>Product Catalog &amp; Search filters</li>
+                  <li>Cart Context / Redux state</li>
+                  <li>Checkout Stripe/Razorpay UI</li>
+                  <li>Order tracking history</li>
+                </ul>
+              </div>
+
+              <div class="tier-box">
+                <span class="tier-badge">API Layer (Node/Express)</span>
+                <h5>REST Micro-routes</h5>
+                <ul>
+                  <li><code>GET /api/products</code></li>
+                  <li><code>POST /api/cart/items</code></li>
+                  <li><code>POST /api/orders/checkout</code></li>
+                  <li><code>POST /api/payments/webhook</code></li>
+                </ul>
+              </div>
+
+              <div class="tier-box">
+                <span class="tier-badge">Database Layer (MySQL)</span>
+                <h5>Relational Tables</h5>
+                <ul>
+                  <li><code>users</code> (id, email, password_hash)</li>
+                  <li><code>products</code> (id, title, price, stock)</li>
+                  <li><code>orders</code> (id, user_id, total, status)</li>
+                  <li><code>order_items</code> (order_id, product_id, qty)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q65 -->
+          <div class="topic-card" id="qb-q65">
+            <div class="topic-header">
+              <h4 class="topic-title">Q65. ⭐ The Complete 14-Step Full-Stack Request-Response Lifecycle</h4>
+              <span class="exam-tag">⭐ Highest-Yield 10-Mark Question</span>
+            </div>
+            <p><strong>Question:</strong> Trace the complete step-by-step lifecycle from the moment a user clicks "Add Student" in a React frontend until the updated UI re-renders.</p>
+
+            <div class="visual-flowchart-card">
+              <div class="vflow-header">
+                <span class="vflow-title">14-Step Full-Stack Execution Lifecycle</span>
+                <span class="vflow-badge">End-to-End Client &rarr; Server &rarr; DB &rarr; Client</span>
+              </div>
+              <div class="pipeline-container">
+                <div class="pipe-node">
+                  <span class="pipe-node-step">Steps 1-3</span>
+                  <div class="pipe-node-title">Client Dispatch</div>
+                  <div class="pipe-node-desc">User click &rarr; React handler &rarr; fetch POST with Bearer token</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">Steps 4-7</span>
+                  <div class="pipe-node-title">Express Middleware</div>
+                  <div class="pipe-node-desc">CORS allow &rarr; body-parser &rarr; JWT verify &rarr; Joi validate</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">Steps 8-11</span>
+                  <div class="pipe-node-title">Database Execution</div>
+                  <div class="pipe-node-desc">Pool checkout &rarr; INSERT prepared SQL &rarr; commit &rarr; JSON serialize</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">Steps 12-14</span>
+                  <div class="pipe-node-title">UI Re-render</div>
+                  <div class="pipe-node-desc">HTTP 201 received &rarr; React state updated &rarr; Virtual DOM re-renders table</div>
+                </div>
+              </div>
+            </div>
+
+            <ol style="margin-top: 1.2rem; padding-left: 1.5rem; line-height: 1.8; color: var(--text-secondary); font-size: 0.95rem;">
+              <li><strong>User Action:</strong> User fills out name and email and clicks "Add Student".</li>
+              <li><strong>React Event Handler:</strong> <code>onSubmit</code> fires, invokes <code>e.preventDefault()</code>, and sets <code>loading = true</code>.</li>
+              <li><strong>Network Transmission:</strong> <code>fetch('/api/students', { method: 'POST', headers: { 'Authorization': 'Bearer ...' } })</code> dispatches over HTTPS.</li>
+              <li><strong>Express Listener:</strong> Server accepts socket connection on configured port and assigns <code>req</code> and <code>res</code> objects.</li>
+              <li><strong>CORS Check:</strong> CORS middleware verifies <code>Origin</code> header against whitelist.</li>
+              <li><strong>Authentication Middleware:</strong> Extracts Bearer token, executes <code>jwt.verify()</code>, attaches <code>req.user</code>.</li>
+              <li><strong>Schema Validation:</strong> Checks for required fields, valid email format, and sanitizes input.</li>
+              <li><strong>Controller Execution:</strong> Matching route controller executes business logic.</li>
+              <li><strong>DB Connection Checkout:</strong> Express acquires an active connection from MySQL connection pool.</li>
+              <li><strong>Prepared Query:</strong> Executes parameterized <code>INSERT INTO students VALUES (?, ?, ?)</code>.</li>
+              <li><strong>JSON Response Generation:</strong> Server constructs <code>res.status(201).json({ id: result.insertId, message: 'Created' })</code>.</li>
+              <li><strong>Network Return:</strong> Browser receives TCP packets and resolves the <code>fetch()</code> promise.</li>
+              <li><strong>Client State Mutation:</strong> React calls <code>setStudents(prev => [...prev, newStudent])</code>.</li>
+              <li><strong>DOM Update:</strong> React reconciliation diffs Virtual DOM and smoothly updates the student table UI without reloading the browser page.</li>
+            </ol>
+          </div>
+
+          <!-- Q67 -->
+          <div class="topic-card" id="qb-q67">
+            <div class="topic-header">
+              <h4 class="topic-title">Q67. Full-Stack Performance Tuning &amp; Optimization</h4>
+              <span class="exam-tag">5 Marks Systems Engineering</span>
+            </div>
+            <p><strong>Question:</strong> Explain four high-impact optimization strategies to dramatically decrease response times in full-stack web applications.</p>
+
+            <div class="tier-visual-container">
+              <div class="tier-box">
+                <span class="tier-badge">1. Caching (HTTP &amp; Redis)</span>
+                <h5>Prevent Duplicate Computing</h5>
+                <p>Use <code>Cache-Control: public, max-age=31536000</code> for immutable JS/CSS bundles. Store expensive DB queries in memory via Redis.</p>
+              </div>
+
+              <div class="tier-box">
+                <span class="tier-badge">2. Database Optimization</span>
+                <h5>Indexes &amp; Specific Selects</h5>
+                <p>Add B-Tree indexes on search columns: <code>CREATE INDEX idx_email ON users(email)</code>. Never run <code>SELECT *</code> when only 2 columns are needed.</p>
+              </div>
+
+              <div class="tier-box">
+                <span class="tier-badge">3. Content Delivery Network (CDN)</span>
+                <h5>Geographical Proximity</h5>
+                <p>Serve static images, fonts, and React build chunks from edge servers nearest to the user, cutting latency by 80%.</p>
+              </div>
+
+              <div class="tier-box">
+                <span class="tier-badge">4. Compression &amp; Bundling</span>
+                <h5>Payload Shrinking</h5>
+                <p>Enable Gzip / Brotli compression in Express (<code>compression()</code> middleware) to reduce JSON payloads from 2MB to 300KB.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q70 -->
+          <div class="topic-card" id="qb-q70">
+            <div class="topic-header">
+              <h4 class="topic-title">Q70. MERN (React) vs MEAN (Angular) Architecture Comparison</h4>
+              <span class="exam-tag">Full-Stack Technology Stack</span>
+            </div>
+            <p><strong>Question:</strong> Compare the MERN stack with the MEAN stack across frontend framework paradigms, structure, scalability, and learning curve.</p>
+
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th>Criteria</th>
+                  <th>MERN Stack (MongoDB, Express, React, Node)</th>
+                  <th>MEAN Stack (MongoDB, Express, Angular, Node)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Frontend Framework</strong></td>
+                  <td><strong>React.js:</strong> Lightweight component UI library based on JSX and unidirectional data flow.</td>
+                  <td><strong>Angular:</strong> Comprehensive opinionated framework with built-in routing, HTTP client, and forms.</td>
+                </tr>
+                <tr>
+                  <td><strong>Language Standard</strong></td>
+                  <td>JavaScript / TypeScript optional; flexible build setups.</td>
+                  <td>TypeScript-first standard with strict type checking by default.</td>
+                </tr>
+                <tr>
+                  <td><strong>Architecture Pattern</strong></td>
+                  <td>Component &amp; Hooks based; developer chooses state management (Zustand, Redux).</td>
+                  <td>MVC / MVVM architecture with Dependency Injection and RxJS Observables.</td>
+                </tr>
+                <tr>
+                  <td><strong>Learning Curve</strong></td>
+                  <td>Gentle initial learning curve; high flexibility.</td>
+                  <td>Steeper learning curve due to decorators, modules, and RxJS reactive streams.</td>
+                </tr>
+                <tr>
+                  <td><strong>Enterprise Suitability</strong></td>
+                  <td>Dynamic SaaS, startups, content platforms, rich interactive apps.</td>
+                  <td>Large-scale enterprise internal portals with strict uniform coding guidelines.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Q71 -->
+          <div class="topic-card" id="qb-q71">
+            <div class="topic-header">
+              <h4 class="topic-title">Q71. Environment Variables &amp; Secrets Management (.env)</h4>
+              <span class="exam-tag">Security &amp; 12-Factor App</span>
+            </div>
+            <p><strong>Question:</strong> Why should API keys and database passwords never be hardcoded in application source code? Explain `.env` files and `dotenv` usage.</p>
+
+            <div class="hinglish-box">
+              <span class="hinglish-label">Kyun zaroori hai .env?</span>
+              Agar aapne DB password ya JWT secret code me hardcode kiya aur GitHub par push kar diya, to bots 2 minute me aapka server compromise kar lenge! Environment variables code ko configuration se alag rakhte hain (12-Factor App methodology).
+            </div>
+
+            <div class="code-container">
+              <div class="code-header"><span>dotenv Integration &amp; .gitignore Protection</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code># File: .env (NEVER COMMIT THIS FILE TO GIT!)
+PORT=5000
+DB_HOST=127.0.0.1
+DB_USER=master_admin
+DB_PASS=SuperSecretP@ssword2026!
+JWT_SECRET=c8e8d893f493b8e734a7812fa90123
+
+# File: .gitignore
+node_modules/
+.env
+
+// File: server.js
+require("dotenv").config(); // Reads .env into process.env
+
+const port = process.env.PORT || 3000;
+const jwtSecret = process.env.JWT_SECRET;</code></pre>
+            </div>
+          </div>
+
+          <!-- Q73 -->
+          <div class="topic-card" id="qb-q73">
+            <div class="topic-header">
+              <h4 class="topic-title">Q73. The 4-Layer API Defense: Validation, AuthN, AuthZ &amp; Centralized Error Handling</h4>
+              <span class="exam-tag">10 Marks API Architecture</span>
+            </div>
+            <p><strong>Question:</strong> Detail the distinction and sequence of Validation, Authentication (AuthN), Authorization (AuthZ), and Centralized Error Handling in backend APIs.</p>
+
+            <div class="visual-flowchart-card">
+              <div class="vflow-header">
+                <span class="vflow-title">4-Tier Request Filter Pipeline</span>
+                <span class="vflow-badge">Fail-Fast Security Principle</span>
+              </div>
+              <div class="pipeline-container">
+                <div class="pipe-node">
+                  <span class="pipe-node-step">Layer 1</span>
+                  <div class="pipe-node-title">Input Validation</div>
+                  <div class="pipe-node-desc">Is the data well-formed? Reject garbage input before touching DB</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">Layer 2</span>
+                  <div class="pipe-node-title">Authentication (AuthN)</div>
+                  <div class="pipe-node-desc">Who are you? Verifies Bearer JWT signature or session cookie</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">Layer 3</span>
+                  <div class="pipe-node-title">Authorization (AuthZ)</div>
+                  <div class="pipe-node-desc">What can you do? Checks role permissions (e.g., student vs admin)</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">Layer 4</span>
+                  <div class="pipe-node-title">Central Error Handler</div>
+                  <div class="pipe-node-desc">Catches next(err), logs stack trace &amp; sends clean 500 JSON</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q74 -->
+          <div class="topic-card" id="qb-q74">
+            <div class="topic-header">
+              <h4 class="topic-title">⭐ Q74. The Universal Full-Stack Student Management System Architecture</h4>
+              <span class="exam-tag">⭐ Master Design Blueprint (10 Marks)</span>
+            </div>
+            <p><strong>Question:</strong> Architect a production-ready Full-Stack Student Management System. Provide the MySQL table schema, Express REST CRUD API implementation, and connection pool integration.</p>
+
+            <div class="tier-visual-container">
+              <div class="tier-box">
+                <span class="tier-badge">1. Frontend (React)</span>
+                <h5>Component Architecture</h5>
+                <ul>
+                  <li><code>StudentForm.jsx</code> &ndash; Controlled input validation</li>
+                  <li><code>StudentTable.jsx</code> &ndash; Dynamic listing with edit/delete actions</li>
+                  <li><code>useAuth.js</code> &ndash; JWT Token persistence in state</li>
+                </ul>
+              </div>
+
+              <div class="tier-box">
+                <span class="tier-badge" style="background: rgba(56, 189, 248, 0.2); color: var(--accent-blue);">2. API (Express.js)</span>
+                <h5>RESTful CRUD Endpoints</h5>
+                <ul>
+                  <li><code>GET /api/students</code> &rarr; READ all</li>
+                  <li><code>POST /api/students</code> &rarr; CREATE record</li>
+                  <li><code>PUT /api/students/:id</code> &rarr; UPDATE record</li>
+                  <li><code>DELETE /api/students/:id</code> &rarr; DELETE record</li>
+                </ul>
+              </div>
+
+              <div class="tier-box">
+                <span class="tier-badge" style="background: rgba(168, 85, 247, 0.2); color: var(--accent-purple);">3. Database (MySQL)</span>
+                <h5>Normalized Schema</h5>
+                <ul>
+                  <li><code>id INT PRIMARY KEY AUTO_INCREMENT</code></li>
+                  <li><code>name VARCHAR(100) NOT NULL</code></li>
+                  <li><code>email VARCHAR(150) UNIQUE NOT NULL</code></li>
+                  <li><code>course VARCHAR(100), gpa DECIMAL(3,2)</code></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="code-container">
+              <div class="code-header"><span>Complete Express CRUD Controller with Parameterized Queries</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+              <pre><code>const express = require("express");
+const router = express.Router();
+const db = require("./db"); // mysql2/promise connection pool
+const { authenticateToken } = require("./authMiddleware");
+
+// 1. READ ALL STUDENTS
+router.get("/", authenticateToken, async (req, res, next) => {
+    try {
+        const [rows] = await db.query("SELECT id, name, email, course, gpa FROM students ORDER BY id DESC");
+        res.status(200).json(rows);
+    } catch (err) { next(err); }
+});
+
+// 2. CREATE NEW STUDENT
+router.post("/", authenticateToken, async (req, res, next) => {
+    try {
+        const { name, email, course, gpa } = req.body;
+        if (!name || !email) return res.status(400).json({ error: "Name and email are required" });
+
+        const [result] = await db.query(
+            "INSERT INTO students (name, email, course, gpa) VALUES (?, ?, ?, ?)",
+            [name, email, course, gpa]
+        );
+        res.status(201).json({ message: "Student enrolled", studentId: result.insertId });
+    } catch (err) { next(err); }
+});
+
+// 3. UPDATE EXISTING STUDENT
+router.put("/:id", authenticateToken, async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const { name, email, course, gpa } = req.body;
+        const [result] = await db.query(
+            "UPDATE students SET name = ?, email = ?, course = ?, gpa = ? WHERE id = ?",
+            [name, email, course, gpa, id]
+        );
+        if (result.affectedRows === 0) return res.status(404).json({ error: "Student not found" });
+        res.status(200).json({ message: "Student updated successfully" });
+    } catch (err) { next(err); }
+});
+
+// 4. DELETE STUDENT
+router.delete("/:id", authenticateToken, async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const [result] = await db.query("DELETE FROM students WHERE id = ?", [id]);
+        if (result.affectedRows === 0) return res.status(404).json({ error: "Student not found" });
+        res.status(200).json({ message: "Student deleted successfully" });
+    } catch (err) { next(err); }
+});
+
+module.exports = router;</code></pre>
+            </div>
+          </div>
+
+          <!-- Q75 -->
+          <div class="topic-card" id="qb-q75">
+            <div class="topic-header">
+              <h4 class="topic-title">Q75. Universal Integration Failure Troubleshooting Funnel</h4>
+              <span class="exam-tag">Full-Stack Debugging Protocol</span>
+            </div>
+            <p><strong>Question:</strong> When an application fails across React &harr; Express &harr; MySQL, illustrate the systematic 5-tier layer-by-layer troubleshooting funnel to diagnose and resolve bugs.</p>
+
+            <div class="visual-flowchart-card">
+              <div class="vflow-header">
+                <span class="vflow-title">Systematic Full-Stack Isolation Funnel</span>
+                <span class="vflow-badge">Top-to-Bottom Root Cause Isolation</span>
+              </div>
+              <div class="pipeline-container">
+                <div class="pipe-node">
+                  <span class="pipe-node-step">Layer 1</span>
+                  <div class="pipe-node-title">Frontend UI</div>
+                  <div class="pipe-node-desc">Is button firing? Console errors? Payload structure verified?</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">Layer 2</span>
+                  <div class="pipe-node-title">Network &amp; CORS</div>
+                  <div class="pipe-node-desc">DevTools Network &rarr; Status code (404/403/500)? Preflight pass?</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">Layer 3</span>
+                  <div class="pipe-node-title">Express Middleware</div>
+                  <div class="pipe-node-desc">Is Bearer token present? JWT expired? Route spelling correct?</div>
+                </div>
+                <div class="pipe-arrow">&rarr;</div>
+                <div class="pipe-node">
+                  <span class="pipe-node-step">Layer 4</span>
+                  <div class="pipe-node-title">Database &amp; SQL</div>
+                  <div class="pipe-node-desc">Is MySQL running? Connection pool alive? Query syntax match schema?</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MASTER 75-QUESTION SYNTHESIS MAP -->
+          <div class="topic-card" id="qb-m3-map">
+            <div class="topic-header">
+              <h4 class="topic-title">🎯 Master 75-Question Syllabus Synthesis Map</h4>
+              <span class="exam-tag">Holistic Course Map</span>
+            </div>
+            <p>Every single university exam question across all 75 prompts maps into these 7 core pillars:</p>
+
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th>Question Range</th>
+                  <th>Core Pillar &amp; Technology</th>
+                  <th>Key Exam Concepts to Memorize</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Q1 &ndash; Q25</strong></td>
+                  <td>Node.js &amp; Express.js Backend</td>
+                  <td>Event loop, Non-blocking I/O, CommonJS modules, Middleware chain, Connection pool, REST CRUD</td>
+                </tr>
+                <tr>
+                  <td><strong>Q26 &ndash; Q50</strong></td>
+                  <td>PHP &amp; MySQL Server-Side</td>
+                  <td>Multidimensional arrays, <code>$_GET</code> vs <code>$_POST</code>, Cookies, Sessions, Prepared Statements, MySQLi vs PDO</td>
+                </tr>
+                <tr>
+                  <td><strong>Q51 &ndash; Q55</strong></td>
+                  <td>Git Version Control &amp; State</td>
+                  <td>Working Tree &rarr; Staging &rarr; Commit &rarr; Push; Merge vs Rebase; Database is Source of Truth</td>
+                </tr>
+                <tr>
+                  <td><strong>Q56 &ndash; Q60</strong></td>
+                  <td>Deployment &amp; Testing</td>
+                  <td>Static CDN vs Containers, JWT vs Cookies, Branching workflows, Unit (Jest) vs Integration (Supertest)</td>
+                </tr>
+                <tr>
+                  <td><strong>Q61 &ndash; Q65</strong></td>
+                  <td>Client-Server Integration &amp; Security</td>
+                  <td><code>fetch()</code> &amp; <code>response.ok</code>, CI/CD pipelines, HTTPS + CSP + OWASP, 14-step request lifecycle</td>
+                </tr>
+                <tr>
+                  <td><strong>Q66 &ndash; Q70</strong></td>
+                  <td>Performance, Stacks &amp; Debugging</td>
+                  <td>Caching, CDN, DB indexing, Compression, CORS 8-step protocol, MERN vs MEAN architecture</td>
+                </tr>
+                <tr>
+                  <td><strong>Q71 &ndash; Q75</strong></td>
+                  <td>Universal Architecture &amp; Diagnosis</td>
+                  <td><code>.env</code> secrets, 4-tier defense hierarchy, Universal Student System, 5-layer troubleshooting funnel</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 10 GOLDEN EXAM MUST-KNOWS -->
+          <div class="topic-card" id="qb-exam-must-know" style="border: 2px solid rgba(245, 158, 11, 0.4); background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), transparent);">
+            <div class="topic-header">
+              <h4 class="topic-title" style="color: var(--accent-amber);">⭐ 10 Golden Rules You Must Know Before Entering the Exam Hall</h4>
+              <span class="exam-tag" style="background: rgba(245, 158, 11, 0.2); color: var(--accent-amber);">Final Revision Cheat-Sheet</span>
+            </div>
+
+            <ol style="padding-left: 1.5rem; line-height: 2; color: var(--text-secondary); font-size: 0.95rem;">
+              <li><strong>Node Event Loop:</strong> Single-threaded JavaScript handles non-blocking I/O via libuv worker threads and callback queues.</li>
+              <li><strong>Express Middleware:</strong> Functions with <code>(req, res, next)</code> signature executed in sequence; must call <code>next()</code> to continue.</li>
+              <li><strong>RESTful CRUD:</strong> <code>POST</code> (Create), <code>GET</code> (Read), <code>PUT</code> (Update), <code>DELETE</code> (Delete).</li>
+              <li><strong>Prepared Statements:</strong> The only 100% bulletproof defense against SQL Injection in both PHP (<code>bind_param</code>) and Node (<code>[param1, param2]</code>).</li>
+              <li><strong>AuthN vs AuthZ:</strong> Authentication asks <em>"Who are you?"</em> (login/JWT); Authorization asks <em>"What are you permitted to do?"</em> (roles/RBAC).</li>
+              <li><strong>JWT Lifecycle:</strong> Client logs in &rarr; server signs token &rarr; client passes token in <code>Authorization: Bearer &lt;token&gt;</code> &rarr; middleware verifies signature.</li>
+              <li><strong>CORS Mechanism:</strong> Browser Same-Origin Policy enforcement; backend must send <code>Access-Control-Allow-Origin</code> header.</li>
+              <li><strong>Git Core Rhythm:</strong> <code>git add .</code> (stage) &rarr; <code>git commit -m "..."</code> (snapshot) &rarr; <code>git push origin main</code> (cloud sync).</li>
+              <li><strong>The fetch() Trap:</strong> <code>fetch()</code> does not reject on 404 or 500 status codes; always verify <code>if (!response.ok)</code>.</li>
+              <li><strong>Universal Full-Stack Flow:</strong> React Frontend &harr; HTTPS/REST API &harr; Express Middleware &harr; MySQL Database with Connection Pooling.</li>
+            </ol>
+          </div>
+
 
         </div>
       </div>
