@@ -6,6 +6,13 @@ A comprehensive, exam-ready study guide, syllabus, and interactive architecture 
 
 ## 📌 Contents & Structure
 
+### 0. **Endsem Master Preparation (Chapters 1, 2 & 3)**
+- **Chapter 1: HTML5, CSS & Web Architecture:** Client-Server model, HTTP request-response cycle & status code trick, Semantic HTML5 (`<header>`, `<nav>`, `<main>`, `<article>`, `<section>`, `<footer>`), Form controls & attributes, CSS Box Model (Margin, Border, Padding, Content), Flexbox (1D) vs CSS Grid (2D), and Responsive Web Design (media queries & viewport).
+- **Chapter 2: JavaScript (Core, DOM, ES6+ & Async):** `var` vs `let` vs `const`, Hoisting and the Temporal Dead Zone (TDZ), Primitive vs Reference types, loose (`==`) vs strict (`===`) equality, high-order array methods (`map()`, `filter()`, `forEach()`), DOM tree manipulation, `addEventListener` & `event.preventDefault()`, Client-side regex validation, ES6+ destructuring/spread/rest, and the evolution of Async JavaScript (Callbacks &rarr; Promises with 3 states &rarr; `async`/`await`).
+- **Chapter 3: React & Next.js Framework:** Virtual DOM diffing & reconciliation cycle, JSX syntax rules & `React.createElement`, Functional components, Props vs State matrix, `useState` & `useEffect` (3 dependency array cases), Controlled form inputs, React Router, Next.js zero-config file-based routing (`[id].js`), SSR (`getServerSideProps`) vs SSG (`getStaticProps`), Next.js API routes, 15 core exam definitions, and Top 15 5-mark exam questions.
+
+---
+
 ### 1. **Universal Full-Stack Architecture (The Master Model)**
 - **Reusable Blueprint:** Designed for Library Management, Student Management, Hospital Management, Employee Management, Inventory Management, and E-commerce.
 - **Database Design:** Relational entity modeling (Users, Books, Students, Transactions) with 1-to-many relationship mapping.
